@@ -1,0 +1,23 @@
+# 대용량 영상/음악 파일
+영상자료/*.mp4
+영상자료/*.mov
+영상자료/*.wav
+영상자료/*.mp3
+영상자료/*.flac
+
+# 작업용 임시 파일
+*.kra
+*.krz
+*.psd
+*.png~
+*.krz~
+
+# docx (교재는 HTML만 사용)
+*.docx
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# 기타
+*.bak
