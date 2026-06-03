@@ -46,6 +46,47 @@ body {
 }
 
 /* ── 사이드바 ─────────────────────────────────────── */
+/* ── 햄버거 버튼 ─────────────────────────────────── */
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1100;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--sidebar-bg);
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+.menu-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #CBD5E1;
+  border-radius: 2px;
+  transition: transform 0.25s, opacity 0.25s;
+}
+.menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle.open span:nth-child(2) { opacity: 0; }
+.menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── 오버레이 ─────────────────────────────────────── */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 900;
+}
+.sidebar-overlay.active { display: block; }
+
 .sidebar {
   width: 260px;
   flex-shrink: 0;
@@ -490,6 +531,24 @@ td:has(.sb-frame) {
   vertical-align: middle;
 }
 
+/* ── 모바일 반응형 ────────────────────────────────── */
+@media (max-width: 767px) {
+  .menu-toggle { display: flex; }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    height: 100vh;
+    z-index: 1000;
+    transition: left 0.28s ease;
+    padding-top: 64px;
+  }
+  .sidebar.open { left: 0; }
+
+  .main { padding-top: 56px; }
+}
+
 /* ── 인쇄 CSS ──────────────────────────────────────── */
 @media print {
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
@@ -536,8 +595,14 @@ td:has(.sb-frame) {
 </head>
 <body>
 
+<!-- ════ 햄버거 버튼 ════ -->
+<button class="menu-toggle" id="menuToggle" aria-label="메뉴 열기">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
 <!-- ════ 사이드바 ════ -->
-<aside class="sidebar">
+<aside class="sidebar" id="sidebar">
   <div class="sidebar-brand">
     <div class="label">AI 영상 제작 과외 · 교재 01</div>
     <div class="title">영상 기획과 스토리보드</div>
@@ -1299,6 +1364,34 @@ td:has(.sb-frame) {
 </main>
 
 <script>
+/* ── 햄버거 토글 ── */
+const menuToggle = document.getElementById('menuToggle');
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+
+function openMenu() {
+  sidebar.classList.add('open');
+  menuToggle.classList.add('open');
+  overlay.classList.add('active');
+}
+function closeMenu() {
+  sidebar.classList.remove('open');
+  menuToggle.classList.remove('open');
+  overlay.classList.remove('active');
+}
+menuToggle.addEventListener('click', () => {
+  sidebar.classList.contains('open') ? closeMenu() : openMenu();
+});
+overlay.addEventListener('click', closeMenu);
+
+/* 메뉴 클릭 시 모바일에서 자동 닫기 */
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth < 768) closeMenu();
+  });
+});
+
+/* ── 활성 링크 하이라이트 ── */
 const sections = document.querySelectorAll('.highlight-target');
 const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
 const obs = new IntersectionObserver(entries => {
