@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280, height=720">
+<title>meshy.ai 썸네일</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  width: 1280px;
+  height: 720px;
+  overflow: hidden;
+  background: #FFFFFF;
+  font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+  position: relative;
+}
+
+/* 배경 장식 원 */
+.bg-circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.12;
+}
+.bg-circle.c1 { width: 400px; height: 400px; background: #C5B3FF; top: -100px; right: -80px; }
+.bg-circle.c2 { width: 300px; height: 300px; background: #FFB3C1; bottom: -80px; left: 200px; }
+.bg-circle.c3 { width: 200px; height: 200px; background: #B3E5FC; top: 100px; left: -60px; }
+
+/* 메인 레이아웃 */
+.content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 1;
+}
+
+/* 왼쪽 텍스트 영역 */
+.text-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 80px;
+  gap: 12px;
+}
+
+.tag {
+  display: inline-block;
+  background: linear-gradient(135deg, #B388FF, #7C4DFF);
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: 24px;
+  width: fit-content;
+  letter-spacing: -0.5px;
+}
+
+.title-line1 {
+  font-size: 62px;
+  font-weight: 900;
+  color: #2D2D2D;
+  line-height: 1.15;
+  letter-spacing: -2px;
+}
+
+.title-line2 {
+  font-size: 80px;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -3px;
+  background: linear-gradient(135deg, #7C6BFF, #B388FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: #888;
+  margin-top: 4px;
+  letter-spacing: -0.5px;
+}
+
+.subtitle span {
+  color: #7C6BFF;
+}
+
+/* 오른쪽 아이콘 영역 */
+.icon-area {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 3D 실리콘 큐브 */
+.cube-3d {
+  position: absolute;
+  top: 120px;
+  right: 160px;
+  width: 200px;
+  height: 200px;
+}
+
+/* 마법봉 */
+.wand {
+  position: absolute;
+  top: 80px;
+  right: 420px;
+}
+
+/* 스파클 장식들 */
+.sparkle {
+  position: absolute;
+}
+
+/* 꿀벌 마스코트 */
+.mascot {
+  position: absolute;
+  bottom: 30px;
+  left: 50px;
+  z-index: 10;
+}
+</style>
+</head>
+<body>
+
+<!-- 배경 장식 -->
+<div class="bg-circle c1"></div>
+<div class="bg-circle c2"></div>
+<div class="bg-circle c3"></div>
+
+<div class="content">
+  <!-- 왼쪽: 텍스트 -->
+  <div class="text-area">
+    <div class="tag">AI 3D 모델링</div>
+    <div class="title-line1">글 한 줄이면</div>
+    <div class="title-line2">3D 모델 완성</div>
+    <div class="subtitle"><span>meshy.ai</span> 완벽 가이드</div>
+  </div>
+
+  <!-- 오른쪽: 파스텔 3D 아이콘들 -->
+  <div class="icon-area">
+
+    <!-- 3D 큐브 (메인) -->
+    <svg class="cube-3d" viewBox="0 0 200 200">
+      <defs>
+        <linearGradient id="cubeTop" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#D1C4FF"/>
+          <stop offset="100%" stop-color="#B388FF"/>
+        </linearGradient>
+        <linearGradient id="cubeLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#B388FF"/>
+          <stop offset="100%" stop-color="#9575CD"/>
+        </linearGradient>
+        <linearGradient id="cubeRight" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#E1BEE7"/>
+          <stop offset="100%" stop-color="#CE93D8"/>
+        </linearGradient>
+        <filter id="cubeShadow">
+          <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#B388FF" flood-opacity="0.3"/>
+        </filter>
+      </defs>
+      <g filter="url(#cubeShadow)">
+        <!-- 윗면 -->
+        <polygon points="100,30 170,65 100,100 30,65" fill="url(#cubeTop)"/>
+        <!-- 왼면 -->
+        <polygon points="30,65 100,100 100,170 30,135" fill="url(#cubeLeft)"/>
+        <!-- 오른면 -->
+        <polygon points="170,65 100,100 100,170 170,135" fill="url(#cubeRight)"/>
+        <!-- 하이라이트 -->
+        <polygon points="100,30 170,65 100,100 30,65" fill="white" opacity="0.15"/>
+      </g>
+    </svg>
+
+    <!-- 텍스트 아이콘 (연필) -->
+    <svg class="sparkle" style="top: 60px; right: 100px; width: 80px;" viewBox="0 0 80 80">
+      <defs>
+        <linearGradient id="pencilGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#FFE082"/>
+          <stop offset="100%" stop-color="#FFD54F"/>
+        </linearGradient>
+        <filter id="iconShadow">
+          <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000" flood-opacity="0.1"/>
+        </filter>
+      </defs>
+      <g filter="url(#iconShadow)">
+        <rect x="20" y="10" width="20" height="52" rx="4" fill="url(#pencilGrad)" transform="rotate(-30, 30, 36)"/>
+        <polygon points="15,58 22,68 8,68" fill="#FFB74D" transform="rotate(-30, 15, 63)"/>
+        <rect x="20" y="10" width="20" height="10" rx="4" fill="#FF8A65" transform="rotate(-30, 30, 15)"/>
+      </g>
+    </svg>
+
+    <!-- 이미지 아이콘 -->
+    <svg class="sparkle" style="bottom: 160px; right: 80px; width: 100px;" viewBox="0 0 100 100">
+      <defs>
+        <linearGradient id="imgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#B3E5FC"/>
+          <stop offset="100%" stop-color="#81D4FA"/>
+        </linearGradient>
+      </defs>
+      <g filter="url(#iconShadow)">
+        <rect x="10" y="15" width="80" height="65" rx="14" fill="url(#imgGrad)"/>
+        <circle cx="35" cy="40" r="10" fill="#FFF9C4"/>
+        <path d="M15 65 L40 45 L55 58 L65 50 L85 65 Z" fill="#A5D6A7" opacity="0.7"/>
+        <rect x="10" y="15" width="80" height="20" rx="14" fill="white" opacity="0.15"/>
+      </g>
+    </svg>
+
+    <!-- 마법봉 -->
+    <svg class="wand" style="width: 90px;" viewBox="0 0 90 90">
+      <defs>
+        <linearGradient id="wandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#FFB3C1"/>
+          <stop offset="100%" stop-color="#F48FB1"/>
+        </linearGradient>
+      </defs>
+      <g filter="url(#iconShadow)">
+        <rect x="38" y="30" width="10" height="50" rx="5" fill="url(#wandGrad)" transform="rotate(-30, 43, 55)"/>
+        <!-- 별 -->
+        <polygon points="45,8 48,18 58,18 50,24 53,34 45,28 37,34 40,24 32,18 42,18" fill="#FFD54F"/>
+        <polygon points="45,8 48,18 58,18 50,24 53,34 45,28 37,34 40,24 32,18 42,18" fill="white" opacity="0.3"/>
+      </g>
+    </svg>
+
+    <!-- 파스텔 별 장식 1 -->
+    <svg class="sparkle" style="top: 30px; right: 280px; width: 45px;" viewBox="0 0 50 50">
+      <polygon points="25,2 30,18 47,18 33,28 38,45 25,34 12,45 17,28 3,18 20,18"
+        fill="#FFB3C1" opacity="0.8"/>
+    </svg>
+
+    <!-- 파스텔 별 장식 2 -->
+    <svg class="sparkle" style="bottom: 120px; right: 350px; width: 35px;" viewBox="0 0 50 50">
+      <polygon points="25,2 30,18 47,18 33,28 38,45 25,34 12,45 17,28 3,18 20,18"
+        fill="#B3E5FC" opacity="0.8"/>
+    </svg>
+
+    <!-- 파스텔 별 장식 3 (4각별) -->
+    <svg class="sparkle" style="top: 280px; right: 60px; width: 30px;" viewBox="0 0 40 40">
+      <path d="M20 0 L23 15 L40 20 L23 25 L20 40 L17 25 L0 20 L17 15 Z" fill="#C5B3FF" opacity="0.7"/>
+    </svg>
+
+    <!-- 작은 원 장식 -->
+    <svg class="sparkle" style="top: 180px; right: 400px; width: 24px;" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="12" fill="#FFB3C1" opacity="0.6"/>
+    </svg>
+    <svg class="sparkle" style="bottom: 200px; right: 200px; width: 18px;" viewBox="0 0 18 18">
+      <circle cx="9" cy="9" r="9" fill="#C5B3FF" opacity="0.5"/>
+    </svg>
+    <svg class="sparkle" style="top: 100px; right: 200px; width: 14px;" viewBox="0 0 14 14">
+      <circle cx="7" cy="7" r="7" fill="#FFD54F" opacity="0.6"/>
+    </svg>
+
+    <!-- 반짝이 라인 장식 -->
+    <svg class="sparkle" style="top: 160px; right: 130px; width: 20px;" viewBox="0 0 20 20">
+      <rect x="8" y="0" width="4" height="20" rx="2" fill="#FFD54F" opacity="0.5"/>
+    </svg>
+    <svg class="sparkle" style="top: 140px; right: 155px; width: 20px;" viewBox="0 0 20 20">
+      <rect x="8" y="0" width="4" height="20" rx="2" fill="#FFD54F" opacity="0.4" transform="rotate(45, 10, 10)"/>
+    </svg>
+    <svg class="sparkle" style="top: 145px; right: 100px; width: 20px;" viewBox="0 0 20 20">
+      <rect x="8" y="0" width="4" height="20" rx="2" fill="#FFD54F" opacity="0.4" transform="rotate(-30, 10, 10)"/>
+    </svg>
+  </div>
+</div>
+
+<!-- 꿀벌 마스코트 (좌하단) -->
+<div class="mascot">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="160" height="160">
+    <defs>
+      <radialGradient id="mFaceGrad" cx="50%" cy="40%" r="50%">
+        <stop offset="0%" stop-color="#FFE89A"/>
+        <stop offset="70%" stop-color="#FFD54F"/>
+        <stop offset="100%" stop-color="#FFCA28"/>
+      </radialGradient>
+      <radialGradient id="mCheekL" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#FFB3C1" stop-opacity="0.7"/>
+        <stop offset="100%" stop-color="#FFB3C1" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="mCheekR" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#FFB3C1" stop-opacity="0.7"/>
+        <stop offset="100%" stop-color="#FFB3C1" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="mEyeGrad" cx="40%" cy="35%" r="50%">
+        <stop offset="0%" stop-color="#4A4A4A"/>
+        <stop offset="100%" stop-color="#1A1A1A"/>
+      </radialGradient>
+      <filter id="mShadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#E0C060" flood-opacity="0.3"/>
+      </filter>
+      <filter id="mSoftShadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.08"/>
+      </filter>
+      <radialGradient id="mAntennaGrad" cx="40%" cy="35%" r="55%">
+        <stop offset="0%" stop-color="#FFE082"/>
+        <stop offset="100%" stop-color="#FFB300"/>
+      </radialGradient>
+      <radialGradient id="mWingGrad" cx="50%" cy="40%" r="60%">
+        <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#E3F2FD" stop-opacity="0.6"/>
+      </radialGradient>
+    </defs>
+    <ellipse cx="120" cy="195" rx="55" ry="38" fill="url(#mWingGrad)" stroke="#B3D4FC" stroke-width="1.5" transform="rotate(-20, 120, 195)" filter="url(#mSoftShadow)"/>
+    <ellipse cx="105" cy="175" rx="40" ry="28" fill="url(#mWingGrad)" stroke="#B3D4FC" stroke-width="1" transform="rotate(-35, 105, 175)"/>
+    <ellipse cx="280" cy="195" rx="55" ry="38" fill="url(#mWingGrad)" stroke="#B3D4FC" stroke-width="1.5" transform="rotate(20, 280, 195)" filter="url(#mSoftShadow)"/>
+    <ellipse cx="295" cy="175" rx="40" ry="28" fill="url(#mWingGrad)" stroke="#B3D4FC" stroke-width="1" transform="rotate(35, 295, 175)"/>
+    <path d="M170 120 Q160 70 140 55" stroke="#FFCA28" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <circle cx="137" cy="50" r="14" fill="url(#mAntennaGrad)" filter="url(#mSoftShadow)"/>
+    <path d="M230 120 Q240 70 260 55" stroke="#FFCA28" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <circle cx="263" cy="50" r="14" fill="url(#mAntennaGrad)" filter="url(#mSoftShadow)"/>
+    <circle cx="200" cy="220" r="130" fill="url(#mFaceGrad)" filter="url(#mShadow)"/>
+    <clipPath id="mFaceClip">
+      <circle cx="200" cy="220" r="128"/>
+    </clipPath>
+    <g clip-path="url(#mFaceClip)">
+      <rect x="72" y="280" width="256" height="18" rx="9" fill="#D4A017" opacity="0.35"/>
+      <rect x="72" y="310" width="256" height="18" rx="9" fill="#D4A017" opacity="0.25"/>
+      <rect x="72" y="340" width="256" height="18" rx="9" fill="#D4A017" opacity="0.15"/>
+    </g>
+    <ellipse cx="162" cy="205" rx="22" ry="24" fill="url(#mEyeGrad)"/>
+    <ellipse cx="155" cy="196" rx="8" ry="9" fill="white" opacity="0.9"/>
+    <circle cx="170" cy="210" r="4" fill="white" opacity="0.5"/>
+    <ellipse cx="238" cy="205" rx="22" ry="24" fill="url(#mEyeGrad)"/>
+    <ellipse cx="231" cy="196" rx="8" ry="9" fill="white" opacity="0.9"/>
+    <circle cx="246" cy="210" r="4" fill="white" opacity="0.5"/>
+    <ellipse cx="130" cy="248" rx="28" ry="20" fill="url(#mCheekL)"/>
+    <ellipse cx="270" cy="248" rx="28" ry="20" fill="url(#mCheekR)"/>
+    <path d="M178 260 Q200 285 222 260" stroke="#C08000" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <ellipse cx="175" cy="160" rx="45" ry="22" fill="white" opacity="0.18" transform="rotate(-15, 175, 160)"/>
+  </svg>
+</div>
+
+</body>
+</html>

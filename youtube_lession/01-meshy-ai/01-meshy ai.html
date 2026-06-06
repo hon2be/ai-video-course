@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>meshy.ai 입문 영상 — 녹화 콘티 / 대본</title>
+<style>
+  :root{
+    --bg:#0B0F1A; --panel:#121A2E; --panel2:#1B2745; --line:#2c3a5e;
+    --accent:#6E8BFF; --accent2:#9B6BFF; --text:#F4F7FF; --dim:#A7B2CC;
+    --warn:#FBBF24; --ok:#4ADE80;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font-family:'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+    line-height:1.6;padding:48px 20px}
+  .wrap{max-width:980px;margin:0 auto}
+  h1{font-size:34px;font-weight:800;letter-spacing:-.5px;margin:0 0 6px}
+  .sub{color:var(--dim);margin:0 0 28px}
+  h2{font-size:22px;font-weight:800;margin:40px 0 14px;
+    padding-bottom:8px;border-bottom:2px solid var(--line)}
+  .meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:12px;margin:18px 0 8px}
+  .meta div{background:var(--panel);border:1px solid var(--line);
+    border-radius:12px;padding:14px 16px}
+  .meta b{color:var(--accent);display:block;font-size:13px;margin-bottom:4px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 0}
+  .chip{background:var(--panel2);border:1px solid var(--line);border-radius:999px;
+    padding:5px 13px;font-size:13px}
+
+  .scene{background:var(--panel);border:1px solid var(--line);
+    border-radius:16px;padding:0;margin:16px 0;overflow:hidden}
+  .scene-head{display:flex;align-items:center;gap:12px;
+    background:var(--panel2);padding:14px 20px;border-bottom:1px solid var(--line)}
+  .no{background:var(--accent);color:#0B0F1A;font-weight:800;border-radius:9px;
+    width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:17px}
+  .scene-head h3{margin:0;font-size:19px;font-weight:800;flex:1}
+  .time{color:var(--dim);font-size:14px;font-variant-numeric:tabular-nums}
+  .scene-body{padding:18px 20px}
+  .row{display:grid;grid-template-columns:108px 1fr;gap:14px;padding:9px 0;
+    border-top:1px dashed var(--line)}
+  .row:first-child{border-top:none}
+  .label{color:var(--accent2);font-weight:700;font-size:14px;padding-top:2px}
+  .script{background:#0e1626;border-left:3px solid var(--accent);
+    border-radius:0 8px 8px 0;padding:10px 14px;color:#e8edff;font-size:15px}
+  .caption{font-weight:700}
+  ul{margin:4px 0;padding-left:18px}
+  li{margin:3px 0}
+  .tip{color:var(--warn)}
+  .key{background:var(--panel2);border:1px solid var(--line);border-radius:6px;
+    padding:1px 7px;font-size:13px;font-family:monospace}
+  .box{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:18px 20px;margin:14px 0}
+  .box.warn{border-color:#5a4a1e;background:#1c1809}
+  .box.ok{border-color:#1e4a2e;background:#0c1c12}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+  th,td{border:1px solid var(--line);padding:8px 12px;text-align:left}
+  th{background:var(--panel2);color:var(--accent)}
+  .done{color:var(--ok);font-weight:700}
+  .small{font-size:13px;color:var(--dim)}
+  code{background:#0e1626;padding:2px 6px;border-radius:5px;font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>🎬 meshy.ai 입문 영상 — 녹화 콘티</h1>
+  <p class="sub">대본 + 상황별 “무엇을 화면에 띄우고 녹화할지” 가이드 · 본인 녹화 기준용</p>
+
+  <div class="meta">
+    <div><b>타깃</b>3D/AI 완전 입문자</div>
+    <div><b>길이</b>미드폼 (편집본 ~5분 목표)</div>
+    <div><b>목적</b>기능 소개 + 활용 사례</div>
+    <div><b>톤</b>친근·쉽게 (“3D 몰라도 OK”)</div>
+  </div>
+  <div class="chips">
+    <span class="chip"><b>제목안:</b> AI로 3D 1분 완성? meshy.ai 처음 쓰는 법</span>
+    <span class="chip"><b>썸네일:</b> “텍스트 → 3D, 1분”</span>
+  </div>
+
+  <!-- ───────── 녹화 전 공통 세팅 ───────── -->
+  <h2>0. 녹화 전 공통 세팅 (한 번만)</h2>
+  <div class="box">
+    <ul>
+      <li>화면 녹화는 <b>1080p 이상</b>, 브라우저 전체화면. 배율은 <span class="key">⌘ +</span> 로 110~125% 정도 키우면 글씨가 잘 보입니다.</li>
+      <li class="tip">⚠️ <b>개인정보 가리기</b>: meshy 우상단 프로필·계정명(<code>vs.trc.02</code>)·이메일·로그인 화면은 편집에서 블러 처리하거나 프레임 밖으로. 가입 과정은 굳이 녹화하지 말고 “무료 가입” 자막으로 대체.</li>
+      <li class="tip">⚠️ <b>대기열 대기시간</b>: 무료/낮은 우선순위는 생성이 <b>1%에서 수 분</b> 멈출 수 있음 → 그 구간은 녹화해도 편집에서 잘라내거나 4~8배속.</li>
+      <li>마우스는 <b>천천히</b> 움직이고, 클릭할 버튼 위에서 한 박자 멈췄다 누르기(시청자가 따라오게).</li>
+      <li>확보할 클립은 넉넉히. 회전(턴테이블)은 <b>한 바퀴 + 여분</b>까지.</li>
+    </ul>
+  </div>
+
+  <!-- ───────── 씬 1 ───────── -->
+  <div class="scene">
+    <div class="scene-head"><span class="no">1</span><h3>후킹 (오프닝)</h3><span class="time">0:00 – 0:12</span></div>
+    <div class="scene-body">
+      <div class="row"><div class="label">화면자막</div><div class="caption">“글 한 줄, 사진 한 장이면 → 3D 모델 1분 완성”</div></div>
+      <div class="row"><div class="label">나레이션</div><div class="script">3D 모델 하나 만들려고 며칠씩 끙끙댄 적 있으신가요? 이제는 글 한 줄, 사진 한 장이면 끝납니다. AI 3D 생성 도구, meshy.ai 입니다.</div></div>
+      <div class="row"><div class="label">녹화 화면</div><div>
+        <ul>
+          <li><b>완성된 컬러 로봇이 빙글빙글 도는 클립</b>으로 시선 끌기 (이미 확보: <code>meshy_result_textured_turntable.gif</code>).</li>
+          <li>또는 meshy <b>커뮤니티 갤러리</b>(상단 메뉴 “커뮤니티”)에서 화려한 3D 결과물들을 빠르게 스크롤.</li>
+        </ul>
+      </div></div>
+      <div class="row"><div class="label">캡처 팁</div><div class="small">멘트보다 “결과물 먼저” 보여줘서 3초 안에 호기심 유발.</div></div>
+    </div>
+  </div>
+
+  <!-- ───────── 씬 2 ───────── -->
+  <div class="scene">
+    <div class="scene-head"><span class="no">2</span><h3>meshy.ai란?</h3><span class="time">0:12 – 0:26</span></div>
+    <div class="scene-body">
+      <div class="row"><div class="label">화면자막</div><div class="caption">텍스트·이미지 → 3D / 190개국 · 1,000만+ 사용자 · 1억+ 모델</div></div>
+      <div class="row"><div class="label">나레이션</div><div class="script">meshy.ai는 텍스트나 이미지를 넣으면 약 1분 만에 3D 모델을 만들어 주는 AI 도구예요. 전 세계 190개국, 1천만 명 넘는 사용자가 쓰고 있고, 만들어진 3D 모델만 1억 개가 넘습니다. 3D를 전혀 몰라도 시작할 수 있습니다.</div></div>
+      <div class="row"><div class="label">녹화 화면</div><div>
+        <ul>
+          <li>meshy.ai <b>메인 페이지</b> + 로고.</li>
+          <li>상단 <b>“커뮤니티”</b> 갤러리 스크롤 — 게임 캐릭터, 동물, 소품 등 다양한 결과물이 “이게 다 AI로 만든 것”임을 보여줌.</li>
+        </ul>
+      </div></div>
+      <div class="row"><div class="label">캡처 팁</div><div class="small">숫자(190·1,000만·1억)는 자막/모션그래픽으로 강조. Remotion 영상이 이 부분 담당하니 화면녹화는 짧게.</div></div>
+    </div>
+  </div>
+
+  <!-- ───────── 씬 3 ───────── -->
+  <div class="scene">
+    <div class="scene-head"><span class="no">3</span><h3>시작하기 (진입점)</h3><span class="time">0:26 – 0:36</span></div>
+    <div class="scene-body">
+      <div class="row"><div class="label">화면자막</div><div class="caption">신용카드 X · 매달 100 무료 크레딧 · 웹에서 바로</div></div>
+      <div class="row"><div class="label">나레이션</div><div class="script">사용법은 간단해요. meshy.ai에 접속해 무료로 가입하면 신용카드 없이 매달 100크레딧이 주어집니다. 별도 설치 없이 웹에서 바로 만들 수 있어요.</div></div>
+      <div class="row"><div class="label">녹화 화면</div><div>
+        <ul>
+          <li>메인 진입 화면: <b>“안녕하세요! 3D로 무엇을 만들까요?”</b> + 가운데 <b>아이디어 입력칸</b> + <b>생성</b> 버튼.</li>
+          <li>우상단 <b>크레딧 표시</b>(예: 1,090)에 살짝 줌인 — “무료로 받는 크레딧”.</li>
+          <li class="tip">로그인/가입 화면은 개인정보 때문에 녹화 생략 → 자막 “무료 가입”으로 대체.</li>
+        </ul>
+        <div class="small">확보됨: <code>meshy_entry_point.gif</code> (진입점 + 아이디어 입력 시연)</div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ───────── 씬 4 ───────── -->
+  <div class="scene">
+    <div class="scene-head"><span class="no">4</span><h3>핵심기능 ① — Text to 3D</h3><span class="time">0:36 – 0:52</span></div>
+    <div class="scene-body">
+      <div class="row"><div class="label">화면자막</div><div class="caption">원하는 걸 “글로” 적기만 → 3D</div></div>
+      <div class="row"><div class="label">나레이션</div><div class="script">첫 번째 핵심 기능, 텍스트로 3D 만들기. ‘귀여운 만화풍 로봇’처럼 원하는 걸 글로 적기만 하면 됩니다. 잠시 기다리면 텍스처까지 입혀진 3D 모델이 짠 하고 나와요. 최신 Meshy 6 버전은 형태가 훨씬 깔끔해졌습니다.</div></div>
+      <div class="row"><div class="label">녹화 순서</div><div>
+        <ul>
+          <li>작업공간 → 좌측 <b>프롬프트 칸</b>에 <code>귀여운 만화풍 로봇, 파스텔 컬러</code> 타이핑(타이핑 과정 보이게).</li>
+          <li><b>AI 모델 = Meshy 6</b> 확인. (모델 유형 “표준”)</li>
+          <li>좌하단 <b>「생성하다」</b> 클릭 — <span class="key">20 크레딧</span> 소모.</li>
+          <li>우측 패널에 <b>0% → 진행률</b> 표시.</li>
+          <li class="tip">대기열에서 1% 정체 → <b>그 구간 잘라내기/빨리감기</b>.</li>
+          <li>완성되면 결과 썸네일 클릭 → 메인 뷰포트에 모델 → <b>마우스로 드래그해 360° 회전</b>.</li>
+        </ul>
+      </div></div>
+      <div class="row"><div class="label">캡처 팁</div><div class="small">“타이핑 → 생성 클릭 → (빨리감기) → 회색 메시 완성 회전” 흐름이 한 컷에 보이게.</div></div>
+    </div>
+  </div>
+
+  <!-- ───────── 씬 5 ───────── -->
+  <div class="scene">
+    <div class="scene-head"><span class="no">5</span><h3>핵심기능 ② — Image to 3D</h3><span class="time">0:52 – 1:06</span></div>
+    <div class="scene-body">
+      <div class="row"><div class="label">화면자막</div><div class="caption">사진·그림 한 장이면 입체로</div></div>
+      <div class="row"><div class="label">나레이션</div><div class="script">두 번째, 이미지로 3D 만들기. 그림 한 장, 사진 한 장만 올리면 입체로 바꿔 줍니다. 직접 그린 캐릭터든, 미드저니로 만든 이미지든 그대로 3D가 됩니다.</div></div>
+      <div class="row"><div class="label">녹화 순서</div><div>
+        <ul>
+          <li>좌측 상단 <b>「이미지」</b> 탭 클릭.</li>
+          <li><b>“클릭 / 드래그 앤 드롭 이미지 붙여넣기”</b> 영역에 준비한 이미지 1장 업로드(드래그 장면 좋음).</li>
+          <li>옵션: <b>이미지 향상 ON</b>, AI 모델 Meshy 6, 포즈(A-포즈 등) 확인.</li>
+          <li><b>「생성하다」</b>(20 크레딧) → 결과 회전.</li>
+        </ul>
+        <div class="small">미드저니로 만든 이미지를 쓰면 다음 영상(미드저니)과 연결돼서 좋음. 지원 형식 .png/.jpg/.webp, 최대 20MB.</div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ───────── 씬 6 ───────── -->
+  <div class="scene">
+    <div class="scene-head"><span class="no">6</span><h3>핵심 기능 정리</h3><span class="time">1:06 – 1:22</span></div>
+    <div class="scene-body">
+      <div class="row"><div class="label">화면자막</div><div class="caption">AI 텍스처링 · 500+ 애니메이션 · 다양한 포맷 내보내기</div></div>
+      <div class="row"><div class="label">나레이션</div><div class="script">이 밖에도 기능이 알찹니다. 모델에 자동으로 텍스처를 입히는 AI 텍스처링, 500개가 넘는 애니메이션 모션, 그리고 블렌더·유니티·언리얼로 바로 내보낼 수 있는 다양한 파일 포맷까지 지원해요.</div></div>
+      <div class="row"><div class="label">녹화 순서</div><div>
+        <ul>
+          <li><b>① 텍스처링</b>: 결과 모델 하단 툴바의 <b>「텍스처」</b> 버튼 → 패널에서 프롬프트 입력 / <b>조명 제거 · PBR 맵 · HD 텍스처</b> 옵션 → 「텍스처」(<span class="key">10 크레딧</span>) → <b>회색 → 컬러로 바뀌는 전후</b>가 핵심 그림!</li>
+          <li><b>② 애니메이션</b>: 좌측 <b>「애니메이트」</b> 아이콘 → 모션 라이브러리(걷기·춤 등 500+) 목록 보여주기.</li>
+          <li><b>③ 내보내기</b>: 하단 <b>다운로드</b> 아이콘 → 포맷 목록(FBX·OBJ·GLB·USDZ·Blender 등) 펼쳐 보여주기.</li>
+        </ul>
+      </div></div>
+      <div class="row"><div class="label">캡처 팁</div><div class="small">셋 다 길게 X. 각 3~5초씩, “회색→컬러” 변화가 가장 임팩트 크니 거기에 시간 배분.</div></div>
+    </div>
+  </div>
+
+  <!-- ───────── 씬 7 ───────── -->
+  <div class="scene">
+    <div class="scene-head"><span class="no">7</span><h3>직접 만든 예시</h3><span class="time">1:22 – 1:38</span></div>
+    <div class="scene-body">
+      <div class="row"><div class="label">화면자막</div><div class="caption">저희가 직접 만든 결과물입니다</div></div>
+      <div class="row"><div class="label">나레이션</div><div class="script">백문이 불여일견이죠. 저희가 meshy로 간단한 예시를 직접 하나 만들어 봤어요. 프롬프트 한 줄로 이렇게 텍스처까지 입혀진 3D 모델이 나옵니다. 처음 만든 것치고 꽤 그럴듯하죠?</div></div>
+      <div class="row"><div class="label">녹화 화면</div><div>
+        <ul>
+          <li><b>텍스처 입힌 파스텔 컬러 로봇</b>을 메인 뷰포트에서 <b>천천히 360° 회전</b>(클로즈업 한 번 포함하면 디테일이 살아남).</li>
+        </ul>
+        <div class="small">확보됨: <code>meshy_result_textured_turntable.gif</code> — 그대로 써도 OK.</div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ───────── 씬 8 ───────── -->
+  <div class="scene">
+    <div class="scene-head"><span class="no">8</span><h3>마무리 / 다음 영상 예고</h3><span class="time">1:38 – 1:48</span></div>
+    <div class="scene-body">
+      <div class="row"><div class="label">화면자막</div><div class="caption">다음 시간엔 → 미드저니 / 구독 + 알림</div></div>
+      <div class="row"><div class="label">나레이션</div><div class="script">오늘은 meshy.ai가 어떤 도구인지 살펴봤어요. 다음 영상에서는 이미지 생성 AI ‘미드저니’를 본격적으로 다뤄봅니다. 놓치지 않게 구독과 알림 설정 부탁드려요!</div></div>
+      <div class="row"><div class="label">녹화 화면</div><div class="small">meshy 화면녹화 불필요. 미드저니 로고/예고 그래픽 + 구독 버튼 모션(Remotion이 담당).</div></div>
+    </div>
+  </div>
+
+  <!-- ───────── 확보 클립 체크리스트 ───────── -->
+  <h2>✅ 확보해야 할 클립 체크리스트</h2>
+  <table>
+    <tr><th>#</th><th>클립</th><th>용도(씬)</th><th>상태</th></tr>
+    <tr><td>1</td><td>메인 진입 + 아이디어 입력</td><td>3</td><td class="done">확보 (entry_point)</td></tr>
+    <tr><td>2</td><td>Text→3D 타이핑·생성·회색결과 회전</td><td>4</td><td class="tip">다시 녹화 권장</td></tr>
+    <tr><td>3</td><td>Image→3D 업로드·결과</td><td>5</td><td class="tip">신규 녹화 필요</td></tr>
+    <tr><td>4</td><td>텍스처 전후(회색→컬러) + 애니메·내보내기</td><td>6</td><td class="tip">일부 확보(텍스처)</td></tr>
+    <tr><td>5</td><td>컬러 로봇 턴테이블</td><td>1·7</td><td class="done">확보 (textured_turntable)</td></tr>
+    <tr><td>6</td><td>커뮤니티 갤러리 스크롤</td><td>2</td><td class="tip">신규 녹화 필요</td></tr>
+  </table>
+
+  <!-- ───────── 크레딧/요금 메모 ───────── -->
+  <h2>💰 크레딧 메모 (녹화 시 참고)</h2>
+  <div class="box">
+    <ul>
+      <li>무료 플랜: <b>매달 100 크레딧</b>, 신용카드 불필요.</li>
+      <li>Text/Image → 3D (표준·Meshy 6): <b>약 20 크레딧 / 회</b>.</li>
+      <li>텍스처 입히기: <b>약 10 크레딧 / 회</b>.</li>
+      <li class="small">요금·크레딧은 변동될 수 있으니 영상에선 “자세한 요금은 공식 사이트 확인”으로 안내.</li>
+    </ul>
+  </div>
+
+  <div class="box ok">
+    <b>편집 순서 제안</b><br>
+    ① Remotion 모션그래픽(자막·숫자·전환) 렌더 → ② 위 화면녹화 클립을 해당 씬 자리에 끼워넣기 → ③ 나레이션(TTS 또는 직접 더빙: 위 ‘나레이션’ 텍스트 그대로) 입히기 → ④ BGM·효과음 → ⑤ 개인정보 블러 최종 점검.
+  </div>
+
+  <p class="small" style="margin-top:30px">※ 타임코드는 기본(모션그래픽) 기준 가이드입니다. 화면녹화 클립을 넉넉히 넣어 5~10분으로 늘리면 각 씬 길이는 자연스럽게 길어집니다.</p>
+
+</div>
+</body>
+</html>
