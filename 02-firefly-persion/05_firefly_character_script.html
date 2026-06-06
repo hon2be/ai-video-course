@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>파이어플라이 동일인물 만들기 - 강의 영상 스크립트</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    background: #f5f5f0;
+    color: #1a1a1a;
+    line-height: 1.8;
+    padding: 40px 20px;
+  }
+  .page {
+    max-width: 880px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    padding: 60px;
+  }
+  h1 { font-size: 28px; font-weight: 700; color: #e05a00; border-bottom: 3px solid #e05a00; padding-bottom: 12px; margin-bottom: 8px; }
+  .subtitle { font-size: 14px; color: #888; margin-bottom: 40px; }
+  .section { margin-bottom: 48px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+  .section-num { background: #e05a00; color: #fff; font-weight: 700; font-size: 13px; border-radius: 20px; padding: 3px 12px; white-space: nowrap; }
+  .section-num.gpt { background: #10a37f; }
+  .section-title { font-size: 20px; font-weight: 700; }
+  .time-badge { font-size: 12px; color: #e05a00; background: #fff3ec; border: 1px solid #e05a00; border-radius: 12px; padding: 2px 10px; margin-left: auto; white-space: nowrap; }
+  .block { margin-bottom: 20px; padding: 20px 24px; border-radius: 8px; border-left: 4px solid #ddd; background: #fafafa; }
+  .block.narration { border-left-color: #e05a00; background: #fff8f3; }
+  .block.screen    { border-left-color: #1c7ed6; background: #f0f7ff; }
+  .block.tip       { border-left-color: #37b24d; background: #f0faf2; }
+  .block.caution   { border-left-color: #e67700; background: #fff9e0; }
+  .block-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+  .block.narration .block-label { color: #e05a00; }
+  .block.screen    .block-label { color: #1c7ed6; }
+  .block.tip       .block-label { color: #37b24d; }
+  .block.caution   .block-label { color: #e67700; }
+  .block p { font-size: 15px; line-height: 1.9; }
+  .block ul { padding-left: 20px; font-size: 15px; }
+  .block ul li { margin-bottom: 4px; }
+  .prompt-box { background: #1e1e2e; color: #cdd6f4; font-family: 'Courier New', monospace; font-size: 13px; border-radius: 8px; padding: 16px 20px; margin-top: 10px; line-height: 1.7; white-space: pre-wrap; }
+  .prompt-box .comment { color: #6c7086; }
+  .divider { border: none; border-top: 2px dashed #e0e0e0; margin: 40px 0; }
+  .toc { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 8px; padding: 24px 28px; margin-bottom: 48px; }
+  .toc h2 { font-size: 14px; font-weight: 700; color: #888; margin-bottom: 12px; letter-spacing: 0.05em; }
+  .toc ol { padding-left: 20px; font-size: 15px; line-height: 2.2; }
+  .toc-time { color: #aaa; font-size: 13px; margin-left: 8px; }
+  .toc-tag { font-size: 11px; font-weight: 700; border-radius: 10px; padding: 1px 8px; margin-left: 6px; vertical-align: middle; }
+  .toc-tag.gpt { background: #d2f4eb; color: #10a37f; }
+  .toc-tag.ff  { background: #fff3ec; color: #e05a00; }
+  .summary-box { background: linear-gradient(135deg, #fff3ec, #ffeee0); border: 1px solid #e05a00; border-radius: 10px; padding: 24px 28px; margin-top: 12px; }
+  .summary-box h3 { font-size: 15px; font-weight: 700; color: #e05a00; margin-bottom: 10px; }
+  .summary-box ul { font-size: 14px; padding-left: 18px; line-height: 2; }
+  .file-tree { background: #1e1e2e; color: #cdd6f4; font-family: 'Courier New', monospace; font-size: 13px; border-radius: 8px; padding: 16px 20px; margin-top: 10px; line-height: 1.9; }
+  .file-tree .folder { color: #89dceb; }
+  .file-tree .file   { color: #a6e3a1; }
+  .file-tree .note   { color: #6c7086; }
+  .image-ref { display: inline-block; background: #eaf4ff; border: 1px solid #1c7ed6; color: #1c7ed6; font-size: 12px; border-radius: 6px; padding: 1px 8px; font-family: monospace; margin: 2px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<h1>🔥 파이어플라이 동일인물 만들기</h1>
+<p class="subtitle">강의 영상 스크립트 | GPT로 인물 생성 → 파이어플라이에서 데이터셋 구축 → Reference Image 활용</p>
+
+<!-- 목차 -->
+<div class="toc">
+  <h2>📋 목차</h2>
+  <ol>
+    <li>인트로 — 동일인물이 왜 어려운가? <span class="toc-time">~1분</span></li>
+    <li>전체 워크플로우 한눈에 보기 <span class="toc-time">~1분</span></li>
+    <li>Step 1 — GPT로 기준 인물 만들기 <span class="toc-tag gpt">ChatGPT</span><span class="toc-time">~3분</span></li>
+    <li>Step 2 — 파이어플라이에서 인물 데이터 시트 뽑기 <span class="toc-tag ff">Firefly</span><span class="toc-time">~4분</span></li>
+    <li>Step 3 — 데이터 시트를 개별 컷으로 정리하기 <span class="toc-time">~2분</span></li>
+    <li>Step 4 — Reference Image로 동일인물 장면 생성 <span class="toc-tag ff">Firefly</span><span class="toc-time">~3분</span></li>
+    <li>Step 5 — Structure Reference로 포즈 바꾸기 <span class="toc-tag ff">Firefly</span><span class="toc-time">~2분</span></li>
+    <li>프롬프트 팁 — 일관성을 높이는 앵커 전략 <span class="toc-time">~2분</span></li>
+    <li>아웃트로 — 정리 & 다음 수업 예고 <span class="toc-time">~1분</span></li>
+  </ol>
+</div>
+
+<!-- ─── INTRO ─── -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">INTRO</span>
+    <span class="section-title">동일인물이 왜 어려운가?</span>
+    <span class="time-badge">약 1분</span>
+  </div>
+  <div class="block narration">
+    <div class="block-label">🎙 나레이션</div>
+    <p>안녕하세요! 오늘은 AI 영상 제작에서 가장 많이 받는 질문을 다룰 거예요.<br><br>
+    "같은 인물을 여러 장면에 걸쳐 똑같이 유지하려면 어떻게 해요?"<br><br>
+    AI의 가장 큰 약점이 바로 일관성입니다. 같은 프롬프트를 써도 생성할 때마다 얼굴이 조금씩 달라지거든요.<br><br>
+    오늘은 ChatGPT로 기준 인물을 만들고, 파이어플라이에서 그 인물의 데이터 시트를 구축한 다음, 어떤 장면에서도 똑같은 인물이 나오게 하는 방법을 처음부터 끝까지 보여드릴게요.</p>
+  </div>
+  <div class="block screen">
+    <div class="block-label">🖥 화면 안내</div>
+    <ul>
+      <li>같은 프롬프트로 생성한 이미지 3장 비교 → 얼굴이 다 다름</li>
+      <li>"오늘 배우면 이렇게 됩니다" → <span class="image-ref">인물1_20대_여성/개별컷/활동/</span> 이미지 모아서 보여주기 (동일 인물, 다양한 활동)</li>
+    </ul>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ─── 전체 워크플로우 ─── -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">00</span>
+    <span class="section-title">전체 워크플로우 한눈에 보기</span>
+    <span class="time-badge">약 1분</span>
+  </div>
+  <div class="block narration">
+    <div class="block-label">🎙 나레이션</div>
+    <p>먼저 오늘 전체 흐름을 보여드릴게요. 크게 다섯 단계입니다.</p>
+  </div>
+  <div class="block screen">
+    <div class="block-label">🖥 화면 안내 — 플로우 다이어그램 또는 슬라이드</div>
+    <ul>
+      <li><strong>① ChatGPT</strong>로 기준 인물 프롬프트 작성 & 이미지 생성</li>
+      <li><strong>② Firefly</strong>에서 Reference Image로 인물 데이터 시트 생성 (헤드샷 / 전신 멀티샷 / 표정 시트 / 활동 시트)</li>
+      <li><strong>③</strong> 그리드 이미지를 개별 컷으로 잘라 폴더별 정리</li>
+      <li><strong>④ Firefly</strong> Reference Image에 개별 컷 업로드 → 원하는 장면 생성</li>
+      <li><strong>⑤</strong> Structure Reference로 포즈까지 제어</li>
+    </ul>
+  </div>
+  <div class="block tip">
+    <div class="block-label">💡 강의 포인트</div>
+    <p>"GPT에서 뽑은 이미지를 파이어플라이의 레퍼런스로 쓰는 것 — 두 툴의 장점을 결합하는 워크플로우입니다."</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ─── STEP 1: GPT ─── -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num gpt">STEP 1</span>
+    <span class="section-title">ChatGPT로 기준 인물 만들기</span>
+    <span class="time-badge">약 3분</span>
+  </div>
+  <div class="block narration">
+    <div class="block-label">🎙 나레이션</div>
+    <p>첫 번째 단계는 우리 영상에 등장할 인물의 기준 이미지를 ChatGPT에서 만드는 겁니다.<br><br>
+    왜 GPT냐고요? GPT의 DALL-E는 인물 묘사에 강하고, 한 번 잘 나온 이미지를 파이어플라이 레퍼런스로 그대로 가져다 쓸 수 있거든요.<br><br>
+    중요한 건 이 기준 이미지 하나가 앞으로 모든 장면의 '원본'이 된다는 거예요. 그래서 정면, 단색 배경, 전신 또는 상반신이 명확하게 나오도록 만들어야 합니다.</p>
+  </div>
+  <div class="block screen">
+    <div class="block-label">🖥 화면 안내</div>
+    <ul>
+      <li>ChatGPT 화면 열기 → 이미지 생성 프롬프트 입력 실연</li>
+      <li>생성 결과에서 <span class="image-ref">인물1_20대_여성/front.png</span> 보여주기 (이미 만든 예시로 사용)</li>
+      <li>"이 분이 오늘 예시 인물입니다" 소개</li>
+    </ul>
+  </div>
+  <div class="block screen">
+    <div class="block-label">📝 GPT 기준 인물 프롬프트 예시</div>
+    <div class="prompt-box"><span class="comment">// ChatGPT DALL-E에 입력</span>
+A full-body portrait of a Korean woman in her early 20s,
+long straight black hair in a low ponytail with bangs,
+fair skin, natural makeup, gentle expression,
+wearing a white t-shirt and straight-leg blue jeans,
+plain light gray studio background,
+front-facing, standing, natural studio lighting,
+photorealistic, high detail</div>
+  </div>
+  <div class="block tip">
+    <div class="block-label">💡 기준 이미지 체크리스트</div>
+    <ul>
+      <li>정면 바라보기 (front-facing)</li>
+      <li>단색 배경 (plain gray / white background)</li>
+      <li>전신 또는 상반신이 프레임 안에 들어올 것</li>
+      <li>헤어·눈·피부 톤 등 외모 묘사를 최대한 구체적으로</li>
+      <li>마음에 드는 이미지가 나오면 <strong>반드시 저장</strong> — 이게 원본 파일</li>
+    </ul>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ─── STEP 2: 데이터 시트 ─── -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">STEP 2</span>
+    <span class="section-title">파이어플라이에서 인물 데이터 시트 뽑기</span>
+    <span class="time-badge">약 4분</span>
+  </div>
+  <div class="block narration">
+    <div class="block-label">🎙 나레이션</div>
+    <p>기준 이미지가 있으면 이제 파이어플라이에서 인물의 다양한 모습을 '데이터 시트' 형태로 생성합니다.<br><br>
+    데이터 시트란 같은 인물을 여러 각도, 여러 표정, 여러 활동으로 그리드 형태로 뽑은 이미지예요. 이걸 만들어 두면 나중에 레퍼런스 이미지로 쓰기가 훨씬 편해집니다.<br><br>
+    총 네 종류의 시트를 만들 거예요 — 헤드샷 시트, 전신 멀티샷, 표정 시트, 활동 시트.</p>
+  </div>
+  <div class="block screen">
+    <div class="block-label">🖥 화면 안내 — Reference Image 설정</div>
+    <ul>
+      <li>파이어플라이 Text to Image 열기</li>
+      <li>오른쪽 Style 패널 → Reference Image에 <span class="image-ref">front.png</span> 업로드</li>
+      <li>Strength 슬라이더 <strong>60%</strong> 설정</li>
+    </ul>
+  </div>
+
+  <style>
+  .sheet-row { display:flex; gap:16px; margin:12px 0 20px; flex-wrap:wrap; }
+  .sheet-item { flex:1; min-width:220px; }
+  .sheet-item img { width:100%; border-radius:8px; border:1px solid #e0e0e0; display:block; }
+  .sheet-item .sheet-cap { font-size:12px; color:#888; text-align:center; margin-top:6px; font-family:monospace; }
+  </style>
+
+  <p style="font-weight:700; font-size:16px; margin: 20px 0 10px;">① 헤드샷 시트</p>
+  <div class="block screen">
+    <div class="block-label">📝 프롬프트</div>
+    <div class="prompt-box"><span class="comment">// Reference Image: front.png / Strength: 60%</span>
+A character sheet showing 8 head angles of the same Korean woman,
+early 20s, long black hair with bangs, fair skin,
+arranged in a clean grid on gray background,
+angles: front view, 45° right, right side, 45° left, left side,
+back view, 45° right back, 45° left back,
+labeled, photorealistic, consistent character design</div>
+  </div>
+  <div class="sheet-row">
+    <div class="sheet-item">
+      <img src="character_female/각도시트_헤드샷_8방향.png" alt="헤드샷 8각도 시트">
+      <div class="sheet-cap">head_shot.png — 8각도 헤드샷</div>
+    </div>
+  </div>
+
+  <p style="font-weight:700; font-size:16px; margin: 20px 0 10px;">② 전신 멀티샷</p>
+  <div class="block screen">
+    <div class="block-label">📝 프롬프트</div>
+    <div class="prompt-box">A character turnaround sheet of the same Korean woman,
+full body, 6 angles in top row (right side, 45° left, front, 45° right, left side, back),
+2 angles in bottom row (high-angle view, low-angle view),
+plain gray background, white t-shirt and jeans outfit,
+photorealistic, consistent style, labeled</div>
+  </div>
+  <div class="sheet-row">
+    <div class="sheet-item">
+      <img src="character_female/각도시트_전신_8방향.png" alt="전신 멀티샷">
+      <div class="sheet-cap">multishot.png — 전신 8각도</div>
+    </div>
+  </div>
+
+  <p style="font-weight:700; font-size:16px; margin: 20px 0 10px;">③ 표정 시트</p>
+  <div class="block screen">
+    <div class="block-label">📝 프롬프트</div>
+    <div class="prompt-box">A facial expression sheet of the same Korean woman,
+5 columns × 2 rows grid, plain gray background,
+expressions: neutral, smiling, laughing, angry, surprised (top row),
+crying, sleepy, confident, serious, awkward smile (bottom row),
+face closeup, labeled, photorealistic</div>
+  </div>
+  <div class="sheet-row">
+    <div class="sheet-item">
+      <img src="character_female/표정시트_10종.png" alt="표정 10종 시트">
+      <div class="sheet-cap">multishot_face.png — 10표정</div>
+    </div>
+  </div>
+
+  <p style="font-weight:700; font-size:16px; margin: 20px 0 10px;">④ 활동 시트</p>
+  <div class="block screen">
+    <div class="block-label">📝 프롬프트</div>
+    <div class="prompt-box">An activity reference sheet of the same Korean woman,
+4 columns × 2 rows grid, outdoor backgrounds,
+activities: cycling, running, jump rope, squatting (top row),
+jumping, basketball, soccer, cooking (bottom row),
+dynamic poses, photorealistic, labeled in Korean</div>
+  </div>
+  <div class="sheet-row">
+    <div class="sheet-item">
+      <img src="character_female/포즈시트_활동_8종.png" alt="활동 8종 시트">
+      <div class="sheet-cap">activities.png — 활동 8종</div>
+    </div>
+  </div>
+
+  <div class="block caution">
+    <div class="block-label">⚠️ 이미지 해상도 기준</div>
+    <p>데이터 시트로 생성되는 <strong>개별 이미지 1장당 가로 최소 1024px 이상</strong>이어야 합니다.<br>
+    그리드 시트를 나눴을 때 각 컷이 1024px 미만이면 Reference Image로 쓸 때 품질이 떨어져 인물 일관성이 낮아집니다.<br>
+    파이어플라이 생성 해상도를 <strong>4:3 이상 (최소 2048×1536)</strong>으로 설정하거나, 그리드 열 수를 줄여서 컷당 해상도를 확보하세요.<br><br>
+    해상도가 부족한 이미지는 <strong><a href="https://upscayl.org/" target="_blank">Upscayl</a></strong>(무료 오픈소스)로 업스케일 후 사용하세요. AI 기반으로 화질 손상 없이 2~4배 확대할 수 있습니다.</p>
+  </div>
+  <div class="block tip">
+    <div class="block-label">💡 강의 포인트</div>
+    <ul>
+      <li>Reference Image Strength는 <strong>55~65%</strong>가 가장 잘 맞는 구간. 너무 높으면 그리드 포맷이 안 잡히고, 너무 낮으면 인물 얼굴이 달라집니다.</li>
+      <li>한 번에 완벽하게 나오지 않아도 괜찮아요. 가장 비슷한 결과물을 골라서 저장하면 됩니다.</li>
+    </ul>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ─── STEP 3: 개별컷 정리 ─── -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">STEP 3</span>
+    <span class="section-title">데이터 시트를 개별 컷으로 정리하기</span>
+    <span class="time-badge">약 2분</span>
+  </div>
+  <div class="block narration">
+    <div class="block-label">🎙 나레이션</div>
+    <p>그리드로 된 시트를 한 장 한 장 잘라서 저장해 두세요. 나중에 Reference Image로 업로드할 때 딱 필요한 컷만 골라 쓸 수 있거든요.<br><br>
+    폴더 구조는 이렇게 만들면 찾기 편합니다.</p>
+  </div>
+  <div class="block screen">
+    <div class="block-label">🖥 실제 폴더 구조 화면 보여주기</div>
+    <div class="file-tree"><span class="folder">인물1_20대_여성/</span>
+├── <span class="file">front.png</span>          <span class="note"># 기준 원본 (GPT 생성)</span>
+├── <span class="file">head_shot.png</span>       <span class="note"># 헤드샷 시트 (그리드)</span>
+├── <span class="file">multishot.png</span>       <span class="note"># 전신 멀티샷 (그리드)</span>
+├── <span class="file">multishot_face.png</span>  <span class="note"># 표정 시트 (그리드)</span>
+├── <span class="file">activities.png</span>      <span class="note"># 활동 시트 (그리드)</span>
+└── <span class="folder">개별컷/</span>
+    ├── <span class="folder">헤드샷/</span>     <span class="note"># 헤드샷 01~08</span>
+    ├── <span class="folder">전신/</span>       <span class="note"># 전신 01~08 + 앞면/뒷면</span>
+    ├── <span class="folder">표정/</span>       <span class="note"># 표정 01~10</span>
+    ├── <span class="folder">활동/</span>       <span class="note"># 활동 01~08</span>
+    ├── <span class="folder">의상/</span>       <span class="note"># 의상 변형</span>
+    └── <span class="folder">오피스/</span>     <span class="note"># 직장 장면</span></div>
+  </div>
+  <div class="block tip">
+    <div class="block-label">💡 강의 포인트</div>
+    <ul>
+      <li>포토샵 / 미리캔버스 / 파워포인트 어디서든 그리드 이미지 등분 자르기 가능해요.</li>
+      <li>파일명을 <strong>헤드샷_정면.png, 표정_웃음.png</strong> 식으로 내용 기반으로 저장해 두면 나중에 찾기 훨씬 편합니다.</li>
+    </ul>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ─── STEP 4: 이미지 선택 가이드 ─── -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">STEP 4</span>
+    <span class="section-title">장면별 이미지 선택 가이드</span>
+    <span class="time-badge">약 4분</span>
+  </div>
+  <div class="block narration">
+    <div class="block-label">🎙 나레이션</div>
+    <p>이제 실전입니다. 핵심은 하나예요 — <strong>만들 장면의 분위기와 가장 비슷한 개별컷을 Reference Image로 고른다.</strong><br><br>
+    파이어플라이는 레퍼런스 이미지의 조명·배경·표정·포즈까지 참고합니다. 단순히 "같은 얼굴"을 원하는 게 아니라, 레퍼런스 이미지의 전체 분위기가 결과에 영향을 줘요.<br><br>
+    지금부터 장면 유형별로 어떤 이미지를 언제 쓰는지 보여드릴게요.</p>
+  </div>
+
+  <!-- 장면 유형 가이드표 -->
+  <div class="block screen">
+    <div class="block-label">🖥 화면 안내 — 장면 유형별 이미지 선택 표 보여주기</div>
+  </div>
+
+  <style>
+  .scene-table { width:100%; border-collapse:collapse; font-size:13px; margin-top:12px; }
+  .scene-table th { background:#e05a00; color:#fff; padding:8px 10px; text-align:left; }
+  .scene-table td { padding:8px 10px; border-bottom:1px solid #eee; vertical-align:top; }
+  .scene-table tr:nth-child(even) td { background:#fafafa; }
+  .scene-table .fn { font-family:monospace; background:#eaf4ff; color:#1c7ed6; border-radius:4px; padding:1px 5px; font-size:12px; }
+  .scene-table .why { color:#888; font-size:12px; }
+  </style>
+
+  <table class="scene-table">
+    <tr>
+      <th>장면 유형</th>
+      <th>Reference Image</th>
+      <th>Structure Reference</th>
+      <th>선택 이유</th>
+    </tr>
+    <tr>
+      <td><strong>☕ 카페·식사</strong><br>실내, 앉은 자세</td>
+      <td><span class="fn">표정/표정_02.png</span><br><span class="why">(smiling)</span></td>
+      <td><span class="fn">클로즈업/클로즈업_01.png</span><br><span class="why">(상반신 정면)</span></td>
+      <td class="why">밝은 표정이 카페 분위기와 자연스럽게 어울림. 상반신 클로즈업으로 앉은 구도 유도</td>
+    </tr>
+    <tr>
+      <td><strong>💼 오피스·업무</strong><br>실내, 서거나 앉음</td>
+      <td><span class="fn">오피스/오피스_02.png</span><br><span class="why">(책상 정면)</span></td>
+      <td><span class="fn">의상_상세/전신_05.png</span><br><span class="why">(블랙 블레이저)</span></td>
+      <td class="why">오피스 배경+의상이 이미 참조에 포함. 비즈니스 의상을 Structure로 유지</td>
+    </tr>
+    <tr>
+      <td><strong>🌳 야외 걷기·산책</strong><br>이동, 캐주얼</td>
+      <td><span class="fn">표정_상세/smiling_45R.png</span><br><span class="why">(45도 미소)</span></td>
+      <td><span class="fn">전신/전신_02.png</span><br><span class="why">(45도 전신)</span></td>
+      <td class="why">걷는 방향감을 45도 앵글로 잡음. 표정도 45도 컷을 맞춰야 자연스러움</td>
+    </tr>
+    <tr>
+      <td><strong>🏃 스포츠·운동</strong><br>야외, 동적 포즈</td>
+      <td><span class="fn">활동/활동_02.png</span><br><span class="why">(런닝)</span></td>
+      <td><span class="fn">활동/활동_02.png</span><br><span class="why">(동일 이미지)</span></td>
+      <td class="why">Reference와 Structure에 같은 이미지를 써도 됨. 포즈+표정 동시 참조</td>
+    </tr>
+    <tr>
+      <td><strong>👗 의상 강조 컷</strong><br>패션·룩북 스타일</td>
+      <td><span class="fn">의상_상세/전신_01.png</span><br><span class="why">(원하는 의상 전신)</span></td>
+      <td>없음 또는<br><span class="fn">전신/전신_03.png</span></td>
+      <td class="why">의상 디테일을 살리려면 Reference에 전신 의상 컷을 써야 함</td>
+    </tr>
+    <tr>
+      <td><strong>😢 감정 강조 클로즈업</strong><br>드라마, 인터뷰 스타일</td>
+      <td><span class="fn">표정_상세/sad_front.png</span><br><span class="why">(해당 감정+각도)</span></td>
+      <td><span class="fn">클로즈업/클로즈업_01.png</span><br><span class="why">(상반신)</span></td>
+      <td class="why">표정_상세는 각도까지 선택 가능. 원하는 감정×각도 조합을 직접 고름</td>
+    </tr>
+    <tr>
+      <td><strong>🌙 야경·분위기 컷</strong><br>저녁, 조용한 장면</td>
+      <td><span class="fn">표정_상세/neutral_front.png</span><br><span class="why">(무표정 정면)</span></td>
+      <td><span class="fn">헤드샷/헤드샷_01.png</span></td>
+      <td class="why">무표정이 야경·사색 장면과 잘 어울림. 배경만 프롬프트로 제어</td>
+    </tr>
+  </table>
+
+  <div class="block tip" style="margin-top:20px;">
+    <div class="block-label">💡 이미지 선택 핵심 원칙</div>
+    <ul>
+      <li><strong>표정이 중요한 장면</strong> → <span class="image-ref">표정_상세/</span> 에서 감정×각도 조합으로 고른다</li>
+      <li><strong>포즈가 중요한 장면</strong> → Structure Reference에 <span class="image-ref">활동/</span> 또는 <span class="image-ref">전신/</span> 컷을 쓴다</li>
+      <li><strong>의상이 중요한 장면</strong> → Reference Image에 <span class="image-ref">의상_상세/전신_XX.png</span>를 쓴다</li>
+      <li><strong>배경·분위기만 바꾸는 장면</strong> → <span class="image-ref">헤드샷/</span> 또는 <span class="image-ref">클로즈업/</span>으로 얼굴만 고정하고 나머지는 프롬프트로</li>
+    </ul>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ─── STEP 5: 실전 장면 생성 3컷 ─── -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">STEP 5</span>
+    <span class="section-title">실전 3컷 — 이미지 선택부터 생성까지</span>
+    <span class="time-badge">약 4분</span>
+  </div>
+  <div class="block narration">
+    <div class="block-label">🎙 나레이션</div>
+    <p>이제 실제로 3가지 장면을 만들어 볼게요. 매 장면마다 왜 이 이미지를 골랐는지 설명하면서 진행하겠습니다.</p>
+  </div>
+
+  <!-- 컷 1: 카페 -->
+  <p style="font-weight:700; font-size:16px; margin:20px 0 10px;">🎬 컷 1 — 카페 장면 (앉아서 커피 마시기)</p>
+  <div class="block screen">
+    <div class="block-label">🖥 이미지 선택 이유 설명하며 실연</div>
+    <ul>
+      <li>"웃는 표정이 필요하고, 상반신 구도가 맞으니까 이 두 개를 씁니다"</li>
+      <li>Reference Image: <span class="image-ref">표정/표정_02.png</span> (smiling) → Strength <strong>60%</strong></li>
+      <li>Structure Reference: <span class="image-ref">클로즈업/클로즈업_01.png</span> (상반신 정면) → Strength <strong>35%</strong></li>
+    </ul>
+  </div>
+  <div class="block screen">
+    <div class="block-label">📝 프롬프트</div>
+    <div class="prompt-box"><span class="comment">// Ref: 표정_02(smiling) 60% / Str: 클로즈업_01(상반신) 35%</span>
+Korean woman, early 20s, long black hair with bangs,
+sitting at a cozy Seoul cafe, holding a latte,
+warm smile, soft afternoon light,
+wooden table, bokeh background,
+medium shot, photorealistic</div>
+  </div>
+
+  <!-- 컷 2: 야외 걷기 -->
+  <p style="font-weight:700; font-size:16px; margin:28px 0 10px;">🎬 컷 2 — 야외 걷기 장면</p>
+  <div class="block screen">
+    <div class="block-label">🖥 이미지 선택 이유 설명하며 실연</div>
+    <ul>
+      <li>"걷는 방향이 오른쪽을 향하도록 45도 앵글로 잡겠습니다. 표정도 같은 각도 컷을 써야 자연스러워요"</li>
+      <li>Reference Image: <span class="image-ref">표정_상세/smiling_45R.png</span> → Strength <strong>60%</strong></li>
+      <li>Structure Reference: <span class="image-ref">전신/전신_02.png</span> (45도 전신) → Strength <strong>40%</strong></li>
+    </ul>
+  </div>
+  <div class="block screen">
+    <div class="block-label">📝 프롬프트</div>
+    <div class="prompt-box"><span class="comment">// Ref: smiling_45R 60% / Str: 전신_02(45도 전신) 40%</span>
+Korean woman, early 20s, long black hair with bangs,
+walking on a bright Seoul street,
+casual outfit, light blue cardigan,
+natural daylight, gentle breeze,
+full body shot, photorealistic</div>
+  </div>
+
+  <!-- 컷 3: 감정 클로즈업 -->
+  <p style="font-weight:700; font-size:16px; margin:28px 0 10px;">🎬 컷 3 — 감정 클로즈업 (드라마틱한 장면)</p>
+  <div class="block screen">
+    <div class="block-label">🖥 이미지 선택 이유 설명하며 실연</div>
+    <ul>
+      <li>"이번엔 표정_상세 폴더를 씁니다. 감정 × 각도를 조합해서 고를 수 있는 게 이 폴더의 장점이에요"</li>
+      <li>Reference Image: <span class="image-ref">표정_상세/sad_front.png</span> → Strength <strong>65%</strong></li>
+      <li>Structure Reference: 없음 (표정만 살리고 배경·구도는 프롬프트로 제어)</li>
+    </ul>
+  </div>
+  <div class="block screen">
+    <div class="block-label">📝 프롬프트</div>
+    <div class="prompt-box"><span class="comment">// Ref: sad_front 65% / Structure Reference 없음</span>
+Korean woman, early 20s, long black hair with bangs,
+looking out a rainy window, melancholic expression,
+soft gray indoor light, bokeh raindrops,
+portrait shot, cinematic, photorealistic</div>
+  </div>
+
+  <div class="block tip">
+    <div class="block-label">💡 강의 포인트</div>
+    <ul>
+      <li>컷 1→2→3처럼 Reference Image를 바꾸면서 생성해도 인물이 일관되게 유지됩니다 — 그게 데이터셋의 힘이에요.</li>
+      <li>Structure Reference Strength는 <strong>35~45%</strong>가 적당. 너무 높이면 레퍼런스의 배경·의상까지 따라옵니다.</li>
+      <li>표정이 애매한 장면은 <span class="image-ref">표정_상세/neutral_front.png</span>를 기본값으로 쓰세요. 가장 무난합니다.</li>
+    </ul>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ─── 프롬프트 팁 ─── -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <span class="section-title">프롬프트 팁 — 일관성을 높이는 앵커 전략</span>
+    <span class="time-badge">약 2분</span>
+  </div>
+  <div class="block narration">
+    <div class="block-label">🎙 나레이션</div>
+    <p>레퍼런스와 함께 쓰면 훨씬 강력해지는 프롬프트 전략을 정리해 드릴게요. "인물 앵커 구문"이라고 부르겠습니다.</p>
+  </div>
+  <div class="block screen">
+    <div class="block-label">📝 앵커 구문 템플릿 — 매 장면 이 부분을 그대로 복붙</div>
+    <div class="prompt-box"><span class="comment">// ── 인물 앵커 (고정) ──</span>
+Korean woman, early 20s,
+long straight black hair with bangs, low ponytail,
+fair skin, natural makeup,
+
+<span class="comment">// ── 장면별 내용 (바꾸는 부분) ──</span>
+[장면 묘사 + 배경 + 조명 + 카메라 거리]</div>
+  </div>
+  <div class="block tip">
+    <div class="block-label">💡 5가지 핵심 원칙</div>
+    <ul>
+      <li><strong>1. 앵커 구문 고정:</strong> 모든 장면 프롬프트 앞에 인물 묘사를 동일하게 붙여 넣는다</li>
+      <li><strong>2. 헤어 디테일 명시:</strong> "long black hair with bangs, low ponytail" — 헤어는 인상을 좌우하는 핵심</li>
+      <li><strong>3. 조명 일관성:</strong> 연속 장면이면 "natural daylight" 또는 "soft indoor light"을 통일</li>
+      <li><strong>4. 카메라 거리 명시:</strong> portrait / medium shot / full body — 매 장면 앵글을 적어주면 구도가 안정됨</li>
+      <li><strong>5. "the same ~ as reference" 명시:</strong> 첫 줄에 쓰면 레퍼런스 일치율이 올라감</li>
+    </ul>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ─── OUTRO ─── -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">OUTRO</span>
+    <span class="section-title">정리 & 다음 수업 예고</span>
+    <span class="time-badge">약 1분</span>
+  </div>
+  <div class="block narration">
+    <div class="block-label">🎙 나레이션</div>
+    <p>오늘 배운 내용 정리합니다.</p>
+  </div>
+  <div class="summary-box">
+    <h3>✅ 오늘의 핵심 요약</h3>
+    <ul>
+      <li>ChatGPT로 정면·단색배경 기준 이미지를 먼저 만든다</li>
+      <li>파이어플라이 Reference Image(Strength 60%)로 헤드샷·전신·표정·활동 데이터 시트를 생성한다</li>
+      <li>그리드 시트를 개별 컷으로 잘라 폴더별로 정리해둔다</li>
+      <li>장면 생성 시 상황에 맞는 개별컷을 Reference Image로 업로드한다</li>
+      <li>포즈까지 제어하려면 Structure Reference를 추가한다 (Strength 35~45%)</li>
+    </ul>
+  </div>
+  <div class="block narration">
+    <div class="block-label">🎙 나레이션</div>
+    <p>숙제는 여러분만의 인물 폴더를 하나 만들어 보는 겁니다. GPT로 기준 인물을 생성하고, 오늘 배운 프롬프트로 데이터 시트 최소 2종만 뽑아 보세요.<br><br>
+    다음 시간엔 바로 이 인물로 AI 영상을 직접 만들어볼 거예요. 지금까지 뽑아둔 이미지들을 활용해서 — 같은 인물이 실제로 움직이는 영상을 생성하는 방법을 다루겠습니다. 오늘도 수고하셨어요!</p>
+  </div>
+  <div class="block screen">
+    <div class="block-label">🖥 마무리 화면</div>
+    <ul>
+      <li><span class="image-ref">인물1_20대_여성/개별컷/</span> 각 폴더 대표 이미지 모아서 모자이크 형태로 보여주기</li>
+      <li>"GPT → Firefly → 개별컷" 플로우 한 줄 자막</li>
+    </ul>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
