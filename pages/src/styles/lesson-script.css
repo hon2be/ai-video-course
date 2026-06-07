@@ -1,0 +1,274 @@
+/* ── 강의 스크립트 공통 스타일 ──────────────────────── */
+/* .lesson-body 안에서만 적용 */
+
+.lesson-body .page {
+  max-width: 100%;
+  padding: 40px 48px 80px;
+}
+
+/* 제목 */
+.lesson-body h1 {
+  font-size: 26px;
+  font-weight: 700;
+  padding-bottom: 12px;
+  margin-bottom: 8px;
+  border-bottom: 3px solid currentColor;
+}
+.lesson-body .subtitle {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 40px;
+}
+
+/* 목차 */
+.lesson-body .toc {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 40px;
+}
+.lesson-body .toc h2 {
+  font-size: 13px;
+  font-weight: 700;
+  color: #888;
+  margin-bottom: 10px;
+  border: none;
+  padding: 0;
+}
+.lesson-body .toc ol {
+  padding-left: 20px;
+  font-size: 14px;
+  line-height: 2.2;
+}
+.lesson-body .toc-time { color: #aaa; font-size: 12px; margin-left: 8px; }
+.lesson-body .toc-tag {
+  font-size: 11px; font-weight: 700;
+  border-radius: 10px; padding: 1px 8px; margin-left: 6px;
+  vertical-align: middle;
+}
+.lesson-body .toc-tag.gpt { background: #d2f4eb; color: #10a37f; }
+.lesson-body .toc-tag.ff  { background: #fff3ec; color: #e05a00; }
+
+/* 구분선 */
+.lesson-body .divider {
+  border: none;
+  border-top: 2px dashed #e0e0e0;
+  margin: 36px 0;
+}
+
+/* 섹션 */
+.lesson-body .section { margin-bottom: 44px; }
+.lesson-body .section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.lesson-body .section-num {
+  background: #e05a00; color: #fff;
+  font-weight: 700; font-size: 12px;
+  border-radius: 20px; padding: 3px 12px;
+  white-space: nowrap;
+}
+.lesson-body .section-num.gpt { background: #10a37f; }
+.lesson-body .section-title { font-size: 19px; font-weight: 700; }
+.lesson-body .time-badge {
+  font-size: 12px; color: #e05a00;
+  background: #fff3ec; border: 1px solid #e05a00;
+  border-radius: 12px; padding: 2px 10px;
+  margin-left: auto; white-space: nowrap;
+}
+
+/* 블록 공통 */
+.lesson-body .block {
+  margin-bottom: 16px;
+  padding: 18px 22px;
+  border-radius: 8px;
+  border-left: 4px solid #ddd;
+  background: #fafafa;
+}
+.lesson-body .block p,
+.lesson-body .block ul,
+.lesson-body .block li { font-size: 15px; line-height: 1.9; }
+.lesson-body .block ul { padding-left: 20px; }
+.lesson-body .block ul li { margin-bottom: 4px; }
+.lesson-body .block-label {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .07em; text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+/* 블록 타입 */
+.lesson-body .block.narration { border-left-color: #e05a00; background: #fff8f3; }
+.lesson-body .block.narration .block-label { color: #e05a00; }
+.lesson-body .block.screen    { border-left-color: #1c7ed6; background: #f0f7ff; }
+.lesson-body .block.screen    .block-label { color: #1c7ed6; }
+.lesson-body .block.tip       { border-left-color: #37b24d; background: #f0faf2; }
+.lesson-body .block.tip       .block-label { color: #37b24d; }
+.lesson-body .block.caution   { border-left-color: #e67700; background: #fff9e0; }
+.lesson-body .block.caution   .block-label { color: #e67700; }
+
+/* 프롬프트 박스 */
+.lesson-body .prompt-box {
+  background: #1e1e2e; color: #cdd6f4;
+  font-family: 'Courier New', monospace; font-size: 13px;
+  border-radius: 8px; padding: 14px 18px;
+  margin-top: 10px; line-height: 1.8;
+  white-space: pre-wrap;
+}
+.lesson-body .comment { color: #6c7086; }
+
+/* 파일트리 */
+.lesson-body .file-tree {
+  background: #1e1e2e; color: #cdd6f4;
+  font-family: 'Courier New', monospace; font-size: 13px;
+  border-radius: 8px; padding: 14px 18px;
+  margin-top: 10px; line-height: 1.9;
+}
+.lesson-body .file-tree .folder { color: #89dceb; }
+.lesson-body .file-tree .file   { color: #a6e3a1; }
+.lesson-body .file-tree .note   { color: #6c7086; }
+
+/* 인라인 레퍼런스 */
+.lesson-body .image-ref {
+  display: inline-block;
+  background: #eaf4ff; border: 1px solid #1c7ed6;
+  color: #1c7ed6; font-size: 12px;
+  border-radius: 5px; padding: 1px 7px;
+  font-family: monospace; margin: 1px 0;
+}
+
+/* 요약 박스 */
+.lesson-body .summary-box {
+  background: linear-gradient(135deg, #fff3ec, #ffeee0);
+  border: 1px solid #e05a00;
+  border-radius: 10px; padding: 22px 26px; margin-top: 12px;
+}
+.lesson-body .summary-box h3 {
+  font-size: 15px; font-weight: 700;
+  color: #e05a00; margin-bottom: 10px;
+  border: none; padding: 0;
+}
+.lesson-body .summary-box ul {
+  font-size: 14px; padding-left: 18px; line-height: 2;
+}
+
+/* note */
+.lesson-body .note {
+  background: #fff8f3;
+  border-left: 4px solid #e05a00;
+  padding: 12px 16px; border-radius: 0 6px 6px 0;
+  font-size: 13px; color: #555; margin: 8px 0 16px;
+}
+
+/* param */
+.lesson-body .param {
+  display: inline-block;
+  background: #1e1e2e; color: #89dceb;
+  font-family: monospace; font-size: 13px;
+  border-radius: 4px; padding: 1px 8px;
+}
+
+/* 스크린샷 이미지 */
+.lesson-body .ss {
+  width: 100%; border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  display: block; margin: 10px 0 4px;
+}
+.lesson-body .ss-cap {
+  font-size: 11px; color: #aaa;
+  text-align: right; margin-bottom: 14px;
+  font-family: monospace;
+}
+.lesson-body .ss-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px; margin: 10px 0;
+}
+.lesson-body .ss-row img {
+  width: 100%; border-radius: 8px; border: 1px solid #ddd;
+}
+
+/* 갤러리 (프롬프트 모음) */
+.lesson-body .gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+  gap: 18px; margin: 14px 0;
+}
+.lesson-body .gallery-card,
+.lesson-body .gallery-full {
+  border: 1px solid #e0e0e0; border-radius: 10px;
+  overflow: hidden; background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+.lesson-body .gallery-card img,
+.lesson-body .gallery-full img { width: 100%; display: block; }
+.lesson-body .g-cap { padding: 10px 14px; font-size: 13px; }
+.lesson-body .g-title { font-weight: 700; margin-bottom: 2px; }
+.lesson-body .g-desc { font-size: 12px; color: #888; }
+
+/* 시트 이미지 (스크립트용) */
+.lesson-body .sheet-row { display: flex; gap: 14px; margin: 10px 0 18px; flex-wrap: wrap; }
+.lesson-body .sheet-item { flex: 1; min-width: 200px; }
+.lesson-body .sheet-item img { width: 100%; border-radius: 8px; border: 1px solid #e0e0e0; }
+.lesson-body .sheet-cap { font-size: 11px; color: #aaa; text-align: center; margin-top: 5px; font-family: monospace; }
+
+/* 비교표 */
+.lesson-body .compare {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 12px 0;
+}
+.lesson-body .compare-box {
+  border: 1px solid #e0e0e0; border-radius: 8px; padding: 14px; background: #fafafa;
+}
+.lesson-body .compare-box h4 { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+.lesson-body .compare-box p { font-size: 13px; color: #555; }
+
+/* 씬 테이블 */
+.lesson-body .scene-table,
+.lesson-body .cw-table,
+.lesson-body .ref-table {
+  width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0 20px;
+}
+.lesson-body .scene-table th,
+.lesson-body .cw-table th,
+.lesson-body .ref-table th {
+  background: #334155; color: #fff; padding: 8px 10px; text-align: left;
+}
+.lesson-body .scene-table td,
+.lesson-body .cw-table td,
+.lesson-body .ref-table td {
+  padding: 7px 10px; border-bottom: 1px solid #eee; vertical-align: top;
+}
+.lesson-body .scene-table tr:nth-child(even) td,
+.lesson-body .cw-table tr:nth-child(even) td,
+.lesson-body .ref-table tr:nth-child(even) td { background: #fafafa; }
+.lesson-body .fn {
+  font-family: monospace; background: #eaf4ff; color: #1c7ed6;
+  border-radius: 4px; padding: 1px 5px; font-size: 12px;
+}
+.lesson-body .why { color: #888; font-size: 12px; }
+
+/* 키워드 뱃지 */
+.lesson-body .kw {
+  display: inline-block; background: #eaf4ff; color: #1c7ed6;
+  border-radius: 4px; padding: 1px 7px; margin: 2px;
+  font-family: monospace; font-size: 12px;
+}
+.lesson-body .kw-green { background: #f0faf2; color: #2f9e44; }
+.lesson-body .kw-gray  { background: #f5f5f5; color: #555; }
+
+/* anchor-box */
+.lesson-body .anchor-box {
+  background: #1e1e2e; color: #a6e3a1;
+  font-family: monospace; font-size: 13px;
+  border-radius: 8px; padding: 14px 18px;
+  margin: 8px 0 14px; line-height: 1.8; white-space: pre-wrap;
+}
+
+/* 반응형 */
+@media (max-width: 640px) {
+  .lesson-body .page { padding: 20px 16px 60px; }
+  .lesson-body .compare,
+  .lesson-body .ss-row { grid-template-columns: 1fr; }
+}

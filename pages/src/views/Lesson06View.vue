@@ -3,7 +3,6 @@
 </template>
 
 <script setup>
-// 미드저니 --cref 동일인물
 const html = `<div class="page">
 
 <h1>🎨 미드저니 동일인물 만들기</h1>
@@ -345,49 +344,3 @@ full body, cinematic
 
 </div>`
 </script>
-
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Apple SD Gothic Neo','Noto Sans KR',sans-serif; background:#f5f5f0; color:#1a1a1a; line-height:1.8; padding:40px 20px; }
-  .page { max-width:880px; margin:0 auto; background:#fff; border-radius:12px; box-shadow:0 4px 24px rgba(0,0,0,.08); padding:60px; }
-  h1 { font-size:28px; font-weight:700; color:#4a1fb8; border-bottom:3px solid #4a1fb8; padding-bottom:12px; margin-bottom:8px; }
-  .subtitle { font-size:14px; color:#888; margin-bottom:40px; }
-  .section { margin-bottom:48px; }
-  .section-header { display:flex; align-items:center; gap:10px; margin-bottom:20px; flex-wrap:wrap; }
-  .section-num { background:#4a1fb8; color:#fff; font-weight:700; font-size:13px; border-radius:20px; padding:3px 12px; white-space:nowrap; }
-  .section-title { font-size:20px; font-weight:700; }
-  .time-badge { font-size:12px; color:#4a1fb8; background:#f0eeff; border:1px solid #4a1fb8; border-radius:12px; padding:2px 10px; margin-left:auto; white-space:nowrap; }
-  .block { margin-bottom:20px; padding:20px 24px; border-radius:8px; border-left:4px solid #ddd; background:#fafafa; }
-  .block.narration { border-left-color:#4a1fb8; background:#f7f3ff; }
-  .block.screen    { border-left-color:#1c7ed6; background:#f0f7ff; }
-  .block.tip       { border-left-color:#37b24d; background:#f0faf2; }
-  .block.caution   { border-left-color:#e67700; background:#fff9e0; }
-  .block-label { font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:6px; }
-  .block.narration .block-label { color:#4a1fb8; }
-  .block.screen    .block-label { color:#1c7ed6; }
-  .block.tip       .block-label { color:#37b24d; }
-  .block.caution   .block-label { color:#e67700; }
-  .block p, .block ul { font-size:15px; line-height:1.9; }
-  .block ul { padding-left:20px; }
-  .block ul li { margin-bottom:4px; }
-  .prompt-box { background:#1e1e2e; color:#cdd6f4; font-family:'Courier New',monospace; font-size:13px; border-radius:8px; padding:16px 20px; margin-top:10px; line-height:1.7; white-space:pre-wrap; }
-  .comment { color:#6c7086; }
-  .divider { border:none; border-top:2px dashed #e0e0e0; margin:40px 0; }
-  .toc { background:#f9f9f9; border:1px solid #e0e0e0; border-radius:8px; padding:24px 28px; margin-bottom:48px; }
-  .toc h2 { font-size:14px; font-weight:700; color:#888; margin-bottom:12px; }
-  .toc ol { padding-left:20px; font-size:15px; line-height:2.2; }
-  .toc-time { color:#aaa; font-size:13px; margin-left:8px; }
-  .summary-box { background:linear-gradient(135deg,#f0eeff,#e8e0ff); border:1px solid #4a1fb8; border-radius:10px; padding:24px 28px; margin-top:12px; }
-  .summary-box h3 { font-size:15px; font-weight:700; color:#4a1fb8; margin-bottom:10px; }
-  .summary-box ul { font-size:14px; padding-left:18px; line-height:2; }
-  /* cw 비교표 */
-  .cw-table { width:100%; border-collapse:collapse; font-size:14px; margin:12px 0; }
-  .cw-table th { background:#4a1fb8; color:#fff; padding:8px 12px; text-align:left; }
-  .cw-table td { padding:8px 12px; border-bottom:1px solid #eee; vertical-align:top; }
-  .cw-table tr:nth-child(even) td { background:#fafafa; }
-  .param { display:inline-block; background:#1e1e2e; color:#89dceb; font-family:monospace; font-size:13px; border-radius:4px; padding:1px 8px; }
-  .compare { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:12px 0; }
-  .compare-box { border:1px solid #e0e0e0; border-radius:8px; padding:16px; background:#fafafa; }
-  .compare-box h4 { font-size:13px; font-weight:700; color:#4a1fb8; margin-bottom:8px; }
-  .compare-box p { font-size:13px; color:#555; }
-</style>

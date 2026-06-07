@@ -3,7 +3,6 @@
 </template>
 
 <script setup>
-// 인물 데이터셋 프롬프트 모음
 const html = `<div class="page">
 
 <h1>📋 인물 데이터셋 생성 프롬프트 모음</h1>
@@ -24,15 +23,7 @@ const html = `<div class="page">
 <!-- ── 빠른 참조 표 ── -->
 <h2><span class="tag" style="background:#555;">참조표</span> 카메라 각도 &amp; 표정 키워드 빠른 참조</h2>
 
-<style>
-.ref-table { width:100%; border-collapse:collapse; font-size:13px; margin:10px 0 24px; }
-.ref-table th { padding:8px 12px; text-align:left; color:#fff; }
-.ref-table td { padding:7px 12px; border-bottom:1px solid #eee; vertical-align:top; }
-.ref-table tr:nth-child(even) td { background:#fafafa; }
-.kw { display:inline-block; background:#eaf4ff; color:#1c7ed6; border-radius:4px; padding:1px 7px; margin:2px 2px; font-family:monospace; font-size:12px; }
-.kw-green { background:#f0faf2; color:#2f9e44; }
-.kw-gray  { background:#f5f5f5; color:#555; }
-</style>
+
 
 <h3>① 수평 방향 각도</h3>
 <table class="ref-table">
@@ -392,17 +383,7 @@ photorealistic, full body visible, consistent character</div>
 <h2><span class="tag" style="background:#6d28d9;">갤러리</span> 실제 생성 예시 — 인물1 (20대 여성)</h2>
 <p style="font-size:14px; color:#555; margin-bottom:20px;">아래 이미지들은 위 프롬프트로 실제 생성한 결과입니다. Reference Image로 바로 사용 가능합니다.</p>
 
-<style>
-.gallery-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px; margin:16px 0; }
-.gallery-card { border:1px solid #e0e0e0; border-radius:10px; overflow:hidden; background:#fff; box-shadow:0 2px 8px rgba(0,0,0,.06); }
-.gallery-card img { width:100%; display:block; }
-.gallery-card .g-cap { padding:10px 14px; font-size:13px; }
-.gallery-card .g-title { font-weight:700; color:#1a1a1a; margin-bottom:2px; }
-.gallery-card .g-desc { font-size:12px; color:#888; }
-.gallery-full { border:1px solid #e0e0e0; border-radius:10px; overflow:hidden; background:#fff; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,.06); }
-.gallery-full img { width:100%; display:block; }
-.gallery-full .g-cap { padding:10px 14px; font-size:13px; }
-</style>
+
 
 <p style="font-weight:700; font-size:15px; margin:24px 0 10px;">📌 기준 이미지 (GPT 생성)</p>
 <div style="max-width:300px; margin-bottom:24px;">
@@ -512,26 +493,3 @@ photorealistic, full body visible, consistent character</div>
 
 </div>`
 </script>
-
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Apple SD Gothic Neo','Noto Sans KR',sans-serif; background:#f5f5f0; color:#1a1a1a; line-height:1.8; padding:40px 20px; }
-  .page { max-width:900px; margin:0 auto; background:#fff; border-radius:12px; box-shadow:0 4px 24px rgba(0,0,0,.08); padding:60px; }
-  h1 { font-size:26px; font-weight:700; color:#e05a00; border-bottom:3px solid #e05a00; padding-bottom:12px; margin-bottom:8px; }
-  .subtitle { font-size:13px; color:#888; margin-bottom:40px; }
-  h2 { font-size:18px; font-weight:700; margin:40px 0 12px; display:flex; align-items:center; gap:8px; }
-  h2 .tag { font-size:11px; font-weight:700; background:#e05a00; color:#fff; border-radius:10px; padding:2px 10px; }
-  h3 { font-size:14px; font-weight:700; color:#555; margin:20px 0 8px; }
-  .prompt-box { background:#1e1e2e; color:#cdd6f4; font-family:'Courier New',monospace; font-size:13px; border-radius:8px; padding:18px 20px; margin:8px 0 16px; line-height:1.8; white-space:pre-wrap; }
-  .comment { color:#6c7086; }
-  .note { background:#fff8f3; border-left:4px solid #e05a00; padding:12px 16px; border-radius:0 6px 6px 0; font-size:13px; color:#555; margin:8px 0 20px; }
-  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:8px; }
-  .var-box { background:#f0f7ff; border:1px solid #1c7ed6; border-radius:8px; padding:14px 16px; }
-  .var-box h4 { font-size:12px; font-weight:700; color:#1c7ed6; margin-bottom:8px; }
-  .var-box ul { font-size:12px; padding-left:16px; }
-  .var-box ul li { margin-bottom:3px; }
-  .divider { border:none; border-top:2px dashed #e0e0e0; margin:40px 0; }
-  .anchor-box { background:#1e1e2e; color:#a6e3a1; font-family:'Courier New',monospace; font-size:13px; border-radius:8px; padding:16px 20px; margin:8px 0 16px; line-height:1.8; white-space:pre-wrap; }
-  .toc { background:#f9f9f9; border:1px solid #e0e0e0; border-radius:8px; padding:20px 24px; margin-bottom:40px; }
-  .toc ol { padding-left:20px; font-size:14px; line-height:2.2; }
-</style>

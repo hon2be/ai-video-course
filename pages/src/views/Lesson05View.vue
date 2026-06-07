@@ -3,7 +3,6 @@
 </template>
 
 <script setup>
-// Firefly 동일인물 강의 스크립트
 const html = `<div class="page">
 
 <h1>🎬 AI 영상 제작 기초 · 인물 데이터셋 편</h1>
@@ -147,12 +146,7 @@ photorealistic, high detail</div>
     </ul>
   </div>
 
-  <style>
-  .sheet-row { display:flex; gap:16px; margin:12px 0 20px; flex-wrap:wrap; }
-  .sheet-item { flex:1; min-width:220px; }
-  .sheet-item img { width:100%; border-radius:8px; border:1px solid #e0e0e0; display:block; }
-  .sheet-item .sheet-cap { font-size:12px; color:#888; text-align:center; margin-top:6px; font-family:monospace; }
-  </style>
+  
 
   <p style="font-weight:700; font-size:16px; margin: 20px 0 10px;">① 헤드샷 시트</p>
   <div class="block screen">
@@ -297,14 +291,7 @@ dynamic poses, photorealistic, labeled in Korean</div>
     <div class="block-label">🖥 화면 안내 — 장면 유형별 이미지 선택 표 보여주기</div>
   </div>
 
-  <style>
-  .scene-table { width:100%; border-collapse:collapse; font-size:13px; margin-top:12px; }
-  .scene-table th { background:#e05a00; color:#fff; padding:8px 10px; text-align:left; }
-  .scene-table td { padding:8px 10px; border-bottom:1px solid #eee; vertical-align:top; }
-  .scene-table tr:nth-child(even) td { background:#fafafa; }
-  .scene-table .fn { font-family:monospace; background:#eaf4ff; color:#1c7ed6; border-radius:4px; padding:1px 5px; font-size:12px; }
-  .scene-table .why { color:#888; font-size:12px; }
-  </style>
+  
 
   <table class="scene-table">
     <tr>
@@ -506,12 +493,7 @@ fair skin, natural makeup,
 
   <hr style="border:none; border-top:1px solid #f0f0f0; margin:20px 0;">
 
-  <style>
-  .ss { width:100%; border-radius:8px; border:1px solid #ddd; display:block; margin:10px 0 4px; }
-  .ss-cap { font-size:11px; color:#aaa; text-align:right; margin-bottom:16px; font-family:monospace; }
-  .ss-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:10px 0; }
-  .ss-row img { width:100%; border-radius:8px; border:1px solid #ddd; }
-  </style>
+  
 
   <!-- Step 1: 접속 -->
   <p style="font-weight:700; font-size:16px; margin:20px 0 10px;">① 맞춤형 모델 접속</p>
@@ -731,61 +713,3 @@ fair skin, natural makeup,
 
 </div>`
 </script>
-
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
-    background: #f5f5f0;
-    color: #1a1a1a;
-    line-height: 1.8;
-    padding: 40px 20px;
-  }
-  .page {
-    max-width: 880px;
-    margin: 0 auto;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-    padding: 60px;
-  }
-  h1 { font-size: 28px; font-weight: 700; color: #e05a00; border-bottom: 3px solid #e05a00; padding-bottom: 12px; margin-bottom: 8px; }
-  .subtitle { font-size: 14px; color: #888; margin-bottom: 40px; }
-  .section { margin-bottom: 48px; }
-  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-  .section-num { background: #e05a00; color: #fff; font-weight: 700; font-size: 13px; border-radius: 20px; padding: 3px 12px; white-space: nowrap; }
-  .section-num.gpt { background: #10a37f; }
-  .section-title { font-size: 20px; font-weight: 700; }
-  .time-badge { font-size: 12px; color: #e05a00; background: #fff3ec; border: 1px solid #e05a00; border-radius: 12px; padding: 2px 10px; margin-left: auto; white-space: nowrap; }
-  .block { margin-bottom: 20px; padding: 20px 24px; border-radius: 8px; border-left: 4px solid #ddd; background: #fafafa; }
-  .block.narration { border-left-color: #e05a00; background: #fff8f3; }
-  .block.screen    { border-left-color: #1c7ed6; background: #f0f7ff; }
-  .block.tip       { border-left-color: #37b24d; background: #f0faf2; }
-  .block.caution   { border-left-color: #e67700; background: #fff9e0; }
-  .block-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
-  .block.narration .block-label { color: #e05a00; }
-  .block.screen    .block-label { color: #1c7ed6; }
-  .block.tip       .block-label { color: #37b24d; }
-  .block.caution   .block-label { color: #e67700; }
-  .block p { font-size: 15px; line-height: 1.9; }
-  .block ul { padding-left: 20px; font-size: 15px; }
-  .block ul li { margin-bottom: 4px; }
-  .prompt-box { background: #1e1e2e; color: #cdd6f4; font-family: 'Courier New', monospace; font-size: 13px; border-radius: 8px; padding: 16px 20px; margin-top: 10px; line-height: 1.7; white-space: pre-wrap; }
-  .prompt-box .comment { color: #6c7086; }
-  .divider { border: none; border-top: 2px dashed #e0e0e0; margin: 40px 0; }
-  .toc { background: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 8px; padding: 24px 28px; margin-bottom: 48px; }
-  .toc h2 { font-size: 14px; font-weight: 700; color: #888; margin-bottom: 12px; letter-spacing: 0.05em; }
-  .toc ol { padding-left: 20px; font-size: 15px; line-height: 2.2; }
-  .toc-time { color: #aaa; font-size: 13px; margin-left: 8px; }
-  .toc-tag { font-size: 11px; font-weight: 700; border-radius: 10px; padding: 1px 8px; margin-left: 6px; vertical-align: middle; }
-  .toc-tag.gpt { background: #d2f4eb; color: #10a37f; }
-  .toc-tag.ff  { background: #fff3ec; color: #e05a00; }
-  .summary-box { background: linear-gradient(135deg, #fff3ec, #ffeee0); border: 1px solid #e05a00; border-radius: 10px; padding: 24px 28px; margin-top: 12px; }
-  .summary-box h3 { font-size: 15px; font-weight: 700; color: #e05a00; margin-bottom: 10px; }
-  .summary-box ul { font-size: 14px; padding-left: 18px; line-height: 2; }
-  .file-tree { background: #1e1e2e; color: #cdd6f4; font-family: 'Courier New', monospace; font-size: 13px; border-radius: 8px; padding: 16px 20px; margin-top: 10px; line-height: 1.9; }
-  .file-tree .folder { color: #89dceb; }
-  .file-tree .file   { color: #a6e3a1; }
-  .file-tree .note   { color: #6c7086; }
-  .image-ref { display: inline-block; background: #eaf4ff; border: 1px solid #1c7ed6; color: #1c7ed6; font-size: 12px; border-radius: 6px; padding: 1px 8px; font-family: monospace; margin: 2px 0; }
-</style>
