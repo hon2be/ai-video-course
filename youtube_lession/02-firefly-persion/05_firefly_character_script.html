@@ -65,8 +65,8 @@
 <body>
 <div class="page">
 
-<h1>🔥 파이어플라이 동일인물 만들기</h1>
-<p class="subtitle">강의 영상 스크립트 | GPT로 인물 생성 → 파이어플라이에서 데이터셋 구축 → Reference Image 활용</p>
+<h1>🎬 AI 영상 제작 기초 · 인물 데이터셋 편</h1>
+<p class="subtitle">영상 생성에 들어가기 전 가장 중요한 준비 단계 — ChatGPT로 인물 데이터셋 구축 → Firefly 참조 이미지·맞춤형 모델 활용</p>
 
 <!-- 목차 -->
 <div class="toc">
@@ -75,10 +75,10 @@
     <li>인트로 — 동일인물이 왜 어려운가? <span class="toc-time">~1분</span></li>
     <li>전체 워크플로우 한눈에 보기 <span class="toc-time">~1분</span></li>
     <li>Step 1 — GPT로 기준 인물 만들기 <span class="toc-tag gpt">ChatGPT</span><span class="toc-time">~3분</span></li>
-    <li>Step 2 — 파이어플라이에서 인물 데이터 시트 뽑기 <span class="toc-tag ff">Firefly</span><span class="toc-time">~4분</span></li>
+    <li>Step 2 — ChatGPT에서 인물 데이터 시트 뽑기 <span class="toc-tag gpt">ChatGPT</span><span class="toc-time">~4분</span></li>
     <li>Step 3 — 데이터 시트를 개별 컷으로 정리하기 <span class="toc-time">~2분</span></li>
     <li>Step 4 — Reference Image로 동일인물 장면 생성 <span class="toc-tag ff">Firefly</span><span class="toc-time">~3분</span></li>
-    <li>Step 5 — Structure Reference로 포즈 바꾸기 <span class="toc-tag ff">Firefly</span><span class="toc-time">~2분</span></li>
+    <li>Step 5 — 참조 이미지 여러 장으로 표정+포즈 동시 제어 <span class="toc-tag ff">Firefly</span><span class="toc-time">~2분</span></li>
     <li>프롬프트 팁 — 일관성을 높이는 앵커 전략 <span class="toc-time">~2분</span></li>
     <li>심화 — 맞춤형 모델로 완전한 동일인물 구현 <span class="toc-tag ff">Firefly</span><span class="toc-time">~5분</span></li>
     <li>아웃트로 — 정리 & 다음 수업 예고 <span class="toc-time">~1분</span></li>
@@ -89,15 +89,14 @@
 <div class="section">
   <div class="section-header">
     <span class="section-num">INTRO</span>
-    <span class="section-title">동일인물이 왜 어려운가?</span>
+    <span class="section-title">영상 제작의 첫 단계 — 인물 데이터셋이 왜 필요한가?</span>
     <span class="time-badge">약 1분</span>
   </div>
   <div class="block narration">
     <div class="block-label">🎙 나레이션</div>
-    <p>안녕하세요! 오늘은 AI 영상 제작에서 가장 많이 받는 질문을 다룰 거예요.<br><br>
-    "같은 인물을 여러 장면에 걸쳐 똑같이 유지하려면 어떻게 해요?"<br><br>
-    AI의 가장 큰 약점이 바로 일관성입니다. 같은 프롬프트를 써도 생성할 때마다 얼굴이 조금씩 달라지거든요.<br><br>
-    오늘은 ChatGPT로 기준 인물을 만들고, 파이어플라이에서 그 인물의 데이터 시트를 구축한 다음, 어떤 장면에서도 똑같은 인물이 나오게 하는 방법을 처음부터 끝까지 보여드릴게요.</p>
+    <p>안녕하세요. 오늘 강의는 <strong>영상 생성을 마무리하는 강의가 아니라, 영상을 제대로 만들기 위해 반드시 거쳐야 하는 가장 중요한 기초 단계 — 인물 데이터셋 구축</strong>을 다룹니다.<br><br>
+    AI 영상의 가장 큰 약점이 바로 일관성이에요. 같은 프롬프트를 써도 생성할 때마다 얼굴이 조금씩 달라져서, 한 영상 안에 같은 인물이 등장해야 하는데 컷이 바뀔 때마다 다른 사람이 되어버리거든요.<br><br>
+    그래서 오늘은 영상을 직접 만들기 전에, 어떤 장면에서도 똑같이 등장할 수 있는 <strong>인물 데이터셋</strong>을 ChatGPT와 Firefly로 구축하는 방법을 처음부터 끝까지 보여드릴게요. 이 데이터셋이 잘 갖춰져야 다음 단계인 영상 생성이 깔끔하게 됩니다.</p>
   </div>
   <div class="block screen">
     <div class="block-label">🖥 화면 안내</div>
@@ -125,15 +124,15 @@
     <div class="block-label">🖥 화면 안내 — 플로우 다이어그램 또는 슬라이드</div>
     <ul>
       <li><strong>① ChatGPT</strong>로 기준 인물 프롬프트 작성 & 이미지 생성</li>
-      <li><strong>② Firefly</strong>에서 Reference Image로 인물 데이터 시트 생성 (헤드샷 / 전신 멀티샷 / 표정 시트 / 활동 시트)</li>
+      <li><strong>② ChatGPT</strong>에서 기준 이미지를 첨부해 인물 데이터 시트 생성 (헤드샷 / 전신 멀티샷 / 표정 시트 / 활동 시트)</li>
       <li><strong>③</strong> 그리드 이미지를 개별 컷으로 잘라 폴더별 정리</li>
-      <li><strong>④ Firefly</strong> Reference Image에 개별 컷 업로드 → 원하는 장면 생성</li>
-      <li><strong>⑤</strong> Structure Reference로 포즈까지 제어</li>
+      <li><strong>④ Firefly</strong> 참조 이미지에 개별 컷 업로드 → 원하는 장면 생성</li>
+      <li><strong>⑤</strong> 표정과 포즈를 동시에 잡고 싶으면 참조 이미지를 여러 장 함께 업로드</li>
     </ul>
   </div>
   <div class="block tip">
     <div class="block-label">💡 강의 포인트</div>
-    <p>"GPT에서 뽑은 이미지를 파이어플라이의 레퍼런스로 쓰는 것 — 두 툴의 장점을 결합하는 워크플로우입니다."</p>
+    <p>"<strong>데이터셋(기준 이미지·시트·개별컷)은 ChatGPT에서, 장면 생성과 모델 학습은 Firefly에서</strong> — 두 툴의 역할 분담이 이 워크플로우의 핵심입니다."</p>
   </div>
 </div>
 
@@ -188,22 +187,22 @@ photorealistic, high detail</div>
 <!-- ─── STEP 2: 데이터 시트 ─── -->
 <div class="section">
   <div class="section-header">
-    <span class="section-num">STEP 2</span>
-    <span class="section-title">파이어플라이에서 인물 데이터 시트 뽑기</span>
+    <span class="section-num gpt">STEP 2</span>
+    <span class="section-title">ChatGPT에서 인물 데이터 시트 뽑기</span>
     <span class="time-badge">약 4분</span>
   </div>
   <div class="block narration">
     <div class="block-label">🎙 나레이션</div>
-    <p>기준 이미지가 있으면 이제 파이어플라이에서 인물의 다양한 모습을 '데이터 시트' 형태로 생성합니다.<br><br>
-    데이터 시트란 같은 인물을 여러 각도, 여러 표정, 여러 활동으로 그리드 형태로 뽑은 이미지예요. 이걸 만들어 두면 나중에 레퍼런스 이미지로 쓰기가 훨씬 편해집니다.<br><br>
+    <p>기준 이미지가 있으면 이제 같은 인물의 다양한 모습을 '데이터 시트' 형태로 생성합니다. <strong>이것도 ChatGPT에서 합니다.</strong><br><br>
+    ChatGPT는 첨부한 첫 이미지의 인물 특징을 기억해서, 같은 인물의 다른 각도·표정도 일관되게 그려줍니다. 그래서 데이터셋 단계까지는 한 툴에서 끝내는 게 더 자연스러워요.<br><br>
     총 네 종류의 시트를 만들 거예요 — 헤드샷 시트, 전신 멀티샷, 표정 시트, 활동 시트.</p>
   </div>
   <div class="block screen">
-    <div class="block-label">🖥 화면 안내 — Reference Image 설정</div>
+    <div class="block-label">🖥 화면 안내 — ChatGPT 데이터 시트 생성 흐름</div>
     <ul>
-      <li>파이어플라이 Text to Image 열기</li>
-      <li>오른쪽 Style 패널 → Reference Image에 <span class="image-ref">front.png</span> 업로드</li>
-      <li>Strength 슬라이더 <strong>60%</strong> 설정</li>
+      <li>ChatGPT 채팅창에 앞서 만든 <span class="image-ref">front.png</span> 첨부</li>
+      <li>"같은 인물의 헤드샷 8각도 / 전신 8각도 / 표정 10종 / 활동 8종 시트를 만들어줘" 같은 프롬프트 입력</li>
+      <li>한 번에 너무 많은 컷을 요구하지 말고 <strong>시트 종류별로 따로 요청</strong></li>
     </ul>
   </div>
 
@@ -217,7 +216,7 @@ photorealistic, high detail</div>
   <p style="font-weight:700; font-size:16px; margin: 20px 0 10px;">① 헤드샷 시트</p>
   <div class="block screen">
     <div class="block-label">📝 프롬프트</div>
-    <div class="prompt-box"><span class="comment">// Reference Image: front.png / Strength: 60%</span>
+    <div class="prompt-box"><span class="comment">// ChatGPT 채팅창에 front.png 첨부 후 입력</span>
 A character sheet showing 8 head angles of the same Korean woman,
 early 20s, long black hair with bangs, fair skin,
 arranged in a clean grid on gray background,
@@ -282,16 +281,16 @@ dynamic poses, photorealistic, labeled in Korean</div>
 
   <div class="block caution">
     <div class="block-label">⚠️ 이미지 해상도 기준</div>
-    <p>데이터 시트로 생성되는 <strong>개별 이미지 1장당 가로 최소 1024px 이상</strong>이어야 합니다.<br>
-    그리드 시트를 나눴을 때 각 컷이 1024px 미만이면 Reference Image로 쓸 때 품질이 떨어져 인물 일관성이 낮아집니다.<br>
-    파이어플라이 생성 해상도를 <strong>4:3 이상 (최소 2048×1536)</strong>으로 설정하거나, 그리드 열 수를 줄여서 컷당 해상도를 확보하세요.<br><br>
+    <p>데이터 시트에서 잘라낸 <strong>개별 이미지 1장당 가로 최소 1024px 이상</strong>이어야 합니다.<br>
+    그리드 시트를 나눴을 때 각 컷이 1024px 미만이면 나중에 Firefly 참조 이미지로 쓸 때 품질이 떨어져 인물 일관성이 낮아집니다.<br>
+    ChatGPT에 시트를 요청할 때 <strong>그리드 칸 수를 줄여서</strong> (예: 4컷 × 2행) 컷당 해상도를 확보하세요.<br><br>
     해상도가 부족한 이미지는 <strong><a href="https://upscayl.org/" target="_blank">Upscayl</a></strong>(무료 오픈소스)로 업스케일 후 사용하세요. AI 기반으로 화질 손상 없이 2~4배 확대할 수 있습니다.</p>
   </div>
   <div class="block tip">
     <div class="block-label">💡 강의 포인트</div>
     <ul>
-      <li>Reference Image Strength는 <strong>55~65%</strong>가 가장 잘 맞는 구간. 너무 높으면 그리드 포맷이 안 잡히고, 너무 낮으면 인물 얼굴이 달라집니다.</li>
-      <li>한 번에 완벽하게 나오지 않아도 괜찮아요. 가장 비슷한 결과물을 골라서 저장하면 됩니다.</li>
+      <li>한 번에 완벽한 시트가 나오지 않아도 괜찮아요. <strong>같은 채팅창에서 "각도를 더 다양하게", "표정을 더 살려줘"</strong> 같이 이어서 요청하면 됩니다.</li>
+      <li>인물 일관성이 흔들리면 <strong>"앞에 첨부한 동일 인물로 다시 그려줘"</strong>를 명시하세요.</li>
     </ul>
   </div>
 </div>
@@ -346,8 +345,9 @@ dynamic poses, photorealistic, labeled in Korean</div>
   </div>
   <div class="block narration">
     <div class="block-label">🎙 나레이션</div>
-    <p>이제 실전입니다. 핵심은 하나예요 — <strong>만들 장면의 분위기와 가장 비슷한 개별컷을 Reference Image로 고른다.</strong><br><br>
-    파이어플라이는 레퍼런스 이미지의 조명·배경·표정·포즈까지 참고합니다. 단순히 "같은 얼굴"을 원하는 게 아니라, 레퍼런스 이미지의 전체 분위기가 결과에 영향을 줘요.<br><br>
+    <p>이제 실전입니다. 핵심은 하나예요 — <strong>만들 장면의 분위기와 가장 비슷한 개별컷을 참조 이미지로 고른다.</strong><br><br>
+    파이어플라이는 참조 이미지의 조명·배경·표정·포즈까지 모두 참고합니다. 단순히 "같은 얼굴"을 원하는 게 아니라, 참조 이미지의 전체 분위기가 결과에 영향을 줘요.<br><br>
+    표정과 포즈를 동시에 잡고 싶을 땐 <strong>참조 이미지를 여러 장 함께 올리세요.</strong> 표정 컷 1장 + 포즈 컷 1장을 같이 올리면 파이어플라이가 둘 다 참고합니다.<br><br>
     지금부터 장면 유형별로 어떤 이미지를 언제 쓰는지 보여드릴게요.</p>
   </div>
 
@@ -368,51 +368,43 @@ dynamic poses, photorealistic, labeled in Korean</div>
   <table class="scene-table">
     <tr>
       <th>장면 유형</th>
-      <th>Reference Image</th>
-      <th>Structure Reference</th>
+      <th>참조 이미지 (1장 또는 여러 장)</th>
       <th>선택 이유</th>
     </tr>
     <tr>
       <td><strong>☕ 카페·식사</strong><br>실내, 앉은 자세</td>
-      <td><span class="fn">표정/표정_02.png</span><br><span class="why">(smiling)</span></td>
-      <td><span class="fn">클로즈업/클로즈업_01.png</span><br><span class="why">(상반신 정면)</span></td>
-      <td class="why">밝은 표정이 카페 분위기와 자연스럽게 어울림. 상반신 클로즈업으로 앉은 구도 유도</td>
+      <td><span class="fn">표정/표정_02.png</span> <span class="why">(smiling)</span><br>+ <span class="fn">클로즈업/클로즈업_01.png</span> <span class="why">(상반신)</span></td>
+      <td class="why">밝은 표정 컷 + 상반신 구도 컷 2장을 함께 참조. 앉은 카페 장면이 자연스럽게 잡힘</td>
     </tr>
     <tr>
       <td><strong>💼 오피스·업무</strong><br>실내, 서거나 앉음</td>
-      <td><span class="fn">오피스/오피스_02.png</span><br><span class="why">(책상 정면)</span></td>
-      <td><span class="fn">의상_상세/전신_05.png</span><br><span class="why">(블랙 블레이저)</span></td>
-      <td class="why">오피스 배경+의상이 이미 참조에 포함. 비즈니스 의상을 Structure로 유지</td>
+      <td><span class="fn">오피스/오피스_02.png</span> <span class="why">(책상 정면)</span><br>+ <span class="fn">의상_상세/전신_05.png</span> <span class="why">(블레이저)</span></td>
+      <td class="why">오피스 배경 컷 + 비즈니스 의상 컷 2장 조합. 의상 디테일이 살아남</td>
     </tr>
     <tr>
       <td><strong>🌳 야외 걷기·산책</strong><br>이동, 캐주얼</td>
-      <td><span class="fn">표정_상세/smiling_45R.png</span><br><span class="why">(45도 미소)</span></td>
-      <td><span class="fn">전신/전신_02.png</span><br><span class="why">(45도 전신)</span></td>
-      <td class="why">걷는 방향감을 45도 앵글로 잡음. 표정도 45도 컷을 맞춰야 자연스러움</td>
+      <td><span class="fn">표정_상세/smiling_45R.png</span> <span class="why">(45도 미소)</span><br>+ <span class="fn">전신/전신_02.png</span> <span class="why">(45도 전신)</span></td>
+      <td class="why">표정 45도 + 전신 45도 두 장 모두 같은 앵글로 통일 → 걷는 방향이 자연스러움</td>
     </tr>
     <tr>
       <td><strong>🏃 스포츠·운동</strong><br>야외, 동적 포즈</td>
-      <td><span class="fn">활동/활동_02.png</span><br><span class="why">(런닝)</span></td>
-      <td><span class="fn">활동/활동_02.png</span><br><span class="why">(동일 이미지)</span></td>
-      <td class="why">Reference와 Structure에 같은 이미지를 써도 됨. 포즈+표정 동시 참조</td>
+      <td><span class="fn">활동/활동_02.png</span> <span class="why">(런닝)</span> 1장이면 충분</td>
+      <td class="why">활동 컷에 표정+포즈+배경이 다 담겨 있어서 1장만 올려도 됨</td>
     </tr>
     <tr>
       <td><strong>👗 의상 강조 컷</strong><br>패션·룩북 스타일</td>
-      <td><span class="fn">의상_상세/전신_01.png</span><br><span class="why">(원하는 의상 전신)</span></td>
-      <td>없음 또는<br><span class="fn">전신/전신_03.png</span></td>
-      <td class="why">의상 디테일을 살리려면 Reference에 전신 의상 컷을 써야 함</td>
+      <td><span class="fn">의상_상세/전신_01.png</span> <span class="why">(원하는 의상 전신)</span></td>
+      <td class="why">의상 디테일을 살리려면 전신 의상 컷 1장만 참조 → 의상에 집중</td>
     </tr>
     <tr>
       <td><strong>😢 감정 강조 클로즈업</strong><br>드라마, 인터뷰 스타일</td>
-      <td><span class="fn">표정_상세/sad_front.png</span><br><span class="why">(해당 감정+각도)</span></td>
-      <td><span class="fn">클로즈업/클로즈업_01.png</span><br><span class="why">(상반신)</span></td>
-      <td class="why">표정_상세는 각도까지 선택 가능. 원하는 감정×각도 조합을 직접 고름</td>
+      <td><span class="fn">표정_상세/sad_front.png</span> <span class="why">(해당 감정+각도)</span></td>
+      <td class="why">표정 상세 컷 자체가 클로즈업이라 1장만으로 구도까지 자연스럽게 잡힘</td>
     </tr>
     <tr>
       <td><strong>🌙 야경·분위기 컷</strong><br>저녁, 조용한 장면</td>
-      <td><span class="fn">표정_상세/neutral_front.png</span><br><span class="why">(무표정 정면)</span></td>
-      <td><span class="fn">헤드샷/헤드샷_01.png</span></td>
-      <td class="why">무표정이 야경·사색 장면과 잘 어울림. 배경만 프롬프트로 제어</td>
+      <td><span class="fn">표정_상세/neutral_front.png</span> <span class="why">(무표정 정면)</span></td>
+      <td class="why">무표정 컷으로 얼굴만 고정. 배경과 분위기는 프롬프트로 제어</td>
     </tr>
   </table>
 
@@ -420,9 +412,10 @@ dynamic poses, photorealistic, labeled in Korean</div>
     <div class="block-label">💡 이미지 선택 핵심 원칙</div>
     <ul>
       <li><strong>표정이 중요한 장면</strong> → <span class="image-ref">표정_상세/</span> 에서 감정×각도 조합으로 고른다</li>
-      <li><strong>포즈가 중요한 장면</strong> → Structure Reference에 <span class="image-ref">활동/</span> 또는 <span class="image-ref">전신/</span> 컷을 쓴다</li>
-      <li><strong>의상이 중요한 장면</strong> → Reference Image에 <span class="image-ref">의상_상세/전신_XX.png</span>를 쓴다</li>
-      <li><strong>배경·분위기만 바꾸는 장면</strong> → <span class="image-ref">헤드샷/</span> 또는 <span class="image-ref">클로즈업/</span>으로 얼굴만 고정하고 나머지는 프롬프트로</li>
+      <li><strong>포즈가 중요한 장면</strong> → <span class="image-ref">활동/</span> 또는 <span class="image-ref">전신/</span> 컷을 참조 이미지에 함께 추가</li>
+      <li><strong>의상이 중요한 장면</strong> → <span class="image-ref">의상_상세/전신_XX.png</span>를 참조 이미지로 사용</li>
+      <li><strong>배경·분위기만 바꾸는 장면</strong> → <span class="image-ref">헤드샷/</span> 또는 <span class="image-ref">클로즈업/</span> 1장만 올리고 나머지는 프롬프트로</li>
+      <li><strong>표정 + 포즈 동시 제어</strong> → 참조 이미지에 두 장(표정 컷 + 포즈 컷)을 함께 업로드</li>
     </ul>
   </div>
 </div>
@@ -446,14 +439,14 @@ dynamic poses, photorealistic, labeled in Korean</div>
   <div class="block screen">
     <div class="block-label">🖥 이미지 선택 이유 설명하며 실연</div>
     <ul>
-      <li>"웃는 표정이 필요하고, 상반신 구도가 맞으니까 이 두 개를 씁니다"</li>
-      <li>Reference Image: <span class="image-ref">표정/표정_02.png</span> (smiling) → Strength <strong>60%</strong></li>
-      <li>Structure Reference: <span class="image-ref">클로즈업/클로즈업_01.png</span> (상반신 정면) → Strength <strong>35%</strong></li>
+      <li>"웃는 표정과 상반신 구도가 같이 필요해요. 두 컷을 같이 참조 이미지에 올립니다"</li>
+      <li>참조 이미지 ①: <span class="image-ref">표정/표정_02.png</span> (smiling)</li>
+      <li>참조 이미지 ②: <span class="image-ref">클로즈업/클로즈업_01.png</span> (상반신 정면)</li>
     </ul>
   </div>
   <div class="block screen">
     <div class="block-label">📝 프롬프트</div>
-    <div class="prompt-box"><span class="comment">// Ref: 표정_02(smiling) 60% / Str: 클로즈업_01(상반신) 35%</span>
+    <div class="prompt-box"><span class="comment">// 참조 이미지 2장: 표정_02(smiling) + 클로즈업_01(상반신)</span>
 Korean woman, early 20s, long black hair with bangs,
 sitting at a cozy Seoul cafe, holding a latte,
 warm smile, soft afternoon light,
@@ -466,14 +459,14 @@ medium shot, photorealistic</div>
   <div class="block screen">
     <div class="block-label">🖥 이미지 선택 이유 설명하며 실연</div>
     <ul>
-      <li>"걷는 방향이 오른쪽을 향하도록 45도 앵글로 잡겠습니다. 표정도 같은 각도 컷을 써야 자연스러워요"</li>
-      <li>Reference Image: <span class="image-ref">표정_상세/smiling_45R.png</span> → Strength <strong>60%</strong></li>
-      <li>Structure Reference: <span class="image-ref">전신/전신_02.png</span> (45도 전신) → Strength <strong>40%</strong></li>
+      <li>"45도 앵글로 잡으려면 표정·전신 둘 다 45도 컷을 같이 올려야 자연스러워요"</li>
+      <li>참조 이미지 ①: <span class="image-ref">표정_상세/smiling_45R.png</span> (45도 미소)</li>
+      <li>참조 이미지 ②: <span class="image-ref">전신/전신_02.png</span> (45도 전신)</li>
     </ul>
   </div>
   <div class="block screen">
     <div class="block-label">📝 프롬프트</div>
-    <div class="prompt-box"><span class="comment">// Ref: smiling_45R 60% / Str: 전신_02(45도 전신) 40%</span>
+    <div class="prompt-box"><span class="comment">// 참조 이미지 2장: smiling_45R + 전신_02(45도)</span>
 Korean woman, early 20s, long black hair with bangs,
 walking on a bright Seoul street,
 casual outfit, light blue cardigan,
@@ -486,14 +479,14 @@ full body shot, photorealistic</div>
   <div class="block screen">
     <div class="block-label">🖥 이미지 선택 이유 설명하며 실연</div>
     <ul>
-      <li>"이번엔 표정_상세 폴더를 씁니다. 감정 × 각도를 조합해서 고를 수 있는 게 이 폴더의 장점이에요"</li>
-      <li>Reference Image: <span class="image-ref">표정_상세/sad_front.png</span> → Strength <strong>65%</strong></li>
-      <li>Structure Reference: 없음 (표정만 살리고 배경·구도는 프롬프트로 제어)</li>
+      <li>"표정_상세 컷은 자체가 클로즈업이라 1장만 올려도 구도가 잘 잡힙니다"</li>
+      <li>참조 이미지: <span class="image-ref">표정_상세/sad_front.png</span> (1장)</li>
+      <li>배경과 분위기는 프롬프트로 제어</li>
     </ul>
   </div>
   <div class="block screen">
     <div class="block-label">📝 프롬프트</div>
-    <div class="prompt-box"><span class="comment">// Ref: sad_front 65% / Structure Reference 없음</span>
+    <div class="prompt-box"><span class="comment">// 참조 이미지 1장: sad_front</span>
 Korean woman, early 20s, long black hair with bangs,
 looking out a rainy window, melancholic expression,
 soft gray indoor light, bokeh raindrops,
@@ -503,8 +496,8 @@ portrait shot, cinematic, photorealistic</div>
   <div class="block tip">
     <div class="block-label">💡 강의 포인트</div>
     <ul>
-      <li>컷 1→2→3처럼 Reference Image를 바꾸면서 생성해도 인물이 일관되게 유지됩니다 — 그게 데이터셋의 힘이에요.</li>
-      <li>Structure Reference Strength는 <strong>35~45%</strong>가 적당. 너무 높이면 레퍼런스의 배경·의상까지 따라옵니다.</li>
+      <li>컷 1→2→3처럼 참조 이미지를 바꾸면서 생성해도 인물이 일관되게 유지됩니다 — 그게 데이터셋의 힘이에요.</li>
+      <li>참조 이미지는 <strong>장면 성격에 따라 1~2장</strong>이 가장 잘 맞아요. 너무 많이 올리면 결과가 흐려집니다.</li>
       <li>표정이 애매한 장면은 <span class="image-ref">표정_상세/neutral_front.png</span>를 기본값으로 쓰세요. 가장 무난합니다.</li>
     </ul>
   </div>
@@ -767,23 +760,24 @@ fair skin, natural makeup,
   </div>
   <div class="block narration">
     <div class="block-label">🎙 나레이션</div>
-    <p>오늘 배운 내용 정리합니다.</p>
+    <p>오늘 배운 내용 정리합니다. 다시 한 번 강조드리면, <strong>오늘 한 일은 영상 생성이 아니라, 영상 생성을 위한 인물 데이터셋 구축</strong>이었어요. 이게 진짜 AI 영상 제작의 출발점입니다. 컷이 바뀌어도 흔들리지 않는 인물 데이터셋 — 이것만 잘 갖춰두면 다음 단계 영상 생성이 훨씬 쉬워집니다.</p>
   </div>
   <div class="summary-box">
     <h3>✅ 오늘의 핵심 요약</h3>
     <ul>
       <li>ChatGPT로 정면·단색배경 기준 이미지를 먼저 만든다</li>
-      <li>파이어플라이 Reference Image(Strength 60%)로 헤드샷·전신·표정·활동 데이터 시트를 생성한다</li>
+      <li><strong>같은 ChatGPT</strong>에서 헤드샷·전신·표정·활동 데이터 시트까지 모두 생성한다</li>
       <li>그리드 시트를 개별 컷으로 잘라 폴더별로 정리해둔다 (개별 컷 가로 1024px 이상 — Upscayl 활용)</li>
-      <li>장면 생성 시 상황에 맞는 개별컷을 Reference Image로 업로드한다</li>
-      <li>포즈까지 제어하려면 Structure Reference를 추가한다 (Strength 35~45%)</li>
-      <li>[심화] 맞춤형 모델에 개별컷 20장+ 학습 → 프롬프트만으로 동일 인물 생성</li>
+      <li>Firefly로 넘어가서, 장면에 맞는 개별컷을 <strong>참조 이미지</strong>로 업로드해 생성한다</li>
+      <li>표정 + 포즈를 동시에 잡고 싶으면 참조 이미지에 <strong>두 장(표정 컷 + 포즈 컷)</strong>을 함께 올린다</li>
+      <li>[심화] Firefly 맞춤형 모델에 개별컷 20장+ 학습 → 프롬프트만으로 동일 인물 생성</li>
+      <li><strong>🎯 분업의 원칙: 데이터셋 = ChatGPT / 장면 생성·학습 = Firefly</strong></li>
     </ul>
   </div>
   <div class="block narration">
     <div class="block-label">🎙 나레이션</div>
-    <p>숙제는 여러분만의 인물 폴더를 하나 만들어 보는 겁니다. GPT로 기준 인물을 생성하고, 오늘 배운 프롬프트로 데이터 시트 최소 2종만 뽑아 보세요.<br><br>
-    다음 시간엔 바로 이 인물로 AI 영상을 직접 만들어볼 거예요. 지금까지 뽑아둔 이미지들을 활용해서 — 같은 인물이 실제로 움직이는 영상을 생성하는 방법을 다루겠습니다. 오늘도 수고하셨어요!</p>
+    <p>숙제는 여러분만의 인물 폴더를 하나 만들어 보는 겁니다. ChatGPT로 기준 인물을 생성하고, 오늘 배운 프롬프트로 데이터 시트 최소 2종만 뽑아 보세요.<br><br>
+    <strong>다음 강의가 이 강의의 진짜 목적지입니다.</strong> 오늘 만든 인물 데이터셋을 가지고, 같은 인물이 실제로 움직이는 AI 영상을 직접 만들어볼 거예요. 오늘도 수고하셨어요!</p>
   </div>
   <div class="block screen">
     <div class="block-label">🖥 마무리 화면</div>

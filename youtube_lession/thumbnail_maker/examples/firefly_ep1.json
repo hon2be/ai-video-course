@@ -1,0 +1,16 @@
+{
+  "output": "/Users/honeybee/Documents/Claude/Projects/영상생성과외/youtube_lession/02-firefly-persion/thumbnail.png",
+  "theme": "firefly",
+  "badge": "EP.1 · AI 영상 제작 기초",
+  "title": ["동일 인물 AI 영상의 핵심"],
+  "subtitle": "1 - 데이터셋 만들기",
+  "title_size": 54,
+  "subtitle_size": 72,
+  "main_image": "/Users/honeybee/Documents/Claude/Projects/영상생성과외/인물1_20대_여성/개별컷/표정/표정_05.png",
+  "grid_images": [
+    "/Users/honeybee/Documents/Claude/Projects/영상생성과외/인물1_20대_여성/개별컷/클로즈업/클로즈업_03.png",
+    "/Users/honeybee/Documents/Claude/Projects/영상생성과외/인물1_20대_여성/개별컷/클로즈업/클로즈업_04.png",
+    "/Users/honeybee/Documents/Claude/Projects/영상생성과외/인물1_20대_여성/개별컷/클로즈업/클로즈업_05.png",
+    "/Users/honeybee/Documents/Claude/Projects/영상생성과외/인물1_20대_여성/개별컷/클로즈업/클로즈업_06.png"
+  ]
+}

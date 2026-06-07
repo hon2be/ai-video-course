@@ -26,9 +26,10 @@
 인물1_20대_여성/
 인물1_20대_남성/
 
-# Node / Remotion 빌드 산출물
+# Node / Vue 빌드 산출물
 node_modules/
 **/node_modules/
+pages/dist/
 .remotion/
 **/.remotion/
 **/webpack/

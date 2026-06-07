@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>썸네일 에디터 — 1280×720</title>
+<!-- Google Fonts 한국어 폰트 미리 로드 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Jua&family=Bagel+Fat+One&family=Gowun+Dodum&family=Hahmlet:wght@100..900&family=Gugi&family=Yeon+Sung&family=Single+Day&family=Stylish&family=Cute+Font&family=Sunflower:wght@300;500;700&family=Diphylleia&family=Poor+Story&family=East+Sea+Dokdo&family=Hi+Melody&family=Gaegu:wght@300;400;700&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Nanum+Pen+Script&family=Gamja+Flower&family=Song+Myung&family=Nanum+Myeongjo:wght@400;700;800&family=Black+And+White+Picture&display=swap" rel="stylesheet">
+<!-- html2canvas: PNG export -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    background: #1a1d2a;
+    color: #e8e8ec;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+  }
+
+  /* ─── 캔버스 영역 ─── */
+  .canvas-area {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      linear-gradient(45deg, #222530 25%, transparent 25%, transparent 75%, #222530 75%),
+      linear-gradient(45deg, #222530 25%, transparent 25%, transparent 75%, #222530 75%) 12px 12px,
+      #2a2d3a;
+    background-size: 24px 24px;
+    overflow: auto;
+    padding: 40px;
+  }
+  .canvas-wrapper {
+    position: relative;
+    background: #000;
+    box-shadow: 0 12px 60px rgba(0,0,0,0.5);
+  }
+  #canvas {
+    position: relative;
+    width: 1280px;
+    height: 720px;
+    background: #1a1d2a;
+    overflow: hidden;
+    transform-origin: top left;
+  }
+  .layer {
+    position: absolute;
+    cursor: move;
+    user-select: none;
+  }
+  .layer.selected {
+    outline: 2px dashed #ff6b00;
+    outline-offset: 2px;
+  }
+  .layer.hidden { display: none !important; }
+  .layer img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  .layer .text-content {
+    white-space: pre;
+    display: inline-block;
+    line-height: 1.1;
+  }
+
+  /* ─── 사이드바 ─── */
+  .sidebar {
+    width: 380px;
+    background: #232636;
+    border-left: 1px solid #353a4a;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .sidebar header {
+    padding: 16px 20px;
+    background: #1d2030;
+    border-bottom: 1px solid #353a4a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sidebar header h1 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .sidebar header .zoom-info {
+    font-size: 12px;
+    color: #888;
+  }
+  .sidebar .scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 20px;
+  }
+  .panel { margin-bottom: 24px; }
+  .panel h2 {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8a91a8;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .panel h2 button.add {
+    background: #ff6b00;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  /* ─── 레이어 리스트 ─── */
+  .layers {
+    background: #1a1d2a;
+    border-radius: 8px;
+    padding: 6px;
+    max-height: 220px;
+    overflow-y: auto;
+  }
+  .layer-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+  .layer-item:hover { background: #2a2d3a; }
+  .layer-item.active {
+    background: rgba(255,107,0,0.2);
+    border: 1px solid #ff6b00;
+  }
+  .layer-item .icon { font-size: 14px; opacity: 0.7; }
+  .layer-item .name {
+    flex: 1;
+    font-size: 13px;
+    color: #e8e8ec;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .layer-item .actions {
+    display: flex;
+    gap: 4px;
+  }
+  .layer-item button {
+    background: transparent;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+  .layer-item button:hover { background: #353a4a; color: #fff; }
+
+  /* ─── 속성 패널 ─── */
+  .props label {
+    display: block;
+    font-size: 11px;
+    color: #8a91a8;
+    margin-bottom: 4px;
+    margin-top: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .props label:first-child { margin-top: 0; }
+  .props input[type="text"],
+  .props input[type="number"],
+  .props textarea,
+  .props select {
+    width: 100%;
+    background: #1a1d2a;
+    border: 1px solid #353a4a;
+    border-radius: 6px;
+    padding: 8px 10px;
+    color: #fff;
+    font-size: 13px;
+    font-family: inherit;
+  }
+  .props textarea { resize: vertical; min-height: 50px; }
+  .props input[type="color"] {
+    width: 100%;
+    height: 32px;
+    border: 1px solid #353a4a;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #1a1d2a;
+  }
+  .props .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .props .row3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+  }
+  .props input[type="range"] {
+    width: 100%;
+  }
+  .props .toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .props .toggle input { width: auto; }
+  .props .toggle label {
+    margin: 0;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 13px;
+    color: #e8e8ec;
+  }
+
+  /* ─── 버튼들 ─── */
+  .btn-primary {
+    background: #ff6b00;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 8px;
+  }
+  .btn-primary:hover { background: #e85d00; }
+  .btn-secondary {
+    background: #353a4a;
+    color: #e8e8ec;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .btn-secondary:hover { background: #454a5a; }
+
+  .empty-msg {
+    color: #555;
+    font-size: 13px;
+    padding: 16px;
+    text-align: center;
+  }
+  .upload-area {
+    border: 2px dashed #353a4a;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    cursor: pointer;
+    color: #8a91a8;
+    font-size: 13px;
+    transition: all 0.15s;
+  }
+  .upload-area:hover {
+    border-color: #ff6b00;
+    color: #ff6b00;
+  }
+  .upload-area input { display: none; }
+</style>
+</head>
+<body>
+
+<div class="canvas-area" id="canvas-area">
+  <div class="canvas-wrapper" id="canvas-wrapper">
+    <div id="canvas"></div>
+  </div>
+</div>
+
+<aside class="sidebar">
+  <header>
+    <h1>썸네일 에디터</h1>
+    <span style="display:flex; gap:6px; align-items:center;">
+      <button class="btn-secondary" id="btn-undo" title="실행 취소 (Cmd/Ctrl+Z)" onclick="undo()" style="padding:4px 10px;">↶</button>
+      <button class="btn-secondary" id="btn-redo" title="다시 실행 (Cmd/Ctrl+Shift+Z)" onclick="redo()" style="padding:4px 10px;">↷</button>
+      <span class="zoom-info" id="zoom-info">1280×720</span>
+    </span>
+  </header>
+  <div class="scroll">
+
+    <!-- 배경 -->
+    <div class="panel">
+      <h2>배경</h2>
+      <label class="upload-area" for="bg-upload">
+        🖼️ 배경 이미지 업로드 (클릭 또는 드래그)
+        <input type="file" id="bg-upload" accept="image/*">
+      </label>
+      <label style="margin-top:12px;">배경 색</label>
+      <input type="color" id="bg-color" value="#1a1d2a">
+    </div>
+
+    <!-- 레이어 리스트 -->
+    <div class="panel">
+      <h2>
+        레이어
+        <span style="display:flex; gap:4px; flex-wrap:wrap; justify-content:flex-end;">
+          <button class="add" onclick="addTextLayer()">+ 텍스트</button>
+          <button class="add" onclick="document.getElementById('img-upload').click()">+ 이미지</button>
+          <button class="add" onclick="addShapeLayer('rect')">+ 사각형</button>
+          <button class="add" onclick="addShapeLayer('circle')">+ 원형</button>
+        </span>
+      </h2>
+      <input type="file" id="img-upload" accept="image/*" style="display:none">
+      <div class="layers" id="layers-list"></div>
+    </div>
+
+    <!-- 선택된 레이어 속성 -->
+    <div class="panel" id="props-panel">
+      <h2>속성</h2>
+      <div class="props" id="props">
+        <div class="empty-msg">레이어를 선택하세요</div>
+      </div>
+    </div>
+
+    <!-- Export -->
+    <div class="panel">
+      <h2>출력</h2>
+      <button class="btn-primary" onclick="exportPNG()">PNG로 저장 (1280×720)</button>
+      <button class="btn-secondary" style="width:100%; margin-top:8px;" onclick="exportJSON()">디자인 JSON 저장</button>
+      <label class="upload-area" style="margin-top:8px;" for="json-load">
+        📂 JSON 불러오기
+        <input type="file" id="json-load" accept=".json,application/json">
+      </label>
+    </div>
+
+  </div>
+</aside>
+
+<script>
+// ─── 폰트 카탈로그 (Google Fonts 한국어 + 인기 영문 디스플레이) ───
+const FONTS = [
+  { name: "Black Han Sans", w: [400], display: true },
+  { name: "Bagel Fat One", w: [400], display: true },
+  { name: "Do Hyeon", w: [400], display: true },
+  { name: "Jua", w: [400], display: true },
+  { name: "Gugi", w: [400], display: true },
+  { name: "Yeon Sung", w: [400], display: true },
+  { name: "Stylish", w: [400], display: true },
+  { name: "Song Myung", w: [400], display: false },
+  { name: "Hahmlet", w: [100,200,300,400,500,600,700,800,900] },
+  { name: "Noto Sans KR", w: [100,300,400,500,700,900] },
+  { name: "Nanum Gothic", w: [400,700,800] },
+  { name: "Nanum Myeongjo", w: [400,700,800] },
+  { name: "Sunflower", w: [300,500,700] },
+  { name: "Gaegu", w: [300,400,700] },
+  { name: "Gowun Dodum", w: [400] },
+  { name: "Cute Font", w: [400] },
+  { name: "Gamja Flower", w: [400] },
+  { name: "Poor Story", w: [400] },
+  { name: "East Sea Dokdo", w: [400] },
+  { name: "Hi Melody", w: [400] },
+  { name: "Single Day", w: [400] },
+  { name: "Nanum Pen Script", w: [400] },
+  { name: "Black And White Picture", w: [400] },
+  { name: "Diphylleia", w: [400] },
+];
+
+// ─── 캔버스 스케일 ───
+const canvas = document.getElementById("canvas");
+const canvasWrapper = document.getElementById("canvas-wrapper");
+const canvasArea = document.getElementById("canvas-area");
+function fitCanvas() {
+  const padding = 80;
+  const aw = canvasArea.clientWidth - padding;
+  const ah = canvasArea.clientHeight - padding;
+  const scale = Math.min(aw / 1280, ah / 720, 1);
+  canvas.style.transform = `scale(${scale})`;
+  canvasWrapper.style.width = (1280 * scale) + "px";
+  canvasWrapper.style.height = (720 * scale) + "px";
+  document.getElementById("zoom-info").textContent =
+    `1280×720 · ${Math.round(scale * 100)}%`;
+}
+window.addEventListener("resize", fitCanvas);
+setTimeout(fitCanvas, 50);
+
+// ─── 상태 ───
+let state = {
+  bgColor: "#1a1d2a",
+  bgImage: null,
+  layers: [],
+  selectedId: null,
+};
+let nextId = 1;
+
+// ─── Undo/Redo 히스토리 ───
+let history = [];
+let future = [];
+const HISTORY_LIMIT = 80;
+
+function snapshot() {
+  return JSON.stringify(state);
+}
+function pushHistory() {
+  history.push(snapshot());
+  if (history.length > HISTORY_LIMIT) history.shift();
+  future = [];
+  updateUndoButtons();
+}
+function undo() {
+  if (history.length < 2) return;
+  // 현재 → future로
+  future.push(history.pop());
+  state = JSON.parse(history[history.length - 1]);
+  updateUndoButtons();
+  render();
+}
+function redo() {
+  if (future.length === 0) return;
+  const next = future.pop();
+  history.push(next);
+  state = JSON.parse(next);
+  updateUndoButtons();
+  render();
+}
+function updateUndoButtons() {
+  document.getElementById("btn-undo").disabled = history.length < 2;
+  document.getElementById("btn-redo").disabled = future.length === 0;
+}
+
+// 속성 변경 debounce (input 연속 입력 시 한 묶음으로 history)
+let propsDebounce = null;
+function pushHistoryDebounced(ms = 400) {
+  clearTimeout(propsDebounce);
+  propsDebounce = setTimeout(() => pushHistory(), ms);
+}
+
+// ─── 배경 ───
+document.getElementById("bg-color").addEventListener("input", (e) => {
+  state.bgColor = e.target.value;
+  render();
+  pushHistoryDebounced();
+});
+document.getElementById("bg-upload").addEventListener("change", (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    state.bgImage = ev.target.result;
+    render();
+    pushHistory();
+  };
+  reader.readAsDataURL(file);
+});
+document.getElementById("img-upload").addEventListener("change", (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => addImageLayer(ev.target.result);
+  reader.readAsDataURL(file);
+});
+
+// ─── 레이어 추가 ───
+function addTextLayer(text = "텍스트를 입력하세요") {
+  const layer = {
+    id: nextId++,
+    type: "text",
+    visible: true,
+    text,
+    font: "Black Han Sans",
+    weight: 400,
+    size: 80,
+    color: "#ffffff",
+    useGradient: false,
+    gradStart: "#ffd966",
+    gradEnd: "#ff6b00",
+    gradAngle: 180,
+    strokeWidth: 6,
+    strokeColor: "#000000",
+    shadowOn: false,
+    shadowColor: "#000000",
+    shadowBlur: 12,
+    shadowX: 0,
+    shadowY: 4,
+    x: 100, y: 100,
+    rotation: 0,
+    letterSpacing: 0,
+  };
+  state.layers.push(layer);
+  state.selectedId = layer.id;
+  pushHistory();
+  render();
+}
+function addShapeLayer(shape) {
+  const layer = {
+    id: nextId++,
+    type: "shape",
+    visible: true,
+    shape, // 'rect' | 'circle'
+    w: shape === "circle" ? 120 : 200,
+    h: shape === "circle" ? 120 : 80,
+    x: 100, y: 100,
+    rotation: 0,
+    fill: "#ff6b00",
+    strokeWidth: 0,
+    strokeColor: "#000000",
+    radius: shape === "rect" ? 16 : 0,  // 둥근 사각형 조절용
+    opacity: 1,
+    shadowOn: false,
+    shadowColor: "#000000",
+    shadowBlur: 12,
+    shadowY: 4,
+  };
+  state.layers.push(layer);
+  state.selectedId = layer.id;
+  pushHistory();
+  render();
+}
+
+function addImageLayer(src) {
+  // 이미지 사이즈 자동 측정
+  const img = new Image();
+  img.onload = () => {
+    const maxW = 600;
+    const ratio = img.width / img.height;
+    let w = Math.min(maxW, img.width);
+    let h = w / ratio;
+    const layer = {
+      id: nextId++,
+      type: "image",
+      visible: true,
+      src, x: 50, y: 50, w, h,
+      rotation: 0,
+      opacity: 1,
+    };
+    state.layers.push(layer);
+    state.selectedId = layer.id;
+    pushHistory();
+    render();
+  };
+  img.src = src;
+}
+
+// ─── 렌더링 ───
+function render() {
+  // 배경
+  canvas.style.background = state.bgImage
+    ? `url(${state.bgImage}) center/cover, ${state.bgColor}`
+    : state.bgColor;
+
+  // 기존 레이어 제거
+  canvas.querySelectorAll(".layer").forEach(el => el.remove());
+
+  // 레이어 그리기 (배열 순서 = 아래→위 z-index)
+  state.layers.forEach((L, idx) => {
+    const el = document.createElement("div");
+    el.className = "layer" + (L.id === state.selectedId ? " selected" : "")
+                 + (L.visible ? "" : " hidden");
+    el.dataset.id = L.id;
+    el.style.left = L.x + "px";
+    el.style.top = L.y + "px";
+    el.style.zIndex = idx + 1;
+    if (L.rotation) el.style.transform = `rotate(${L.rotation}deg)`;
+
+    if (L.type === "text") {
+      const span = document.createElement("span");
+      span.className = "text-content";
+      span.textContent = L.text;
+      span.style.fontFamily = `"${L.font}", sans-serif`;
+      span.style.fontWeight = L.weight;
+      span.style.fontSize = L.size + "px";
+      span.style.letterSpacing = L.letterSpacing + "px";
+
+      if (L.useGradient) {
+        span.style.background = `linear-gradient(${L.gradAngle}deg, ${L.gradStart}, ${L.gradEnd})`;
+        span.style.webkitBackgroundClip = "text";
+        span.style.backgroundClip = "text";
+        span.style.webkitTextFillColor = "transparent";
+        span.style.color = "transparent";
+      } else {
+        span.style.color = L.color;
+      }
+
+      if (L.strokeWidth > 0) {
+        span.style.webkitTextStroke = `${L.strokeWidth}px ${L.strokeColor}`;
+        // paint-order로 stroke가 글자 뒤로 가게
+        span.style.paintOrder = "stroke fill";
+      }
+
+      if (L.shadowOn) {
+        span.style.textShadow = `${L.shadowX}px ${L.shadowY}px ${L.shadowBlur}px ${L.shadowColor}`;
+      } else {
+        span.style.textShadow = "none";
+      }
+
+      el.appendChild(span);
+    } else if (L.type === "image") {
+      const img = document.createElement("img");
+      img.src = L.src;
+      el.style.width = L.w + "px";
+      el.style.height = L.h + "px";
+      el.style.opacity = L.opacity ?? 1;
+      el.appendChild(img);
+    } else if (L.type === "shape") {
+      el.style.width = L.w + "px";
+      el.style.height = L.h + "px";
+      el.style.opacity = L.opacity ?? 1;
+      const shape = document.createElement("div");
+      shape.style.width = "100%";
+      shape.style.height = "100%";
+      shape.style.background = L.fill;
+      if (L.shape === "circle") {
+        shape.style.borderRadius = "50%";
+      } else {
+        shape.style.borderRadius = (L.radius ?? 0) + "px";
+      }
+      if (L.strokeWidth > 0) {
+        shape.style.border = `${L.strokeWidth}px solid ${L.strokeColor}`;
+      }
+      if (L.shadowOn) {
+        shape.style.boxShadow = `0 ${L.shadowY}px ${L.shadowBlur}px ${L.shadowColor}`;
+      }
+      el.appendChild(shape);
+    }
+
+    // 드래그
+    el.addEventListener("mousedown", (e) => startDrag(e, L));
+    el.addEventListener("click", (e) => {
+      e.stopPropagation();
+      selectLayer(L.id);
+    });
+
+    canvas.appendChild(el);
+  });
+
+  renderLayerList();
+  renderProps();
+}
+
+// ─── 드래그 ───
+let drag = null;
+function startDrag(e, L) {
+  selectLayer(L.id);
+  const scale = parseFloat(canvas.style.transform.replace(/[^\d.]/g, "")) || 1;
+  drag = {
+    id: L.id,
+    startX: e.clientX,
+    startY: e.clientY,
+    origX: L.x,
+    origY: L.y,
+    scale,
+  };
+  e.preventDefault();
+}
+document.addEventListener("mousemove", (e) => {
+  if (!drag) return;
+  const L = state.layers.find(l => l.id === drag.id);
+  if (!L) return;
+  L.x = Math.round(drag.origX + (e.clientX - drag.startX) / drag.scale);
+  L.y = Math.round(drag.origY + (e.clientY - drag.startY) / drag.scale);
+  // 캔버스에서 element 위치만 업데이트 (전체 재렌더링 X)
+  const el = canvas.querySelector(`.layer[data-id="${L.id}"]`);
+  if (el) { el.style.left = L.x + "px"; el.style.top = L.y + "px"; }
+  renderProps();
+});
+document.addEventListener("mouseup", () => {
+  if (drag) pushHistory();
+  drag = null;
+});
+
+// 캔버스 빈 곳 클릭 → 선택 해제
+canvas.addEventListener("click", (e) => {
+  if (e.target === canvas) {
+    state.selectedId = null;
+    render();
+  }
+});
+
+// ─── 레이어 선택 ───
+function selectLayer(id) {
+  state.selectedId = id;
+  render();
+}
+function deleteLayer(id) {
+  state.layers = state.layers.filter(l => l.id !== id);
+  if (state.selectedId === id) state.selectedId = null;
+  pushHistory();
+  render();
+}
+function moveLayer(id, dir) {
+  const i = state.layers.findIndex(l => l.id === id);
+  if (i < 0) return;
+  const ni = i + dir;
+  if (ni < 0 || ni >= state.layers.length) return;
+  [state.layers[i], state.layers[ni]] = [state.layers[ni], state.layers[i]];
+  pushHistory();
+  render();
+}
+function toggleVisible(id) {
+  const L = state.layers.find(l => l.id === id);
+  if (L) { L.visible = !L.visible; pushHistory(); render(); }
+}
+
+// ─── 레이어 리스트 UI ───
+function renderLayerList() {
+  const list = document.getElementById("layers-list");
+  if (state.layers.length === 0) {
+    list.innerHTML = '<div class="empty-msg">레이어가 없습니다</div>';
+    return;
+  }
+  // 위→아래: 가장 앞쪽(z 큰)이 리스트 맨 위
+  list.innerHTML = "";
+  [...state.layers].reverse().forEach(L => {
+    const item = document.createElement("div");
+    item.className = "layer-item" + (L.id === state.selectedId ? " active" : "");
+    const name = L.type === "text"
+      ? (L.text.length > 20 ? L.text.slice(0, 20) + "…" : L.text)
+      : L.type === "image" ? "이미지"
+      : L.shape === "circle" ? "원형" : "사각형";
+    const icon = L.type === "text" ? "T"
+      : L.type === "image" ? "🖼"
+      : L.shape === "circle" ? "⬤" : "▢";
+    item.innerHTML = `
+      <span class="icon">${icon}</span>
+      <span class="name">${name}</span>
+      <span class="actions">
+        <button title="보이기/숨기기" onclick="event.stopPropagation();toggleVisible(${L.id})">${L.visible ? "👁" : "⊘"}</button>
+        <button title="위로" onclick="event.stopPropagation();moveLayer(${L.id},1)">↑</button>
+        <button title="아래로" onclick="event.stopPropagation();moveLayer(${L.id},-1)">↓</button>
+        <button title="삭제" onclick="event.stopPropagation();deleteLayer(${L.id})">🗑</button>
+      </span>`;
+    item.onclick = () => selectLayer(L.id);
+    list.appendChild(item);
+  });
+}
+
+// ─── 속성 패널 ───
+function renderProps() {
+  const box = document.getElementById("props");
+  const L = state.layers.find(l => l.id === state.selectedId);
+  if (!L) {
+    box.innerHTML = '<div class="empty-msg">레이어를 선택하세요</div>';
+    return;
+  }
+  if (L.type === "text") renderTextProps(box, L);
+  else if (L.type === "image") renderImageProps(box, L);
+  else renderShapeProps(box, L);
+}
+
+function renderShapeProps(box, L) {
+  box.innerHTML = `
+    <div class="row">
+      <div>
+        <label>너비 (px)</label>
+        <input type="number" data-prop="w" value="${Math.round(L.w)}" min="1" step="1">
+      </div>
+      <div>
+        <label>높이 (px)</label>
+        <input type="number" data-prop="h" value="${Math.round(L.h)}" min="1" step="1">
+      </div>
+    </div>
+    <label>채움 색</label>
+    <input type="color" data-prop="fill" value="${L.fill}">
+    ${L.shape === "rect" ? `
+      <label>모서리 둥글기 (px)</label>
+      <input type="number" data-prop="radius" value="${L.radius ?? 0}" min="0" max="500" step="1">
+    ` : ""}
+    <div class="row">
+      <div>
+        <label>외곽선 (px)</label>
+        <input type="number" data-prop="strokeWidth" value="${L.strokeWidth}" min="0" max="50" step="1">
+      </div>
+      <div>
+        <label>외곽선 색</label>
+        <input type="color" data-prop="strokeColor" value="${L.strokeColor}">
+      </div>
+    </div>
+    <div class="toggle">
+      <input type="checkbox" id="sh-shadow" data-prop="shadowOn" ${L.shadowOn ? "checked" : ""}>
+      <label for="sh-shadow">그림자</label>
+    </div>
+    ${L.shadowOn ? `
+      <div class="row3">
+        <div>
+          <label>색</label>
+          <input type="color" data-prop="shadowColor" value="${L.shadowColor}">
+        </div>
+        <div>
+          <label>흐림</label>
+          <input type="number" data-prop="shadowBlur" value="${L.shadowBlur}" min="0" max="60" step="1">
+        </div>
+        <div>
+          <label>오프셋</label>
+          <input type="number" data-prop="shadowY" value="${L.shadowY}" min="-20" max="20" step="1">
+        </div>
+      </div>
+    ` : ""}
+    <div class="row3">
+      <div>
+        <label>X (px)</label>
+        <input type="number" data-prop="x" value="${L.x}" step="1">
+      </div>
+      <div>
+        <label>Y (px)</label>
+        <input type="number" data-prop="y" value="${L.y}" step="1">
+      </div>
+      <div>
+        <label>회전 (°)</label>
+        <input type="number" data-prop="rotation" value="${L.rotation}" min="-180" max="180" step="1">
+      </div>
+    </div>
+    <label>투명도</label>
+    <input type="range" data-prop="opacity" min="0" max="1" step="0.05" value="${L.opacity ?? 1}">
+  `;
+  bindProps(L);
+}
+
+function renderTextProps(box, L) {
+  // 폰트 옵션
+  const fontOpts = FONTS.map(f =>
+    `<option value="${f.name}" ${f.name === L.font ? "selected" : ""}>${f.name}${f.display ? " (디스플레이)" : ""}</option>`
+  ).join("");
+  // 폰트 두께
+  const currentFont = FONTS.find(f => f.name === L.font) || FONTS[0];
+  const weightOpts = currentFont.w.map(w =>
+    `<option value="${w}" ${w === L.weight ? "selected" : ""}>${w}</option>`
+  ).join("");
+
+  box.innerHTML = `
+    <label>텍스트</label>
+    <textarea data-prop="text" rows="2">${L.text}</textarea>
+
+    <label>폰트</label>
+    <select data-prop="font">${fontOpts}</select>
+
+    <div class="row">
+      <div>
+        <label>두께</label>
+        <select data-prop="weight">${weightOpts}</select>
+      </div>
+      <div>
+        <label>크기 (px)</label>
+        <input type="number" data-prop="size" value="${L.size}" min="8" max="400" step="1">
+      </div>
+    </div>
+
+    <label>자간 (px)</label>
+    <input type="number" data-prop="letterSpacing" value="${L.letterSpacing}" min="-10" max="30" step="0.5">
+
+    <div class="toggle">
+      <input type="checkbox" id="gradOn" data-prop="useGradient" ${L.useGradient ? "checked" : ""}>
+      <label for="gradOn">그라데이션 채움</label>
+    </div>
+
+    ${L.useGradient ? `
+      <div class="row3">
+        <div>
+          <label>시작색</label>
+          <input type="color" data-prop="gradStart" value="${L.gradStart}">
+        </div>
+        <div>
+          <label>끝색</label>
+          <input type="color" data-prop="gradEnd" value="${L.gradEnd}">
+        </div>
+        <div>
+          <label>각도</label>
+          <input type="number" data-prop="gradAngle" value="${L.gradAngle}" min="0" max="360" step="15">
+        </div>
+      </div>
+    ` : `
+      <label>색상</label>
+      <input type="color" data-prop="color" value="${L.color}">
+    `}
+
+    <div class="row">
+      <div>
+        <label>외곽선 두께 (px)</label>
+        <input type="number" data-prop="strokeWidth" value="${L.strokeWidth}" min="0" max="30" step="1">
+      </div>
+      <div>
+        <label>외곽선 색상</label>
+        <input type="color" data-prop="strokeColor" value="${L.strokeColor}">
+      </div>
+    </div>
+
+    <div class="toggle">
+      <input type="checkbox" id="shadowOn" data-prop="shadowOn" ${L.shadowOn ? "checked" : ""}>
+      <label for="shadowOn">그림자</label>
+    </div>
+    ${L.shadowOn ? `
+      <div class="row3">
+        <div>
+          <label>색</label>
+          <input type="color" data-prop="shadowColor" value="${L.shadowColor}">
+        </div>
+        <div>
+          <label>흐림</label>
+          <input type="number" data-prop="shadowBlur" value="${L.shadowBlur}" min="0" max="60" step="1">
+        </div>
+        <div>
+          <label>오프셋</label>
+          <input type="number" data-prop="shadowY" value="${L.shadowY}" min="-20" max="20" step="1">
+        </div>
+      </div>
+    ` : ""}
+
+    <div class="row3">
+      <div>
+        <label>X (px)</label>
+        <input type="number" data-prop="x" value="${L.x}" step="1">
+      </div>
+      <div>
+        <label>Y (px)</label>
+        <input type="number" data-prop="y" value="${L.y}" step="1">
+      </div>
+      <div>
+        <label>회전 (°)</label>
+        <input type="number" data-prop="rotation" value="${L.rotation}" min="-180" max="180" step="1">
+      </div>
+    </div>
+  `;
+  bindProps(L);
+}
+
+function renderImageProps(box, L) {
+  box.innerHTML = `
+    <div class="row">
+      <div>
+        <label>너비 (px)</label>
+        <input type="number" data-prop="w" value="${Math.round(L.w)}" min="10" step="1">
+      </div>
+      <div>
+        <label>높이 (px)</label>
+        <input type="number" data-prop="h" value="${Math.round(L.h)}" min="10" step="1">
+      </div>
+    </div>
+    <div class="row3">
+      <div>
+        <label>X (px)</label>
+        <input type="number" data-prop="x" value="${L.x}" step="1">
+      </div>
+      <div>
+        <label>Y (px)</label>
+        <input type="number" data-prop="y" value="${L.y}" step="1">
+      </div>
+      <div>
+        <label>회전 (°)</label>
+        <input type="number" data-prop="rotation" value="${L.rotation}" min="-180" max="180" step="1">
+      </div>
+    </div>
+    <label>투명도</label>
+    <input type="range" data-prop="opacity" min="0" max="1" step="0.05" value="${L.opacity ?? 1}">
+  `;
+  bindProps(L);
+}
+
+function bindProps(L) {
+  document.querySelectorAll("#props [data-prop]").forEach(input => {
+    const prop = input.dataset.prop;
+    input.addEventListener("input", () => {
+      let v = input.value;
+      if (input.type === "number" || input.type === "range") v = parseFloat(v);
+      if (input.type === "checkbox") v = input.checked;
+      L[prop] = v;
+      // 폰트 변경 시 두께 옵션 재구성
+      if (prop === "font") {
+        const f = FONTS.find(f => f.name === v);
+        if (f && !f.w.includes(L.weight)) L.weight = f.w[0];
+      }
+      render();
+      pushHistoryDebounced();
+    });
+  });
+}
+
+// ─── Export — Canvas API 직접 렌더링 (그라데이션/스트로크 정확) ───
+function loadImageEl(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = src;
+  });
+}
+
+async function ensureFontsLoaded() {
+  // 사용된 폰트들 미리 load
+  const needed = new Set();
+  state.layers.forEach(L => {
+    if (L.type === "text" && L.visible) {
+      needed.add(`${L.weight} ${L.size}px "${L.font}"`);
+    }
+  });
+  await Promise.all([...needed].map(spec => {
+    try { return document.fonts.load(spec); } catch (e) { return null; }
+  }));
+  await document.fonts.ready;
+}
+
+function applyShadow(ctx, L) {
+  if (L.shadowOn) {
+    ctx.shadowColor = L.shadowColor;
+    ctx.shadowBlur = L.shadowBlur ?? 0;
+    ctx.shadowOffsetX = L.shadowX ?? 0;
+    ctx.shadowOffsetY = L.shadowY ?? 0;
+  }
+}
+function clearShadow(ctx) {
+  ctx.shadowColor = "transparent";
+  ctx.shadowBlur = 0;
+  ctx.shadowOffsetX = 0;
+  ctx.shadowOffsetY = 0;
+}
+
+function measureSpacedWidth(ctx, text, letterSpacing) {
+  if (!letterSpacing) return ctx.measureText(text).width;
+  let w = 0;
+  for (let i = 0; i < text.length; i++) {
+    w += ctx.measureText(text[i]).width;
+    if (i < text.length - 1) w += letterSpacing;
+  }
+  return w;
+}
+
+function drawSpacedText(ctx, text, x, y, letterSpacing, mode) {
+  let cx = x;
+  for (const ch of text) {
+    if (mode === "stroke") ctx.strokeText(ch, cx, y);
+    else ctx.fillText(ch, cx, y);
+    cx += ctx.measureText(ch).width + (letterSpacing || 0);
+  }
+}
+
+function drawTextLayer(ctx, L) {
+  ctx.font = `${L.weight} ${L.size}px "${L.font}", sans-serif`;
+  ctx.textBaseline = "top";
+  ctx.textAlign = "left";
+  const ls = L.letterSpacing || 0;
+  const w = measureSpacedWidth(ctx, L.text, ls);
+  // 글자 높이는 size에 비례 (대략 1.1x). 정확한 글리프 boundary는 측정 어려움.
+  const h = L.size * 1.05;
+
+  // 외곽선 먼저 (그림자도 함께)
+  if (L.strokeWidth > 0) {
+    applyShadow(ctx, L);
+    ctx.strokeStyle = L.strokeColor;
+    ctx.lineWidth = L.strokeWidth * 2;  // 스트로크는 안팎으로 그려지므로 두 배
+    ctx.lineJoin = "round";
+    ctx.miterLimit = 2;
+    if (ls) drawSpacedText(ctx, L.text, L.x, L.y, ls, "stroke");
+    else ctx.strokeText(L.text, L.x, L.y);
+    clearShadow(ctx);
+  } else {
+    applyShadow(ctx, L);
+  }
+
+  // 채움 — 그라데이션 또는 단색
+  if (L.useGradient) {
+    const ang = (L.gradAngle - 90) * Math.PI / 180;
+    const dx = Math.cos(ang);
+    const dy = Math.sin(ang);
+    const cx = L.x + w / 2;
+    const cy = L.y + h / 2;
+    const half = (Math.abs(dx) * w + Math.abs(dy) * h) / 2;
+    const grad = ctx.createLinearGradient(
+      cx - dx * half, cy - dy * half,
+      cx + dx * half, cy + dy * half,
+    );
+    grad.addColorStop(0, L.gradStart);
+    grad.addColorStop(1, L.gradEnd);
+    ctx.fillStyle = grad;
+  } else {
+    ctx.fillStyle = L.color;
+  }
+
+  if (ls) drawSpacedText(ctx, L.text, L.x, L.y, ls, "fill");
+  else ctx.fillText(L.text, L.x, L.y);
+
+  clearShadow(ctx);
+}
+
+function drawShapePath(ctx, L) {
+  ctx.beginPath();
+  if (L.shape === "circle") {
+    ctx.ellipse(L.x + L.w / 2, L.y + L.h / 2, L.w / 2, L.h / 2, 0, 0, Math.PI * 2);
+  } else {
+    const r = Math.min(L.radius ?? 0, L.w / 2, L.h / 2);
+    if (typeof ctx.roundRect === "function") {
+      ctx.roundRect(L.x, L.y, L.w, L.h, r);
+    } else if (r > 0) {
+      const x = L.x, y = L.y, w = L.w, h = L.h;
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+    } else {
+      ctx.rect(L.x, L.y, L.w, L.h);
+    }
+  }
+}
+
+function drawShapeLayer(ctx, L) {
+  ctx.globalAlpha = L.opacity ?? 1;
+  applyShadow(ctx, L);
+  ctx.fillStyle = L.fill;
+  drawShapePath(ctx, L);
+  ctx.fill();
+  clearShadow(ctx);
+  if (L.strokeWidth > 0) {
+    ctx.strokeStyle = L.strokeColor;
+    ctx.lineWidth = L.strokeWidth;
+    drawShapePath(ctx, L);
+    ctx.stroke();
+  }
+  ctx.globalAlpha = 1;
+}
+
+async function exportPNG() {
+  const c = document.createElement("canvas");
+  c.width = 1280;
+  c.height = 720;
+  const ctx = c.getContext("2d");
+
+  // 1) 배경 단색
+  ctx.fillStyle = state.bgColor;
+  ctx.fillRect(0, 0, 1280, 720);
+
+  // 2) 배경 이미지 (cover fit)
+  if (state.bgImage) {
+    try {
+      const img = await loadImageEl(state.bgImage);
+      const ratio = img.width / img.height;
+      const tgt = 1280 / 720;
+      let sx, sy, sw, sh;
+      if (ratio > tgt) {
+        sh = img.height;
+        sw = sh * tgt;
+        sx = (img.width - sw) / 2;
+        sy = 0;
+      } else {
+        sw = img.width;
+        sh = sw / tgt;
+        sx = 0;
+        sy = (img.height - sh) / 2;
+      }
+      ctx.drawImage(img, sx, sy, sw, sh, 0, 0, 1280, 720);
+    } catch (e) {
+      console.warn("bg image load fail", e);
+    }
+  }
+
+  // 3) 폰트 미리 로드
+  await ensureFontsLoaded();
+
+  // 4) 레이어 (아래→위 순서대로)
+  for (const L of state.layers) {
+    if (!L.visible) continue;
+    ctx.save();
+    if (L.rotation) {
+      let cx, cy;
+      if (L.type === "text") {
+        ctx.font = `${L.weight} ${L.size}px "${L.font}", sans-serif`;
+        const w = measureSpacedWidth(ctx, L.text, L.letterSpacing || 0);
+        cx = L.x + w / 2;
+        cy = L.y + L.size * 0.55;
+      } else {
+        cx = L.x + (L.w || 100) / 2;
+        cy = L.y + (L.h || 100) / 2;
+      }
+      ctx.translate(cx, cy);
+      ctx.rotate(L.rotation * Math.PI / 180);
+      ctx.translate(-cx, -cy);
+    }
+
+    if (L.type === "text") {
+      drawTextLayer(ctx, L);
+    } else if (L.type === "image") {
+      try {
+        const img = await loadImageEl(L.src);
+        ctx.globalAlpha = L.opacity ?? 1;
+        ctx.drawImage(img, L.x, L.y, L.w, L.h);
+        ctx.globalAlpha = 1;
+      } catch (e) {
+        console.warn("image layer fail", e);
+      }
+    } else if (L.type === "shape") {
+      drawShapeLayer(ctx, L);
+    }
+
+    ctx.restore();
+  }
+
+  // 5) 다운로드
+  const link = document.createElement("a");
+  link.download = "thumbnail.png";
+  link.href = c.toDataURL("image/png");
+  link.click();
+}
+
+function exportJSON() {
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+  const link = document.createElement("a");
+  link.download = "thumbnail-design.json";
+  link.href = URL.createObjectURL(blob);
+  link.click();
+}
+
+document.getElementById("json-load").addEventListener("change", (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    try {
+      const loaded = JSON.parse(ev.target.result);
+      state = loaded;
+      nextId = Math.max(0, ...state.layers.map(l => l.id)) + 1;
+      document.getElementById("bg-color").value = state.bgColor;
+      history = []; future = [];
+      pushHistory();
+      render();
+    } catch (err) {
+      alert("JSON 로드 실패: " + err.message);
+    }
+  };
+  reader.readAsText(file);
+});
+
+// ─── 키보드 단축키 ───
+document.addEventListener("keydown", (e) => {
+  const isInput = e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA";
+  const mod = e.metaKey || e.ctrlKey;
+
+  // Undo / Redo는 input 안에서도 작동 (단 textarea/input의 native undo와 충돌하지 않도록 input 바깥에서만)
+  if (mod && e.key.toLowerCase() === "z") {
+    if (isInput) return; // input에서 native undo 허용
+    e.preventDefault();
+    if (e.shiftKey) redo();
+    else undo();
+    return;
+  }
+  if (mod && e.key.toLowerCase() === "y" && !isInput) {
+    e.preventDefault();
+    redo();
+    return;
+  }
+
+  if (isInput) return;
+  const L = state.layers.find(l => l.id === state.selectedId);
+  if (!L) return;
+
+  // 삭제: Delete 키 또는 Ctrl/Cmd+Backspace
+  if (e.key === "Delete" || (mod && e.key === "Backspace")) {
+    e.preventDefault();
+    deleteLayer(L.id);
+  } else if (e.key === "ArrowUp") {
+    L.y -= e.shiftKey ? 10 : 1; render(); pushHistoryDebounced();
+  } else if (e.key === "ArrowDown") {
+    L.y += e.shiftKey ? 10 : 1; render(); pushHistoryDebounced();
+  } else if (e.key === "ArrowLeft") {
+    L.x -= e.shiftKey ? 10 : 1; render(); pushHistoryDebounced();
+  } else if (e.key === "ArrowRight") {
+    L.x += e.shiftKey ? 10 : 1; render(); pushHistoryDebounced();
+  }
+});
+
+// ─── 초기 샘플 ───
+addTextLayer("동일 인물 AI 영상의 핵심");
+state.layers[0].x = 540;
+state.layers[0].y = 200;
+state.layers[0].size = 80;
+state.layers[0].weight = 400;
+state.layers[0].strokeWidth = 6;
+
+addTextLayer("1 - 데이터셋 만들기");
+state.layers[1].x = 540;
+state.layers[1].y = 320;
+state.layers[1].size = 120;
+state.layers[1].useGradient = true;
+state.layers[1].strokeWidth = 8;
+state.selectedId = state.layers[1].id;
+pushHistory();  // 초기 스냅샷
+render();
+</script>
+
+</body>
+</html>
