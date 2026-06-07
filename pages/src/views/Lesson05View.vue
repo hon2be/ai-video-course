@@ -506,8 +506,8 @@ fair skin, natural makeup,
     </ul>
   </div>
   <div class="ss-row">
-    <div><img src="/ai-video-course/images/screenshots/08_파이어플라이홈_맞춤형모델메뉴.png" alt="파이어플라이 홈 — 맞춤형 모델 메뉴"><div class="ss-cap">사이드바 하단 "맞춤형 모델" 클릭</div></div>
-    <div><img src="/ai-video-course/images/screenshots/09_교육방법선택_사진스타일.png" alt="교육 방법 선택"><div class="ss-cap">교육 방법 선택 → "사진 스타일" 선택</div></div>
+    <div><img src="/ai-video-course/images/screenshots/sc_08_ff_home.png" alt="파이어플라이 홈 — 맞춤형 모델 메뉴"><div class="ss-cap">사이드바 하단 "맞춤형 모델" 클릭</div></div>
+    <div><img src="/ai-video-course/images/screenshots/sc_09_training_method.png" alt="교육 방법 선택"><div class="ss-cap">교육 방법 선택 → "사진 스타일" 선택</div></div>
   </div>
   <div class="block caution">
     <div class="block-label">⚠️ 교육 방법 선택 기준</div>
@@ -536,13 +536,13 @@ fair skin, natural makeup,
       <li>권장 총합: <strong>최소 20장 이상</strong>, 많을수록 모델 점수↑ (최대 500장)</li>
     </ul>
   </div>
-  <img class="ss" src="/ai-video-course/images/screenshots/06_개별컷_업로드화면.png" alt="개별컷 업로드 화면">
+  <img class="ss" src="/ai-video-course/images/screenshots/sc_06_upload.png" alt="개별컷 업로드 화면">
   <div class="ss-cap">개별컷 업로드 후 분석 중 화면 — 우측 상단 모델 점수 확인</div>
   <div class="block caution">
     <div class="block-label">⚠️ 해상도 경고 대응</div>
     <p>업로드 시 일부 이미지에 <strong>"이미지 해상도 — 최상의 품질을 얻으려면 이미지가 1,024×1,024픽셀 이상이어야 합니다"</strong> 경고가 뜰 수 있어요.<br><br>
     해당 이미지는 <strong><a href="https://upscayl.org/" target="_blank">Upscayl</a></strong>로 4배 업스케일 후 다시 업로드하세요. 경고 이미지가 많을수록 모델 점수가 낮아집니다.</p>
-    <img class="ss" src="/ai-video-course/images/screenshots/07_캡션태그검토_해상도경고.png" alt="해상도 경고 화면" style="margin-top:10px;">
+    <img class="ss" src="/ai-video-course/images/screenshots/sc_07_resolution_warning.png" alt="해상도 경고 화면" style="margin-top:10px;">
     <div class="ss-cap">해상도 경고(주황 박스)가 있는 이미지는 Upscayl 업스케일 후 교체</div>
   </div>
 
@@ -553,7 +553,7 @@ fair skin, natural makeup,
     <p>이미지를 올리면 AI가 자동으로 각 이미지의 캡션을 생성하고, 오른쪽 패널에 모델 태그를 제안합니다.<br><br>
     캡션은 각 이미지가 무엇을 담고 있는지 설명하는 텍스트예요. 자동 생성된 캡션이 맞지 않으면 직접 수정할 수 있습니다.</p>
   </div>
-  <img class="ss" src="/ai-video-course/images/screenshots/02_캡션태그검토.png" alt="캡션 및 태그 검토 화면">
+  <img class="ss" src="/ai-video-course/images/screenshots/sc_02_caption_tags.png" alt="캡션 및 태그 검토 화면">
   <div class="ss-cap">캡션(각 이미지 아래) + 모델 태그(우측 패널) 확인 화면</div>
   <div class="block screen">
     <div class="block-label">🖥 캡션 수정 예시</div>
@@ -585,9 +585,9 @@ fair skin, natural makeup,
       <li>학습 소요 시간: 통상 <strong>30분~2시간</strong> (이미지 수에 따라 다름)</li>
     </ul>
   </div>
-  <img class="ss" src="/ai-video-course/images/screenshots/01_모델학습중_이미지분석.png" alt="모델 분석 중 화면">
+  <img class="ss" src="/ai-video-course/images/screenshots/sc_01_analyzing.png" alt="모델 분석 중 화면">
   <div class="ss-cap">"분석 중입니다" 배너 — 분석 완료 후 교육하기 버튼 활성화</div>
-  <img class="ss" src="/ai-video-course/images/screenshots/03_모델저장완료_알림.png" alt="모델 저장 완료 알림">
+  <img class="ss" src="/ai-video-course/images/screenshots/sc_03_saved.png" alt="모델 저장 완료 알림">
   <div class="ss-cap">교육 시작 후 저장 완료 알림 — 학습 완료 시 이메일 수신</div>
   <div class="block tip">
     <div class="block-label">💡 모델 점수 (beta) 이해하기</div>
@@ -597,7 +597,7 @@ fair skin, natural makeup,
       <li><strong>70~90점:</strong> 양호 — 일반적 사용에 충분, 이미지 추가 시 개선 가능</li>
       <li><strong>70점 미만:</strong> 보통 — 이미지 수량 부족 or 해상도 문제. 이미지 추가 권장</li>
     </ul>
-    <img class="ss" src="/ai-video-course/images/screenshots/04_모델점수_생성하기버튼.png" alt="모델 점수 72 & 생성하기 버튼" style="margin-top:10px;">
+    <img class="ss" src="/ai-video-course/images/screenshots/sc_04_score.png" alt="모델 점수 72 & 생성하기 버튼" style="margin-top:10px;">
     <div class="ss-cap">모델 점수 72점 — "Firefly에서 생성하기" 버튼으로 바로 생성 화면 이동</div>
   </div>
 
@@ -620,7 +620,7 @@ fair skin, natural makeup,
       <li>결과 중 인물이 가장 잘 맞게 나온 컷 2~4장 선택</li>
     </ul>
   </div>
-  <img class="ss" src="/ai-video-course/images/screenshots/05_일반설정_모델선택.png" alt="일반 설정 — 맞춤형 모델 선택">
+  <img class="ss" src="/ai-video-course/images/screenshots/sc_05_model_select.png" alt="일반 설정 — 맞춤형 모델 선택">
   <div class="ss-cap">일반 설정 → 모델 드롭다운에서 학습한 모델 선택 + 업스케일 및 향상 ON</div>
   <div class="block screen">
     <div class="block-label">📝 1단계 프롬프트 예시</div>
@@ -637,7 +637,7 @@ fair skin, natural makeup,
     <div class="block-label">⚠️ 1단계에서 이런 결과가 나왔다면?</div>
     <p>맞춤형 모델 단독으로 생성 시 인물 얼굴이 다르거나, 학습한 인물의 특징이 섞이는 경우가 있어요.<br>
     이건 정상입니다 — 이 결과 중 <strong>가장 비슷하게 나온 컷</strong>을 골라서 2단계로 넘어갑니다.</p>
-    <img class="ss" src="/ai-video-course/images/screenshots/11_생성결과_모델단독_불완전.png" alt="모델 단독 생성 — 불완전한 결과" style="margin-top:10px;">
+    <img class="ss" src="/ai-video-course/images/screenshots/sc_11_incomplete.png" alt="모델 단독 생성 — 불완전한 결과" style="margin-top:10px;">
     <div class="ss-cap">맞춤형 모델 단독 생성 결과 — 인물이 다소 섞이거나 틀릴 수 있음 (정상)</div>
   </div>
 
@@ -651,7 +651,7 @@ fair skin, natural makeup,
       <li>인물 일관성이 크게 향상된 최종 결과 확인</li>
     </ul>
   </div>
-  <img class="ss" src="/ai-video-course/images/screenshots/10_생성결과_참조이미지6장_성공.png" alt="참조 이미지 6장 + 맞춤형 모델 최종 결과">
+  <img class="ss" src="/ai-video-course/images/screenshots/sc_10_success.png" alt="참조 이미지 6장 + 맞춤형 모델 최종 결과">
   <div class="ss-cap">맞춤형 모델 + 참조 이미지 6장 조합 — 동일 인물이 서울 군중 속 장면에 정확히 등장</div>
   <div class="block tip">
     <div class="block-label">💡 2단계 참조 이미지 구성 전략</div>
