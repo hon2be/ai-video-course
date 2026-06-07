@@ -101,18 +101,50 @@ body {
   min-width: 0;
 }
 
-/* ── 교재 스타일 (기존 공통) ── */
+/* ── 교재 래퍼 — 패딩/마진 없이 꽉 채움 ── */
 .lesson-body {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 60px 48px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
-/* 반응형 */
+/* ── 레거시 교재 HTML 내부 여백 전역 재정의 ── */
+/* 기존 HTML 파일들이 .main, .content-body 등에 과도한 패딩을 가짐 */
+.lesson-body .app,
+.lesson-body .main,
+.lesson-body .content-body,
+.lesson-body .content-col,
+.lesson-body .main-col {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+}
+
+/* 사이드바는 Vue 사이드바가 담당하므로 레거시 사이드바 숨김 */
+.lesson-body .sidebar,
+.lesson-body aside {
+  display: none !important;
+}
+
+/* 레거시 top-bar / header 숨김 */
+.lesson-body .top-bar,
+.lesson-body header.top-bar {
+  display: none !important;
+}
+
+/* ── 반응형 ── */
 @media (max-width: 768px) {
   .sidebar { transform: translateX(-100%); transition: transform .25s; }
   .sidebar.open { transform: translateX(0); }
   .mobile-header { display: flex; }
   .main-content { margin-left: 0; padding-top: 56px; }
-  .lesson-body { padding: 32px 20px; }
+  .lesson-body .app,
+  .lesson-body .main,
+  .lesson-body .content-body,
+  .lesson-body .main-col {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
 }

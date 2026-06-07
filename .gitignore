@@ -34,3 +34,7 @@ pages/dist/
 **/.remotion/
 **/webpack/
 *.pack
+
+# 환경 변수
+pages/.env
+pages/.env.local
