@@ -107,22 +107,42 @@ body {
 /* ── 교재 래퍼 ── */
 .lesson-body { width: 100%; padding: 0; margin: 0; }
 
-/* ── 레거시 HTML 여백 재정의 ── */
-.lesson-body .app,
-.lesson-body .main,
-.lesson-body .content-body,
-.lesson-body .content-col,
-.lesson-body .main-col {
-  max-width: 100% !important;
+/* ── 레거시 HTML 전체 재정의 ── */
+
+/* flex 컨테이너 해제 → block으로 */
+.lesson-body .app {
+  display: block !important;
   width: 100% !important;
-  margin-left: 0 !important;
-  padding-left: 40px !important;
-  padding-right: 40px !important;
 }
+
+/* 레거시 사이드바·헤더 완전 제거 */
 .lesson-body .sidebar,
 .lesson-body aside,
 .lesson-body .top-bar,
-.lesson-body header.top-bar { display: none !important; }
+.lesson-body header,
+.lesson-body header.top-bar,
+.lesson-body nav.nav { display: none !important; }
+
+/* 메인 콘텐츠 영역 full-width */
+.lesson-body .main,
+.lesson-body .main-col,
+.lesson-body .content-body,
+.lesson-body .content-col {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+  padding-top: 40px !important;
+}
+
+/* 내부 max-width 제한 해제 */
+.lesson-body .main > *,
+.lesson-body .main-col > *,
+.lesson-body .content-body > * {
+  max-width: 100% !important;
+}
 
 /* ── 모바일 ── */
 @media (max-width: 640px) {
