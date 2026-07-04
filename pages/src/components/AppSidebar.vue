@@ -23,6 +23,12 @@
         <RouterLink class="nav-link" to="/lesson/06" @click="close">06 미드저니 --cref</RouterLink>
       </div>
 
+      <!-- 유튜브 부록 (공개) -->
+      <div class="nav-group">
+        <div class="nav-unit">🎥 허니비TV 부록</div>
+        <RouterLink class="nav-link" to="/tv/ep05" @click="close">#5 카톡 이모티콘</RouterLink>
+      </div>
+
       <!-- 하단 -->
       <div class="sidebar-bottom">
         <!-- 로그인 상태 -->
