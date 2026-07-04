@@ -47,6 +47,12 @@ export const routes = [
     name: 'lesson06',
     component: () => import('@/views/Lesson06View.vue'),
     meta: { title: '미드저니 동일인물 --cref', num: '06', adminOnly: true }
+  },
+  {
+    path: '/tv/ep05',
+    name: 'honeybee-ep05',
+    component: () => import('@/views/HoneybeeEp05View.vue'),
+    meta: { title: '허니비TV Ep.05 부록 — 이모티콘 프롬프트', num: 'TV5', adminOnly: false }
   }
 ]
 

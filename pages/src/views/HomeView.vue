@@ -41,6 +41,7 @@ const lessons = [
   { to:'/lesson/05', num:'05', title:'Firefly 동일인물 만들기', desc:'GPT → Firefly 데이터셋 → Reference Image 완전 가이드', tag:'강의 스크립트', color:'#4a1fb8', adminOnly: true },
   { to:'/lesson/05/prompts', num:'05+', title:'인물 데이터셋 프롬프트 모음', desc:'카메라각도·표정·포즈·의상 전체 프롬프트', tag:'참고자료', color:'#0891b2', adminOnly: true },
   { to:'/lesson/06', num:'06', title:'미드저니 동일인물 --cref', desc:'--cref & --cw 파라미터로 일관성 있는 캐릭터 생성', tag:'강의 스크립트', color:'#4a1fb8', adminOnly: true },
+  { to:'/tv/ep05', num:'TV5', title:'허니비TV #5 — AI 이모티콘 부록', desc:'GPT + 미드저니로 내 캐릭터 카톡 이모티콘 12장 만들기 · 프롬프트 전체 공개', tag:'유튜브 부록', color:'#E63983', adminOnly: false },
 ]
 
 const visibleLessons = computed(() =>
