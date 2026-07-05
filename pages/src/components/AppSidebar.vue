@@ -27,6 +27,7 @@
       <div class="nav-group">
         <div class="nav-unit">🎥 허니비TV 부록</div>
         <RouterLink class="nav-link" to="/tv/ep05" @click="close">#5 카톡 이모티콘</RouterLink>
+        <RouterLink class="nav-link" to="/tv/ep06" @click="close">#6 AI 그림책</RouterLink>
       </div>
 
       <!-- 하단 -->

@@ -53,6 +53,12 @@ export const routes = [
     name: 'honeybee-ep05',
     component: () => import('@/views/HoneybeeEp05View.vue'),
     meta: { title: '허니비TV Ep.05 부록 — 이모티콘 프롬프트', num: 'TV5', adminOnly: false }
+  },
+  {
+    path: '/tv/ep06',
+    name: 'honeybee-ep06',
+    component: () => import('@/views/HoneybeeEp06View.vue'),
+    meta: { title: '허니비TV Ep.06 부록 — AI 그림책 프롬프트', num: 'TV6', adminOnly: false }
   }
 ]
 
