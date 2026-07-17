@@ -44,6 +44,7 @@ const lessons = [
   { to:'/tv/ep05', num:'TV5', title:'허니비TV #5 — AI 이모티콘 부록', desc:'GPT + 미드저니로 내 캐릭터 카톡 이모티콘 12장 만들기 · 프롬프트 전체 공개', tag:'유튜브 부록', color:'#E63983', adminOnly: false },
   { to:'/tv/ep06', num:'TV6', title:'허니비TV #6 — AI 그림책 부록', desc:'챗지피티 하나로 우리 아이가 햇님 달님 주인공인 그림책 만들기 · 프롬프트 전체 공개', tag:'유튜브 부록', color:'#E63983', adminOnly: false },
   { to:'/tv/ep07', num:'TV7', title:'허니비TV #7 — 클로드로 블로그 부록', desc:'클로드 데스크탑 하나로 네이버 블로그 30분 완결 · 초안·다듬기·이미지 프롬프트 전체 공개', tag:'유튜브 부록', color:'#E63983', adminOnly: false },
+  { to:'/tv/ep12', num:'TV12', title:'허니비TV #12 — 챗지피티로 사업계획서·PPT', desc:'한 줄 요청으로 사업계획서 · Presentations 플러그인으로 PPT 14장 · 쇼츠 포스터까지 · 프롬프트 전체 공개', tag:'유튜브 부록', color:'#E63983', adminOnly: false },
 ]
 
 const visibleLessons = computed(() =>
