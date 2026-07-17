@@ -49,6 +49,29 @@
 · 숫자는 실제 상황에서 조정 가능하도록 예시로만
 · 카페 사장/1인 사업자가 · 그대로 검토 가능한 수준</code></pre>
 
+    <figure class="fig">
+      <img src="/ai-video-course/tv/ep12/share_00.png" alt="한 줄 프롬프트 요청" loading="lazy" />
+      <figcaption>▲ 처음 요청 · 이 한 줄만 던져도 뼈대가 나와요</figcaption>
+    </figure>
+
+    <h3>결과 · 표준 형식으로 자동 정리</h3>
+    <p>챗지피티가 · 표준 사업계획서 형식으로 · 뼈대를 잡아줘요.</p>
+
+    <figure class="fig-grid">
+      <figure>
+        <img src="/ai-video-course/tv/ep12/share_01.png" alt="사업 개요" loading="lazy" />
+        <figcaption>사업 개요 · 목적 · 추진 배경</figcaption>
+      </figure>
+      <figure>
+        <img src="/ai-video-course/tv/ep12/share_02.png" alt="시장 · 상품" loading="lazy" />
+        <figcaption>시장 · 타깃 · 상품 라인업</figcaption>
+      </figure>
+      <figure>
+        <img src="/ai-video-course/tv/ep12/share_03.png" alt="예산 · KPI" loading="lazy" />
+        <figcaption>예산 · 매출 목표 · KPI</figcaption>
+      </figure>
+    </figure>
+
     <div class="callout tip">
       <div class="callout-header"><span>💡</span> 왜 한 줄로 됩니까</div>
       <p>
@@ -75,6 +98,21 @@
     <h3>3) 홍보·매장 콘셉트</h3>
 <pre><code>홍보 채널은 · 인스타그램 릴스 [초 수] 초 영상 중심 · 매장은 [계절/무드] 포토존으로.
 매장 콘셉트 · 필수 소품 리스트 · 세 가지만 뽑아줘.</code></pre>
+
+    <figure class="fig-grid">
+      <figure>
+        <img src="/ai-video-course/tv/ep12/share_05.png" alt="브랜딩 다듬기" loading="lazy" />
+        <figcaption>브랜딩 · 프로젝트 이름 · 슬로건</figcaption>
+      </figure>
+      <figure>
+        <img src="/ai-video-course/tv/ep12/share_08.png" alt="가격 전략" loading="lazy" />
+        <figcaption>가격 · 원가 · 마진율 표</figcaption>
+      </figure>
+      <figure>
+        <img src="/ai-video-course/tv/ep12/share_09.png" alt="홍보 · 매장 콘셉트" loading="lazy" />
+        <figcaption>홍보 채널 · 매장 콘셉트</figcaption>
+      </figure>
+    </figure>
 
     <div class="callout tip">
       <div class="callout-header"><span>💡</span> 한 번에 다 요청하지 마세요</div>
@@ -103,6 +141,17 @@
         기본 모드는 · 하나씩 · 순차 생성이라 · 5장에 · 10분 넘게 걸리거든요. 「높음」으로 바꾸면 · 5분 안에 · 다섯 장 · 다 나옵니다.
       </p>
     </div>
+
+    <h3>실제 결과 · 다섯 종 디저트 이미지</h3>
+    <figure class="fig">
+      <img src="/ai-video-course/tv/ep12/share_10.png" alt="이미지 생성 요청 대화" loading="lazy" />
+      <figcaption>▲ 챗지피티에게 이미지 생성 요청</figcaption>
+    </figure>
+    <figure class="fig-grid">
+      <figure><img src="/ai-video-course/tv/ep12/img_03.png" alt="디저트 1" loading="lazy" /></figure>
+      <figure><img src="/ai-video-course/tv/ep12/img_04.png" alt="디저트 2" loading="lazy" /></figure>
+      <figure><img src="/ai-video-course/tv/ep12/img_05.png" alt="디저트 3" loading="lazy" /></figure>
+    </figure>
   </section>
 
   <!-- ================ 단원 4 · PPT 플러그인 ================ -->
@@ -119,18 +168,50 @@
       <li><strong>Presentations</strong> · 설치 → · 계속 → · 연결</li>
     </ol>
 
+    <figure class="fig-grid">
+      <figure>
+        <img src="/ai-video-course/tv/ep12/plugin_20.png" alt="플러그인 스토어 검색" loading="lazy" />
+        <figcaption>플러그인 스토어에서 PPT 검색</figcaption>
+      </figure>
+      <figure>
+        <img src="/ai-video-course/tv/ep12/plugin_21.png" alt="Presentations 설치" loading="lazy" />
+        <figcaption>Presentations · 설치 → 계속</figcaption>
+      </figure>
+    </figure>
+
     <h3>2) 플러그인 호출 · @ 멘션</h3>
     <p>대화창 · <strong>+</strong> 버튼 · → · <strong>@Presentations</strong> · 이렇게 · 멘션.</p>
+
+    <figure class="fig">
+      <img src="/ai-video-course/tv/ep12/plugin_22.png" alt="@ 멘션" loading="lazy" />
+      <figcaption>▲ + 버튼 → @Presentations 멘션</figcaption>
+    </figure>
 
     <h3>3) PPT 요청 프롬프트</h3>
 <pre><code>@Presentations 위 이미지들을 이용해서 · 사업계획서 PPT · 만들어줘.
 · 표지 · 개요 · 상품 · 예산 · 홍보 · KPI · 마무리 · 순서로
 · 한 슬라이드 · 한 상품 이미지</code></pre>
 
+    <figure class="fig">
+      <img src="/ai-video-course/tv/ep12/plugin_23.png" alt="PPT 요청" loading="lazy" />
+      <figcaption>▲ 이 한 마디로 · PPT 자동 생성 시작</figcaption>
+    </figure>
+
     <div class="callout tip">
-      <div class="callout-header"><span>📌</span> 결과</div>
+      <div class="callout-header"><span>📌</span> 결과 · 14장 PPT 완성</div>
       <p>· 열네 장짜리 · PPT · 완성. 다섯 종 이미지가 · 각 슬라이드에 · 자동으로 · 들어가요.</p>
     </div>
+
+    <figure class="fig-grid">
+      <figure>
+        <img src="/ai-video-course/tv/ep12/img_01.png" alt="완성된 PPT 슬라이드 1" loading="lazy" />
+        <figcaption>완성 PPT · 표지·개요</figcaption>
+      </figure>
+      <figure>
+        <img src="/ai-video-course/tv/ep12/img_02.png" alt="완성된 PPT 슬라이드 2" loading="lazy" />
+        <figcaption>상품·예산 슬라이드</figcaption>
+      </figure>
+    </figure>
   </section>
 
   <!-- ================ 단원 5 · 파일명 영문 ================ -->
@@ -166,6 +247,13 @@
         <li data-icon="→">매장 · 태블릿 · 광고 이미지</li>
       </ul>
     </div>
+
+    <figure class="fig-grid poster-grid">
+      <figure><img src="/ai-video-course/tv/ep12/img_09.png" alt="쇼츠 포스터 1" loading="lazy" /></figure>
+      <figure><img src="/ai-video-course/tv/ep12/img_10.png" alt="쇼츠 포스터 2" loading="lazy" /></figure>
+      <figure><img src="/ai-video-course/tv/ep12/img_11.png" alt="쇼츠 포스터 3" loading="lazy" /></figure>
+      <figure><img src="/ai-video-course/tv/ep12/img_12.png" alt="쇼츠 포스터 4" loading="lazy" /></figure>
+    </figure>
   </section>
 
   <!-- ================ 단원 7 · 주의 ================ -->
@@ -233,4 +321,45 @@
   color: var(--ink-mid);
 }
 .footer-cta p { margin: 4px 0; }
+
+/* 스크린샷 도판 */
+.fig {
+  margin: 20px 0 26px;
+}
+.fig img {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  display: block;
+}
+.fig figcaption,
+.fig-grid figcaption {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #6B7280;
+  text-align: center;
+  line-height: 1.4;
+}
+.fig-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 20px 0 26px;
+}
+.fig-grid figure { margin: 0; }
+.fig-grid img {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  display: block;
+}
+.poster-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 720px) {
+  .fig-grid { grid-template-columns: 1fr 1fr; }
+  .poster-grid { grid-template-columns: 1fr 1fr; }
+}
 </style>
