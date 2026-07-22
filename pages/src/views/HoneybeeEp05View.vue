@@ -2,7 +2,7 @@
 <div class="lesson-body textbook">
 
   <section class="cover" id="cover">
-    <div class="cover-eyebrow">허니비TV · @hon2bee_kr</div>
+    <div class="cover-eyebrow">AI독학꿀벌 (구 허니비TV) · @hon2bee_kr</div>
     <div class="cover-title">Ep.05 부록</div>
     <div class="cover-sub">AI로 만드는 내 이모티콘 12장 — 프롬프트 &amp; 템플릿 자료</div>
     <div class="cover-meta">
@@ -16,7 +16,7 @@
   <section class="lesson-section">
     <div class="callout goal">
       <div class="callout-header"><span>📌</span> 사용 안내</div>
-      <p>이 페이지는 <strong>허니비TV #5 영상</strong>에서 사용한 프롬프트를 그대로 복붙해서 쓰실 수 있도록 정리한 부록입니다.</p>
+      <p>이 페이지는 <strong>AI독학꿀벌 (구 허니비TV) #5 영상</strong>에서 사용한 프롬프트를 그대로 복붙해서 쓰실 수 있도록 정리한 부록입니다.</p>
       <ul>
         <li data-icon="✓">각 코드 블럭을 통째로 선택해서 복사</li>
         <li data-icon="✓">본인 캐릭터 특징에 맞게 <code>[대괄호]</code> 안 부분만 수정</li>

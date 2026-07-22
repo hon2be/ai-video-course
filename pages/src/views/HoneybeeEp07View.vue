@@ -2,7 +2,7 @@
 <div class="lesson-body textbook">
 
   <section class="cover" id="cover">
-    <div class="cover-eyebrow">허니비TV · @hon2bee_kr</div>
+    <div class="cover-eyebrow">AI독학꿀벌 (구 허니비TV) · @hon2bee_kr</div>
     <div class="cover-title">Ep.07 부록</div>
     <div class="cover-sub">클로드 데스크탑으로 네이버 블로그 한 편 · 30분 완결 프롬프트 자료</div>
     <div class="cover-meta">
@@ -17,7 +17,7 @@
   <section class="lesson-section">
     <div class="callout goal">
       <div class="callout-header"><span>📌</span> 사용 안내</div>
-      <p>이 페이지는 <strong>허니비TV #7 영상</strong>에서 사용한 프롬프트를 그대로 복붙해 쓰실 수 있게 정리한 부록입니다.</p>
+      <p>이 페이지는 <strong>AI독학꿀벌 (구 허니비TV) #7 영상</strong>에서 사용한 프롬프트를 그대로 복붙해 쓰실 수 있게 정리한 부록입니다.</p>
       <ul>
         <li data-icon="✓">각 코드 블럭 통째로 복사</li>
         <li data-icon="✓">본인 상황에 맞게 <code>[대괄호]</code> 안 부분만 수정</li>

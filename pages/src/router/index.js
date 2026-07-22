@@ -52,25 +52,25 @@ export const routes = [
     path: '/tv/ep05',
     name: 'honeybee-ep05',
     component: () => import('@/views/HoneybeeEp05View.vue'),
-    meta: { title: '허니비TV Ep.05 부록 — 이모티콘 프롬프트', num: 'TV5', adminOnly: false }
+    meta: { title: 'AI독학꿀벌 (구 허니비TV) Ep.05 부록 — 이모티콘 프롬프트', num: 'TV5', adminOnly: false }
   },
   {
     path: '/tv/ep06',
     name: 'honeybee-ep06',
     component: () => import('@/views/HoneybeeEp06View.vue'),
-    meta: { title: '허니비TV Ep.06 부록 — AI 그림책 프롬프트', num: 'TV6', adminOnly: false }
+    meta: { title: 'AI독학꿀벌 (구 허니비TV) Ep.06 부록 — AI 그림책 프롬프트', num: 'TV6', adminOnly: false }
   },
   {
     path: '/tv/ep07',
     name: 'honeybee-ep07',
     component: () => import('@/views/HoneybeeEp07View.vue'),
-    meta: { title: '허니비TV Ep.07 부록 — 클로드로 블로그 프롬프트', num: 'TV7', adminOnly: false }
+    meta: { title: 'AI독학꿀벌 (구 허니비TV) Ep.07 부록 — 클로드로 블로그 프롬프트', num: 'TV7', adminOnly: false }
   },
   {
     path: '/tv/ep12',
     name: 'honeybee-ep12',
     component: () => import('@/views/HoneybeeEp12View.vue'),
-    meta: { title: '허니비TV Ep.12 부록 — 챗지피티로 사업계획서·PPT', num: 'TV12', adminOnly: false }
+    meta: { title: 'AI독학꿀벌 (구 허니비TV) Ep.12 부록 — 챗지피티로 사업계획서·PPT', num: 'TV12', adminOnly: false }
   }
 ]
 
