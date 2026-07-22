@@ -71,6 +71,12 @@ export const routes = [
     name: 'honeybee-ep12',
     component: () => import('@/views/HoneybeeEp12View.vue'),
     meta: { title: 'AI독학꿀벌 (구 허니비TV) Ep.12 부록 — 챗지피티로 사업계획서·PPT', num: 'TV12', adminOnly: false }
+  },
+  {
+    path: '/tv/ep13',
+    name: 'honeybee-ep13',
+    component: () => import('@/views/HoneybeeEp13View.vue'),
+    meta: { title: 'AI독학꿀벌 (구 허니비TV) Ep.13 부록 — 여행 쇼츠 인물 프롬프트', num: 'TV13', adminOnly: false }
   }
 ]
 
