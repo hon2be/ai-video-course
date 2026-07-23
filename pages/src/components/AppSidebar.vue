@@ -30,6 +30,7 @@
         <RouterLink class="nav-link" to="/tv/ep06" @click="close">#6 AI 그림책</RouterLink>
         <RouterLink class="nav-link" to="/tv/ep07" @click="close">#7 클로드로 블로그</RouterLink>
         <RouterLink class="nav-link" to="/tv/ep13" @click="close">#13 여행 쇼츠 인물 프롬프트</RouterLink>
+        <RouterLink class="nav-link" to="/tv/ep14" @click="close">#14 가게 카드뉴스 5분 뚝딱</RouterLink>
       </div>
 
       <!-- 하단 -->
