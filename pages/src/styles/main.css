@@ -107,7 +107,16 @@ body {
 }
 
 /* ── 교재 래퍼 ── */
-.lesson-body { width: 100%; padding: 0; margin: 0; }
+.lesson-body {
+  width: 100%;
+  max-width: 1280px;
+  padding: 0 32px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+@media (min-width: 1024px) {
+  .lesson-body { padding: 0 48px; }
+}
 
 /* ── 레거시 HTML 레이아웃 재정의 ── */
 
@@ -132,11 +141,15 @@ body {
 
 /* ── 모바일 ── */
 @media (max-width: 640px) {
+  .lesson-body {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
   .lesson-body .app,
   .lesson-body .main,
   .lesson-body .content-body,
   .lesson-body .main-col {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 }
