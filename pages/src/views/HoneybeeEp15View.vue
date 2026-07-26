@@ -305,17 +305,6 @@
       </div>
     </div>
 
-    <div class="callout tip">
-      <div class="callout-header"><span>💡</span> 분할·병합 · 정확한 컷</div>
-      <p>
-        잘라내고 싶은 구간을 · <strong>정확히 · 두 번 분할</strong>해서 · 가운데를 삭제. 이렇게 하면 · 프레임 단위로 · 원하는 만큼 정확히 잘라낼 수 있어요.
-      </p>
-    </div>
-
-    <div class="callout tip">
-      <div class="callout-header"><span>💡</span> 다음 편 예고</div>
-      <p>이번 풀버전에서 다룬 15단계 · <strong>기능별 상세편</strong>으로 · 하나씩 · 천천히 · 풀어서 · 이어집니다. 촬영편·텍스트편·오디오편·자막편·꾸미기편 순서.</p>
-    </div>
   </section>
 
 </div>
