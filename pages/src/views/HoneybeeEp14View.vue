@@ -86,12 +86,12 @@
 - 4장: [메뉴2·메뉴3] 이야기
 - 5장: 오픈일·가격·이벤트 안내
 
-각 장별 큰 헤드카피(한 줄) · 소카피(한두 문장) · 이미지 프롬프트 아이디어를
+각 장별 큰 헤드카피(한 줄) · 설명 문구(한두 문장) · 이미지 프롬프트 아이디어를
 표로 정리해주세요.</code></pre>
 
     <div class="callout tip">
       <div class="callout-header"><span>💡</span> 왜 표로 요청하나요</div>
-      <p>표로 부탁하면 · <strong>5장 전부 · 헤드카피·소카피·이미지 프롬프트가 · 한 줄씩 정렬</strong>돼서 나옵니다. 다음 단계(나노바나나)에서 · 이미지 프롬프트 열만 복붙하면 · 그대로 진행 가능해요.</p>
+      <p>표로 부탁하면 · <strong>5장 전부 · 헤드카피·설명 문구·이미지 프롬프트가 · 한 줄씩 정렬</strong>돼서 나옵니다. 다음 단계(나노바나나)에서 · 이미지 프롬프트 열만 복붙하면 · 그대로 진행 가능해요.</p>
     </div>
 
     <h3>챗지피티가 돌려준 결과 (실제 예시)</h3>
@@ -136,8 +136,8 @@
 - 강조 헤드카피: "[강조 · 예: 오픈했어요]"
 - 하단 안내: "옆으로 넘겨보세요"</code></pre>
 
-    <figure class="fig">
-      <img src="/ai-video-course/tv/ep14/card_01_표지.png" alt="완성 카드 1 · 표지" loading="lazy" style="max-width:420px; margin:0 auto; display:block;" />
+    <figure class="fig cover-card">
+      <img src="/ai-video-course/tv/ep14/card_01_표지.png" alt="완성 카드 1 · 표지" loading="lazy" />
       <figcaption>▲ 카드 1 완성본 · 인물·톤·헤드카피 배치 · 이걸 기준으로 카드 2~5 이어감</figcaption>
     </figure>
 
@@ -160,7 +160,9 @@
   <section class="lesson-section">
     <p>카드 1이 마음에 드는 결과로 나왔다면 · <strong>같은 채팅</strong>에 아래 요청을 · 순서대로 · 하나씩 붙여넣으세요.</p>
 
-    <h3>카드 2 · 3종 소개</h3>
+    <div class="card-row">
+      <div class="prompt">
+        <h3>카드 2 · 3종 소개</h3>
 <pre><code>같은 인물·같은 배경·같은 헤드카피 배치 유지해서 · 카드 2 만들어주세요.
 
 카드 2 · 3종 소개
@@ -170,11 +172,16 @@
 - 중앙 헤드카피: "오늘의 기분에 맞춰"
 - 강조 헤드카피: "골라보세요"
 - 한 장만 · 그리드 X</code></pre>
-    <figure class="fig">
-      <img src="/ai-video-course/tv/ep14/card_02_3종소개.png" alt="완성 카드 2 · 3종 소개" loading="lazy" style="max-width:420px; margin:0 auto; display:block;" />
-    </figure>
+      </div>
+      <figure>
+        <img src="/ai-video-course/tv/ep14/card_02_3종소개.png" alt="완성 카드 2 · 3종 소개" loading="lazy" />
+        <figcaption>▲ 카드 2 완성본</figcaption>
+      </figure>
+    </div>
 
-    <h3>카드 3 · 개별 메뉴 (예 · 청귤)</h3>
+    <div class="card-row">
+      <div class="prompt">
+        <h3>카드 3 · 개별 메뉴 (예 · 청귤)</h3>
 <pre><code>같은 인물·같은 배경·같은 헤드카피 배치 유지해서 · 카드 3 만들어주세요.
 
 카드 3 · [메뉴1] 스무디
@@ -184,11 +191,16 @@
 - 중앙 헤드카피: "[대카피 · 예: 첫 모금부터]"
 - 강조 헤드카피: "[강조 · 예: 맑고 산뜻하게]"
 - 한 장만 · 그리드 X</code></pre>
-    <figure class="fig">
-      <img src="/ai-video-course/tv/ep14/card_03_청귤.png" alt="완성 카드 3 · 청귤" loading="lazy" style="max-width:420px; margin:0 auto; display:block;" />
-    </figure>
+      </div>
+      <figure>
+        <img src="/ai-video-course/tv/ep14/card_03_청귤.png" alt="완성 카드 3 · 청귤" loading="lazy" />
+        <figcaption>▲ 카드 3 완성본</figcaption>
+      </figure>
+    </div>
 
-    <h3>카드 4 · 개별 메뉴 (예 · 복숭아·자몽)</h3>
+    <div class="card-row">
+      <div class="prompt">
+        <h3>카드 4 · 개별 메뉴 (예 · 복숭아·자몽)</h3>
 <pre><code>같은 인물·같은 배경·같은 헤드카피 배치 유지해서 · 카드 4 만들어주세요.
 
 카드 4 · [메뉴2·메뉴3] 스무디
@@ -198,11 +210,16 @@
 - 중앙 헤드카피: "[대카피]"
 - 강조 헤드카피: "[강조]"
 - 한 장만 · 그리드 X</code></pre>
-    <figure class="fig">
-      <img src="/ai-video-course/tv/ep14/card_04_복숭아자몽.png" alt="완성 카드 4 · 복숭아·자몽" loading="lazy" style="max-width:420px; margin:0 auto; display:block;" />
-    </figure>
+      </div>
+      <figure>
+        <img src="/ai-video-course/tv/ep14/card_04_복숭아자몽.png" alt="완성 카드 4 · 복숭아·자몽" loading="lazy" />
+        <figcaption>▲ 카드 4 완성본</figcaption>
+      </figure>
+    </div>
 
-    <h3>카드 5 · 오픈 안내</h3>
+    <div class="card-row">
+      <div class="prompt">
+        <h3>카드 5 · 오픈 안내</h3>
 <pre><code>같은 인물·같은 배경·같은 헤드카피 배치 유지해서 · 카드 5 만들어주세요.
 
 카드 5 · 오픈 안내
@@ -213,9 +230,12 @@
 - 강조 헤드카피: "곧 시작합니다"
 - 하단 안내: "오픈일 · 가격 · 이벤트는 카드 뒤에서"
 - 한 장만 · 그리드 X</code></pre>
-    <figure class="fig">
-      <img src="/ai-video-course/tv/ep14/card_05_안내.png" alt="완성 카드 5 · 안내" loading="lazy" style="max-width:420px; margin:0 auto; display:block;" />
-    </figure>
+      </div>
+      <figure>
+        <img src="/ai-video-course/tv/ep14/card_05_안내.png" alt="완성 카드 5 · 안내" loading="lazy" />
+        <figcaption>▲ 카드 5 완성본</figcaption>
+      </figure>
+    </div>
   </section>
 
   <!-- ================ 단원 4 · 톤이 안 맞을 때 · 재요청 ================ -->
@@ -247,7 +267,7 @@
     <ol>
       <li>인스타 앱 → 새 게시물 → <strong>다중 이미지</strong> 선택</li>
       <li>카드 1 → 2 → 3 → 4 → 5 · 순서대로 추가</li>
-      <li>캡션은 · 챗지피티가 준 · <strong>소카피 5줄</strong> · 그대로 이어붙이기</li>
+      <li>캡션은 · 챗지피티가 준 · <strong>카피 5줄</strong> · 그대로 이어붙이기</li>
       <li>해시태그는 · 아래 · 자영업 카드뉴스 · 기본 세트 사용</li>
     </ol>
 <pre><code>#[가게이름] #[지역]카페 #신메뉴 #여름메뉴 #카드뉴스
@@ -294,3 +314,106 @@
 
 <script setup>
 </script>
+
+<style scoped>
+/* --- 프롬프트 · 코드 (Ep07·Ep12 톤 통일) --- */
+.textbook :deep(pre) {
+  background: #1E293B;
+  color: #E2E8F0;
+  padding: 20px 24px;
+  border-radius: 8px;
+  overflow-x: auto;
+  line-height: 1.6;
+  font-size: 13.5px;
+  font-family: "SF Mono", Monaco, Consolas, monospace;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 12px 0 20px;
+  border-left: 4px solid #F97316;
+}
+.textbook :deep(pre code) {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  font-size: inherit;
+}
+.textbook :deep(code) {
+  background: #FFF7ED;
+  color: #C2410C;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: "SF Mono", Monaco, Consolas, monospace;
+  font-size: 0.92em;
+  font-weight: 500;
+}
+
+/* --- 도판 --- */
+.fig { margin: 20px 0 26px; }
+.fig img {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  display: block;
+}
+.fig.cover-card {
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.fig figcaption,
+.fig-grid figcaption,
+.card-row figcaption {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #6B7280;
+  text-align: center;
+  line-height: 1.4;
+}
+.fig-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 20px 0 26px;
+}
+.fig-grid figure { margin: 0; }
+.fig-grid img {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  display: block;
+}
+
+/* --- 카드 · 프롬프트 + 결과 이미지 병렬 --- */
+.card-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+  margin: 20px 0 36px;
+}
+.card-row > .prompt { min-width: 0; }
+.card-row > .prompt h3 { margin-top: 0; }
+.card-row > .prompt :deep(pre) { margin-top: 0; margin-bottom: 0; }
+.card-row > figure { margin: 0; }
+.card-row > figure img {
+  width: 100%;
+  max-width: 320px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+@media (max-width: 820px) {
+  .card-row { grid-template-columns: 1fr; gap: 16px; }
+  .fig-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* --- 단원 사이 여백 --- */
+.textbook .unit-header { margin-top: 44px; }
+</style>
