@@ -298,7 +298,7 @@
       </p>
       <div class="plus-btn-demo" aria-hidden="true">
         <svg viewBox="0 0 100 100" width="100" height="100">
-          <circle cx="50" cy="50" r="46" fill="#FFFFFF" stroke="#111827" stroke-width="2"/>
+          <rect x="4" y="4" width="92" height="92" rx="14" ry="14" fill="#FFFFFF" stroke="#111827" stroke-width="2"/>
           <line x1="50" y1="26" x2="50" y2="74" stroke="#111827" stroke-width="8" stroke-linecap="round"/>
           <line x1="26" y1="50" x2="74" y2="50" stroke="#111827" stroke-width="8" stroke-linecap="round"/>
         </svg>
