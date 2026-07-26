@@ -132,7 +132,7 @@
   <!-- ================ 단원 5 · 사용한 기능 · 설명 ================ -->
   <div class="unit-header" id="features">
     <div class="unit-number">단원 5</div>
-    <div class="unit-title">사용한 캡컷 기능 · 카테고리별 설명</div>
+    <div class="unit-title">사용한 캡컷 기능 · 카테고리별 설명 <span class="wip">(수정중)</span></div>
   </div>
 
   <section class="lesson-section">
@@ -479,4 +479,15 @@ h3.sub {
 }
 
 .textbook .unit-header { margin-top: 44px; }
+
+.wip {
+  font-size: 14px;
+  font-weight: 700;
+  color: #B45309;
+  background: #FEF3C7;
+  padding: 2px 10px;
+  border-radius: 999px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
 </style>
