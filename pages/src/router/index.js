@@ -83,6 +83,12 @@ export const routes = [
     name: 'honeybee-ep14',
     component: () => import('@/views/HoneybeeEp14View.vue'),
     meta: { title: 'AI독학꿀벌 Ep.14 부록 — 우리 가게 카드뉴스 · 챗지피티 + 나노바나나', num: 'TV14', adminOnly: false }
+  },
+  {
+    path: '/tv/ep15',
+    name: 'honeybee-ep15',
+    component: () => import('@/views/HoneybeeEp15View.vue'),
+    meta: { title: 'AI독학꿀벌 Ep.15 부록 — 스마트폰 하나로 쇼츠 뚝딱 · 캡컷 완전 기초', num: 'TV15', adminOnly: false }
   }
 ]
 
