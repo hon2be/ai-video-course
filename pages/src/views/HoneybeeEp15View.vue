@@ -294,11 +294,15 @@
     <div class="callout tip">
       <div class="callout-header"><span>💡</span> 갤러리에서 넣기 · 흰색 [+] 버튼</div>
       <p>
-        사진·영상 넣을 때는 · 화면 <strong>우측 중간에 있는 · 흰색 <code>[+]</code> 버튼</strong>을 눌러서 · 앨범 진입 · 필요한 걸 골라 넣으면 됩니다.
+        사진·영상 넣을 때는 · 화면 <strong>우측 중간에 있는 · 아래 · 이 버튼</strong>을 눌러서 · 앨범 진입 · 필요한 걸 골라 넣으면 됩니다.
       </p>
-      <figure class="fig cover-card">
-        <img src="/ai-video-course/tv/ep15/screens/capcut_0460_갤러리_[+]_버튼.png" alt="갤러리 [+] 버튼 위치" loading="lazy" />
-      </figure>
+      <div class="plus-btn-demo" aria-hidden="true">
+        <svg viewBox="0 0 100 100" width="100" height="100">
+          <circle cx="50" cy="50" r="46" fill="#FFFFFF" stroke="#111827" stroke-width="2"/>
+          <line x1="50" y1="26" x2="50" y2="74" stroke="#111827" stroke-width="8" stroke-linecap="round"/>
+          <line x1="26" y1="50" x2="74" y2="50" stroke="#111827" stroke-width="8" stroke-linecap="round"/>
+        </svg>
+      </div>
     </div>
 
     <div class="callout tip">
@@ -479,6 +483,16 @@ h3.sub {
 }
 
 .textbook .unit-header { margin-top: 44px; }
+
+.plus-btn-demo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 0 8px;
+}
+.plus-btn-demo svg {
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+}
 
 .wip {
   font-size: 14px;
