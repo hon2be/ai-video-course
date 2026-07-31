@@ -47,6 +47,7 @@ const lessons = [
   { to:'/tv/ep12', num:'TV12', title:'AI독학꿀벌 (구 허니비TV) #12 — 챗지피티로 사업계획서·PPT', desc:'한 줄 요청으로 사업계획서 · Presentations 플러그인으로 PPT 14장 · 쇼츠 포스터까지 · 프롬프트 전체 공개', tag:'유튜브 부록', color:'#E63983', adminOnly: false },
   { to:'/tv/ep13', num:'TV13', title:'AI독학꿀벌 (구 허니비TV) #13 — 여행 쇼츠 인물 프롬프트', desc:'Google Flow + Mureka 여행 쇼츠 3부작에서 쓴 가상 인물 데이터셋 프롬프트 전체 공개', tag:'유튜브 부록', color:'#E63983', adminOnly: false },
   { to:'/tv/ep14', num:'TV14', title:'AI독학꿀벌 #14 — 우리 가게 카드뉴스 5분에 5장', desc:'챗지피티로 카피 · 나노바나나로 이미지 · 편집 없이 인스타 카드뉴스 5장 완성 · 자영업자 실전 · 프롬프트 전체 공개', tag:'유튜브 부록', color:'#E63983', adminOnly: false },
+  { to:'/tv/comptal-basics', num:'컴맹', title:'컴맹탈출 #6~#10 · 통합 부록', desc:'마우스·창·파일·인터넷·압축/PDF/첨부 · 다섯 편 한 곳에 · 시니어 시청자 필독', tag:'유튜브 부록', color:'#38d98f', adminOnly: false },
 ]
 
 const visibleLessons = computed(() =>

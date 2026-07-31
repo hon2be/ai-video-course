@@ -89,6 +89,12 @@ export const routes = [
     name: 'honeybee-ep15',
     component: () => import('@/views/HoneybeeEp15View.vue'),
     meta: { title: 'AI독학꿀벌 Ep.15 부록 — 스마트폰 하나로 쇼츠 뚝딱 · 캡컷 완전 기초', num: 'TV15', adminOnly: false }
+  },
+  {
+    path: '/tv/comptal-basics',
+    name: 'comptal-basics',
+    component: () => import('@/views/ComptalBasicsView.vue'),
+    meta: { title: '컴맹탈출 #6~#10 · 통합 부록 (마우스·창·파일·인터넷·압축)', num: 'COMPTAL', adminOnly: false }
   }
 ]
 
