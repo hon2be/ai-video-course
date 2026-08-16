@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 시대의 UI 어휘 사전 · 앱 부품 이름 대백과 · AI독학꿀벌</title>
+<meta name="description" content="챗GPT·클로드·바이브코딩에서 AI가 딱 알아듣는 앱 부품 이름 71개 총정리. 시니어·왕초보 강의용.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  :root {
+    --bg: #0a0a0a; --panel: #1a1a1a; --card: #242424;
+    --text: #fff; --dim: #a3a3a3; --accent: #FACC15; --sky: #38BDF8; --green: #22c55e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; word-break: keep-all; overflow-wrap: break-word; }
+  html, body { background: var(--bg); color: var(--text); font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif; letter-spacing: -0.01em; }
+  body { padding: 48px 32px 96px; line-height: 1.5; }
+  a { color: var(--sky); }
+  code { font-family: "SF Mono", Menlo, monospace; font-size: 0.85em; background: #1a1a1a; padding: 2px 6px; border-radius: 4px; }
+
+  header { max-width: 1200px; margin: 0 auto 40px; }
+  h1 { font-size: 32px; font-weight: 900; margin-bottom: 8px; }
+  .lead { color: var(--dim); font-size: 15px; margin-bottom: 16px; }
+  .stats { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+  .stat-badge { padding: 6px 12px; background: var(--panel); border: 1px solid #333; border-radius: 999px; font-size: 12px; color: var(--dim); }
+  .stat-badge b { color: var(--accent); font-weight: 900; }
+
+  .nav-toc { display: flex; gap: 8px; flex-wrap: wrap; padding: 12px 0; border-top: 1px solid #2a2a2a; border-bottom: 1px solid #2a2a2a; margin-bottom: 24px; }
+  .nav-toc a { padding: 4px 10px; background: var(--panel); border-radius: 6px; text-decoration: none; font-size: 12px; }
+  .nav-toc a:hover { background: var(--accent); color: #000; }
+
+  .toolbar {
+    position: sticky; top: 12px; z-index: 20; max-width: 1200px; margin: 0 auto 32px;
+    background: rgba(10,10,10,0.9); backdrop-filter: blur(12px);
+    padding: 12px 16px; border: 1px solid #2a2a2a; border-radius: 12px;
+    display: flex; gap: 20px; align-items: center; font-size: 13px;
+  }
+  .toolbar label { display: inline-flex; gap: 6px; cursor: pointer; }
+
+  main { max-width: 1200px; margin: 0 auto; }
+  .cat-section { margin-bottom: 56px; }
+  .cat-h { display: flex; align-items: baseline; gap: 12px; padding-bottom: 10px; margin-bottom: 20px; border-bottom: 2px solid var(--accent); }
+  .cat-h h2 { font-size: 22px; font-weight: 900; }
+  .cat-h .count { color: var(--accent); font-weight: 700; font-size: 13px; }
+  .cat-h .ep { color: var(--sky); font-size: 12px; margin-left: auto; }
+
+  .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+
+  .item {
+    background: var(--panel); border: 1px solid #2a2a2a; border-radius: 12px;
+    padding: 40px 16px 32px; min-height: 200px; position: relative;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .item-name {
+    position: absolute; top: 10px; left: 10px;
+    background: var(--accent); color: #000;
+    padding: 2px 8px; border-radius: 4px;
+    font-size: 11px; font-weight: 900;
+  }
+  .item-desc {
+    color: var(--dim); font-size: 11px;
+    position: absolute; bottom: 8px; left: 12px; right: 12px;
+    text-align: center; line-height: 1.35;
+  }
+  .item-preview { display: flex; align-items: center; justify-content: center; flex: 1; width: 100%; }
+  .phone-mini { background: #111; border: 5px solid #333; border-radius: 18px; width: 160px; height: 220px; padding: 30px 8px 8px; position: relative; overflow: hidden; }
+
+  .footer { margin: 96px auto 0; max-width: 1200px; padding-top: 32px; border-top: 1px solid #2a2a2a; color: var(--dim); font-size: 13px; }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>AI 시대의 UI 어휘 사전</h1>
+  <p class="lead">
+    챗GPT·클로드·바이브코딩 툴에서 · AI가 딱 알아듣는 · 앱 부품 이름 <b>71개</b>.
+    이 이름들만 알면 · "그거 있잖아 그거" 대신 · 정확하게 · 지시할 수 있어요.
+  </p>
+  <div class="stats">
+    <span class="stat-badge">부품 <b>71개</b></span>
+    <span class="stat-badge">카테고리 <b>10개</b></span>
+    <span class="stat-badge">시리즈 <b>3편</b> (AI 강의 #16·#17·#18)</span>
+    <span class="stat-badge">채널 <b>AI독학꿀벌</b></span>
+  </div>
+  <nav class="nav-toc">
+    <a href="#alerts">알림·표시</a>
+    <a href="#overlays">뜨는 창들</a>
+    <a href="#navigation">이동·메뉴</a>
+    <a href="#actions">액션</a>
+    <a href="#input-basic">기본 입력</a>
+    <a href="#input-choice">선택 부품</a>
+    <a href="#input-variant">입력 파생</a>
+    <a href="#display">정보 표시</a>
+    <a href="#gestures">제스처</a>
+    <a href="#layout">레이아웃</a>
+  </nav>
+</header>
+
+<div class="toolbar">
+  <span style="color:var(--dim);">전체 토글 →</span>
+  <label><input type="checkbox" onchange="toggleAll('label', this.checked)"> 부품 이름</label>
+  <label><input type="checkbox" onchange="toggleAll('highlight', this.checked)"> 하이라이트</label>
+</div>
+
+<main>
+
+<!-- ============ 알림·표시 ============ -->
+<section id="alerts" class="cat-section">
+  <div class="cat-h"><h2>알림·표시 조각들</h2><span class="count">9개</span><span class="ep">Ep16 (일부)</span></div>
+  <div class="grid">
+    <div class="item"><span class="item-name">Badge</span><div class="item-preview"><div style="position:relative"><div style="width:56px;height:56px;background:#333;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px">🔔</div><div style="position:absolute;top:-4px;right:-4px;background:#ef4444;color:#fff;min-width:22px;height:22px;border-radius:22px;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center;border:2px solid #1a1a1a">3</div></div></div><div class="item-desc">아이콘 위 빨간 점·숫자 (읽지 않은 알림)</div></div>
+    <div class="item"><span class="item-name">Alert</span><div class="item-preview"><div style="background:#dbeafe;color:#1e3a8a;border-left:6px solid #3b82f6;padding:10px 12px;border-radius:6px;width:200px;font-size:11px"><b>ⓘ 안내</b><br>새 업데이트가 있어요</div></div><div class="item-desc">상단 배너 (info·warning·error)</div></div>
+    <div class="item"><span class="item-name">Toast</span><div class="item-preview"><div style="background:#16a34a;color:#fff;padding:8px 16px;border-radius:999px;font-size:12px;font-weight:700">저장 되었습니다</div></div><div class="item-desc">잠깐 떴다 사라지는 안내</div></div>
+    <div class="item"><span class="item-name">Tooltip</span><div class="item-preview"><div style="position:relative"><div style="width:28px;height:28px;background:#e5e5e5;color:#333;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900">?</div><div style="position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:5px 8px;border-radius:5px;font-size:10px;white-space:nowrap;border:1px solid #333">필수 입력</div></div></div><div class="item-desc">물음표 눌러 나오는 짧은 설명</div></div>
+    <div class="item"><span class="item-name">Loading</span><div class="item-preview"><div style="width:32px;height:32px;border:4px solid #333;border-top-color:#3b82f6;border-radius:50%;animation:spin 0.9s linear infinite"></div></div><div class="item-desc">돌아가는 원 (기다리세요)</div></div>
+    <div class="item"><span class="item-name">Progress</span><div class="item-preview"><div style="width:180px"><div style="text-align:right;font-size:10px;color:#666">65%</div><div style="height:6px;background:#e5e5e5;border-radius:999px;overflow:hidden;margin-top:4px"><div style="width:65%;height:100%;background:#3b82f6"></div></div></div></div><div class="item-desc">진행 막대 (얼마나 됐나)</div></div>
+    <div class="item"><span class="item-name">RadialProgress</span><div class="item-preview"><svg width="64" height="64" style="transform:rotate(-90deg)"><circle cx="32" cy="32" r="27" stroke="#333" stroke-width="6" fill="none"/><circle cx="32" cy="32" r="27" stroke="#3b82f6" stroke-width="6" fill="none" stroke-dasharray="170" stroke-dashoffset="51" stroke-linecap="round"/></svg><div style="position:absolute;font-size:14px;font-weight:900">70%</div></div><div class="item-desc">원형 진행률</div></div>
+    <div class="item"><span class="item-name">Skeleton</span><div class="item-preview"><div style="display:flex;flex-direction:column;gap:6px"><div style="width:160px;height:12px;background:#333;border-radius:4px"></div><div style="width:130px;height:12px;background:#333;border-radius:4px"></div><div style="width:150px;height:12px;background:#333;border-radius:4px"></div></div></div><div class="item-desc">회색 뼈대 (내용 오기 전)</div></div>
+    <div class="item"><span class="item-name">Indicator</span><div class="item-preview"><div style="position:relative"><div style="padding:8px 14px;background:#333;color:#fff;border-radius:6px;font-size:12px;font-weight:700">버튼</div><div style="position:absolute;top:0;right:0;transform:translate(50%,-50%);background:#ef4444;color:#fff;padding:1px 6px;border-radius:999px;font-size:9px;font-weight:900;border:2px solid #1a1a1a">NEW</div></div></div><div class="item-desc">요소 모서리 뱃지·표식</div></div>
+  </div>
+</section>
+
+<!-- ============ 뜨는 창들 ============ -->
+<section id="overlays" class="cat-section">
+  <div class="cat-h"><h2>화면 위에 뜨는 창들</h2><span class="count">5개</span><span class="ep">Ep16</span></div>
+  <div class="grid">
+    <div class="item"><span class="item-name">Modal</span><div class="item-preview"><div class="phone-mini" style="display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.5)"><div style="background:#fff;color:#000;padding:12px;border-radius:10px;width:80%"><div style="font-weight:900;font-size:11px;margin-bottom:4px">알림 설정</div><div style="font-size:9px;color:#666">여기서 관리하세요</div></div></div></div><div class="item-desc">중앙 팝업 창</div></div>
+    <div class="item"><span class="item-name">Dialog</span><div class="item-preview"><div class="phone-mini" style="display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.5)"><div style="background:#fff;color:#000;border-radius:10px;overflow:hidden;width:80%"><div style="padding:10px;text-align:center"><div style="font-weight:900;font-size:11px">정말 삭제?</div></div><div style="display:flex;border-top:1px solid #e5e5e5"><div style="flex:1;padding:6px;text-align:center;font-size:10px">취소</div><div style="flex:1;padding:6px;text-align:center;font-size:10px;font-weight:900;color:#dc2626;border-left:1px solid #e5e5e5">삭제</div></div></div></div></div><div class="item-desc">확인 팝업 (정말 삭제?)</div></div>
+    <div class="item"><span class="item-name">Drawer</span><div class="item-preview"><div class="phone-mini"><div style="position:absolute;top:30px;bottom:0;left:0;width:60%;background:#fff;color:#000;padding:10px;border-radius:0 12px 12px 0;box-shadow:5px 0 10px rgba(0,0,0,0.3)"><div style="font-weight:900;font-size:11px">메뉴</div><div style="font-size:9px;margin-top:6px">👤 프로필</div><div style="font-size:9px;margin-top:3px">⚙️ 설정</div></div></div></div><div class="item-desc">옆에서 밀려나오는 메뉴</div></div>
+    <div class="item"><span class="item-name">BottomSheet</span><div class="item-preview"><div class="phone-mini"><div style="position:absolute;left:0;right:0;bottom:0;background:#fff;color:#000;border-radius:14px 14px 0 0;padding:8px;height:100px"><div style="width:30px;height:3px;background:#d4d4d4;border-radius:999px;margin:0 auto 6px"></div><div style="font-weight:900;font-size:10px">사진 첨부</div><div style="font-size:9px;margin-top:4px">📷 카메라</div></div></div></div><div class="item-desc">아래에서 올라오는 창</div></div>
+    <div class="item"><span class="item-name">FAB</span><div class="item-preview"><div class="phone-mini"><div style="position:absolute;bottom:12px;right:12px;width:38px;height:38px;background:#3b82f6;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;box-shadow:0 4px 12px rgba(0,0,0,0.4)">+</div></div></div><div class="item-desc">우하단 + 버튼 (Floating)</div></div>
+  </div>
+</section>
+
+<!-- ============ 이동·메뉴 ============ -->
+<section id="navigation" class="cat-section">
+  <div class="cat-h"><h2>이동·메뉴 부품</h2><span class="count">9개</span><span class="ep">Ep17</span></div>
+  <div class="grid">
+    <div class="item"><span class="item-name">Navbar</span><div class="item-preview"><div style="width:200px;background:#fff;color:#000;display:flex;align-items:center;padding:8px 10px;border:1px solid #e5e5e5;border-radius:4px"><div style="width:20px;font-size:14px">‹</div><div style="flex:1;text-align:center;font-weight:900;font-size:12px">설정</div><div style="width:20px;text-align:right;font-size:12px">⋯</div></div></div><div class="item-desc">화면 최상단 가로 막대</div></div>
+    <div class="item"><span class="item-name">BottomNav</span><div class="item-preview"><div class="phone-mini"><div style="position:absolute;left:0;right:0;bottom:0;background:#fff;color:#000;display:flex;justify-content:space-around;padding:5px 0;border-top:1px solid #e5e5e5"><div style="text-align:center;font-size:8px;font-weight:900"><div style="font-size:16px">🏠</div>홈</div><div style="text-align:center;font-size:8px;color:#999"><div style="font-size:16px">🔍</div>검색</div><div style="text-align:center;font-size:8px;color:#999"><div style="font-size:16px">👤</div>내정보</div></div></div></div><div class="item-desc">하단 5개 아이콘</div></div>
+    <div class="item"><span class="item-name">Tabs</span><div class="item-preview"><div style="width:200px;background:#fff;color:#000;display:flex;border-bottom:1px solid #e5e5e5"><div style="flex:1;text-align:center;padding:8px 0;font-weight:900;color:#3b82f6;border-bottom:3px solid #3b82f6;font-size:11px">전체</div><div style="flex:1;text-align:center;padding:8px 0;color:#666;font-size:11px">신규</div><div style="flex:1;text-align:center;padding:8px 0;color:#666;font-size:11px">인기</div></div></div><div class="item-desc">카테고리 전환 상단</div></div>
+    <div class="item"><span class="item-name">Menu</span><div class="item-preview"><div style="width:150px;background:#fff;color:#000;border-radius:6px;border:1px solid #e5e5e5"><div style="padding:8px 12px;border-bottom:1px solid #f0f0f0;font-size:11px">👤 프로필</div><div style="padding:8px 12px;border-bottom:1px solid #f0f0f0;font-size:11px">⚙️ 설정</div><div style="padding:8px 12px;font-size:11px">🚪 로그아웃</div></div></div><div class="item-desc">세로 목록 메뉴</div></div>
+    <div class="item"><span class="item-name">Dropdown</span><div class="item-preview"><div><button style="padding:6px 12px;background:#111;color:#fff;border:none;border-radius:5px;font-size:11px;font-weight:700">메뉴 ▾</button><div style="margin-top:4px;width:120px;background:#fff;color:#000;border-radius:6px;border:1px solid #e5e5e5"><div style="padding:6px 10px;font-size:11px">항목 1</div><div style="padding:6px 10px;font-size:11px;border-top:1px solid #f0f0f0">항목 2</div></div></div></div><div class="item-desc">버튼 + 팝업 목록</div></div>
+    <div class="item"><span class="item-name">Breadcrumbs</span><div class="item-preview"><div style="display:flex;gap:5px;font-size:11px"><span style="color:#3b82f6">홈</span><span style="color:#666">›</span><span style="color:#3b82f6">설정</span><span style="color:#666">›</span><span style="font-weight:900">알림</span></div></div><div class="item-desc">위치 표시 (홈 › 설정 › 알림)</div></div>
+    <div class="item"><span class="item-name">Pagination</span><div class="item-preview"><div style="display:inline-flex;gap:3px"><button style="width:24px;height:24px;background:#fff;color:#000;border:1px solid #d4d4d4;border-radius:4px;font-size:10px">‹</button><button style="width:24px;height:24px;background:#3b82f6;color:#fff;border:none;border-radius:4px;font-size:10px;font-weight:900">1</button><button style="width:24px;height:24px;background:#fff;color:#000;border:1px solid #d4d4d4;border-radius:4px;font-size:10px">2</button><button style="width:24px;height:24px;background:#fff;color:#000;border:1px solid #d4d4d4;border-radius:4px;font-size:10px">›</button></div></div><div class="item-desc">1, 2, 3, 다음 (페이지 이동)</div></div>
+    <div class="item"><span class="item-name">Steps</span><div class="item-preview"><div style="display:flex;align-items:flex-start;font-size:8px"><div style="display:flex;flex-direction:column;align-items:center"><div style="width:18px;height:18px;background:#22c55e;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900">✓</div><div>접수</div></div><div style="flex:1;height:2px;background:#22c55e;margin-top:8px;min-width:15px"></div><div style="display:flex;flex-direction:column;align-items:center"><div style="width:18px;height:18px;background:#22c55e;color:#fff;border-radius:50%;border:2px solid #fff;outline:2px solid #22c55e;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900">2</div><div style="font-weight:900">배송</div></div><div style="flex:1;height:2px;background:#d4d4d4;margin-top:8px;min-width:15px"></div><div style="display:flex;flex-direction:column;align-items:center"><div style="width:18px;height:18px;background:#f0f0f0;color:#999;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px">3</div><div style="color:#666">완료</div></div></div></div><div class="item-desc">단계 진행 (배송 조회)</div></div>
+    <div class="item"><span class="item-name">Link</span><div class="item-preview"><span style="color:#3b82f6;text-decoration:underline;text-underline-offset:3px;font-weight:700;font-size:14px">자세히 보기 ↗</span></div><div class="item-desc">클릭 가능한 링크 텍스트</div></div>
+  </div>
+</section>
+
+<!-- ============ 액션 ============ -->
+<section id="actions" class="cat-section">
+  <div class="cat-h"><h2>액션 부품</h2><span class="count">2개</span><span class="ep">Ep17</span></div>
+  <div class="grid">
+    <div class="item"><span class="item-name">Button</span><div class="item-preview"><div style="display:flex;flex-direction:column;gap:6px"><button style="padding:8px 16px;background:#3b82f6;color:#fff;border:none;border-radius:6px;font-weight:900;font-size:12px">기본 버튼</button><button style="padding:8px 16px;background:transparent;color:#3b82f6;border:2px solid #3b82f6;border-radius:6px;font-weight:900;font-size:12px">외곽선</button></div></div><div class="item-desc">기본 · 외곽선 · 유령 · 파괴</div></div>
+    <div class="item"><span class="item-name">Swap</span><div class="item-preview"><div style="display:flex;gap:12px;font-size:32px"><div>🤍</div><div>❤️</div></div></div><div class="item-desc">두 아이콘 교체 (하트·다크모드)</div></div>
+  </div>
+</section>
+
+<!-- ============ 기본 입력 ============ -->
+<section id="input-basic" class="cat-section">
+  <div class="cat-h"><h2>기본 입력 부품</h2><span class="count">7개</span><span class="ep">Ep17</span></div>
+  <div class="grid">
+    <div class="item"><span class="item-name">TextInput</span><div class="item-preview"><div style="width:180px"><div style="font-size:11px;color:#a3a3a3;margin-bottom:4px;font-weight:700">이메일</div><div style="padding:8px 10px;background:#fff;color:#000;border:2px solid #d4d4d4;border-radius:6px;font-size:12px">홍길동</div></div></div><div class="item-desc">한 줄 텍스트 (이메일·이름)</div></div>
+    <div class="item"><span class="item-name">Textarea</span><div class="item-preview"><div style="width:180px;padding:8px 10px;background:#fff;color:#000;border:2px solid #d4d4d4;border-radius:6px;font-size:11px;min-height:60px">여러 줄 입력<br>내용을 여기에</div></div><div class="item-desc">여러 줄 텍스트</div></div>
+    <div class="item"><span class="item-name">Label</span><div class="item-preview"><div style="display:flex;gap:4px;align-items:center;font-size:12px"><b style="color:#333">이메일</b><span style="color:#ef4444">*</span><span style="font-size:10px;color:#999">(필수)</span></div></div><div class="item-desc">폼 필드 이름표</div></div>
+    <div class="item"><span class="item-name">SearchBar</span><div class="item-preview"><div style="width:180px;padding:6px 12px;background:#f4f4f4;color:#000;border-radius:999px;font-size:11px;display:flex;gap:5px"><span>🔍</span><span style="color:#999">검색어를 입력하세요</span></div></div><div class="item-desc">검색 + 자동완성</div></div>
+    <div class="item"><span class="item-name">FileInput</span><div class="item-preview"><div style="width:160px;padding:12px;border:2px dashed #666;border-radius:6px;text-align:center;font-size:11px"><div style="font-size:20px">📎</div><div style="color:#fff;font-weight:700;margin-top:2px">파일 선택</div></div></div><div class="item-desc">파일 첨부 (드래그 or 클릭)</div></div>
+    <div class="item"><span class="item-name">OTP</span><div class="item-preview"><div style="display:inline-flex;gap:4px">
+      <div style="width:26px;height:32px;border:2px solid #111;border-radius:5px;background:#fff;color:#000;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900">1</div>
+      <div style="width:26px;height:32px;border:2px solid #111;border-radius:5px;background:#fff;color:#000;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900">2</div>
+      <div style="width:26px;height:32px;border:2px solid #111;border-radius:5px;background:#fff;color:#000;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900">3</div>
+      <div style="width:26px;height:32px;border:2px solid #111;border-radius:5px;background:#fff;color:#000;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900">4</div>
+      <div style="width:26px;height:32px;border:2px solid #3b82f6;border-radius:5px;background:#fff;color:#000"></div>
+      <div style="width:26px;height:32px;border:2px solid #d4d4d4;border-radius:5px;background:#fff"></div>
+    </div></div><div class="item-desc">인증번호 6칸 (SMS·이메일)</div></div>
+    <div class="item"><span class="item-name">Kbd</span><div class="item-preview"><div style="display:inline-flex;gap:3px;align-items:center;font-family:'SF Mono',monospace"><span style="padding:2px 6px;background:#f4f4f4;color:#111;border:1px solid #d4d4d4;border-radius:3px;font-size:10px;font-weight:700;box-shadow:0 1px 0 #d4d4d4">Ctrl</span><span style="color:#999;font-size:9px">+</span><span style="padding:2px 6px;background:#f4f4f4;color:#111;border:1px solid #d4d4d4;border-radius:3px;font-size:10px;font-weight:700;box-shadow:0 1px 0 #d4d4d4">C</span></div></div><div class="item-desc">키보드 키 표시 (단축키)</div></div>
+  </div>
+</section>
+
+<!-- ============ 선택 부품 ============ -->
+<section id="input-choice" class="cat-section">
+  <div class="cat-h"><h2>선택 부품 ⭐</h2><span class="count">10개</span><span class="ep">Ep17</span></div>
+  <div class="grid">
+    <div class="item"><span class="item-name">Checkbox</span><div class="item-preview"><div style="display:flex;flex-direction:column;gap:6px;color:#fff"><label style="display:flex;align-items:center;gap:6px;font-size:12px"><div style="width:16px;height:16px;background:#3b82f6;border-radius:3px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:900">✓</div>사과</label><label style="display:flex;align-items:center;gap:6px;font-size:12px"><div style="width:16px;height:16px;background:#fff;border:2px solid #999;border-radius:3px"></div>바나나</label></div></div><div class="item-desc">네모 · 여러 개</div></div>
+    <div class="item"><span class="item-name">Radio</span><div class="item-preview"><div style="display:flex;flex-direction:column;gap:6px;color:#fff"><label style="display:flex;align-items:center;gap:6px;font-size:12px"><div style="width:16px;height:16px;border:2px solid #3b82f6;border-radius:50%;display:flex;align-items:center;justify-content:center"><div style="width:7px;height:7px;background:#3b82f6;border-radius:50%"></div></div>남자</label><label style="display:flex;align-items:center;gap:6px;font-size:12px"><div style="width:16px;height:16px;border:2px solid #999;border-radius:50%"></div>여자</label></div></div><div class="item-desc">동그라미 · 하나만</div></div>
+    <div class="item"><span class="item-name">Toggle</span><div class="item-preview"><div style="display:flex;flex-direction:column;gap:8px;color:#fff"><div style="display:flex;align-items:center;gap:8px;font-size:12px">알림 <div style="width:34px;height:20px;background:#22c55e;border-radius:999px;position:relative"><div style="position:absolute;top:2px;left:16px;width:16px;height:16px;background:#fff;border-radius:50%"></div></div></div></div></div><div class="item-desc">스위치 · 켜고 끄고</div></div>
+    <div class="item"><span class="item-name">Select</span><div class="item-preview"><div style="width:150px;padding:6px 10px;background:#fff;color:#000;border-radius:5px;font-size:12px;display:flex;justify-content:space-between"><span>서울시</span><span>▾</span></div></div><div class="item-desc">눌러서 열리는 목록</div></div>
+    <div class="item"><span class="item-name">Combobox</span><div class="item-preview"><div style="width:160px"><div style="padding:6px 10px;background:#fff;color:#000;border:2px solid #3b82f6;border-radius:5px;font-size:12px;display:flex;justify-content:space-between"><span>서</span><span style="color:#999">▾</span></div><div style="margin-top:2px;background:#fff;color:#000;border:1px solid #e5e5e5;border-radius:5px;font-size:11px"><div style="padding:5px 8px"><b style="color:#3b82f6">서</b>울시</div><div style="padding:5px 8px;border-top:1px solid #f0f0f0"><b style="color:#3b82f6">서</b>산시</div></div></div></div><div class="item-desc">Select + 타이핑 검색</div></div>
+    <div class="item"><span class="item-name">RangeSlider</span><div class="item-preview"><div style="width:160px"><div style="height:4px;background:#e5e5e5;border-radius:999px;position:relative"><div style="width:60%;height:100%;background:#3b82f6;border-radius:999px"></div><div style="position:absolute;top:50%;left:60%;transform:translate(-50%,-50%);width:14px;height:14px;background:#fff;border:3px solid #3b82f6;border-radius:50%"></div></div><div style="text-align:center;font-size:10px;color:#666;margin-top:4px">60%</div></div></div><div class="item-desc">값 조절 (음량·밝기)</div></div>
+    <div class="item"><span class="item-name">Rating</span><div class="item-preview"><div style="font-size:24px;color:#facc15">★★★★<span style="color:#333">★</span></div></div><div class="item-desc">별점 매기기</div></div>
+    <div class="item"><span class="item-name">Filter</span><div class="item-preview"><div style="display:inline-flex;gap:4px;flex-wrap:wrap;max-width:180px;justify-content:center"><span style="padding:4px 10px;background:#111;color:#fff;border-radius:999px;font-size:10px;font-weight:900">전체</span><span style="padding:4px 10px;background:#f4f4f4;color:#666;border:1px solid #e5e5e5;border-radius:999px;font-size:10px">신규</span><span style="padding:4px 10px;background:#f4f4f4;color:#666;border:1px solid #e5e5e5;border-radius:999px;font-size:10px">할인</span></div></div><div class="item-desc">다중 선택 필터 칩</div></div>
+    <div class="item"><span class="item-name">MultiSelect</span><div class="item-preview"><div style="width:180px;padding:5px;background:#fff;color:#000;border:2px solid #d4d4d4;border-radius:5px;display:flex;flex-wrap:wrap;gap:3px;min-height:32px;align-items:center"><span style="padding:2px 6px;background:#dbeafe;color:#1e3a8a;border-radius:3px;font-size:10px;font-weight:700">사과 ×</span><span style="padding:2px 6px;background:#dbeafe;color:#1e3a8a;border-radius:3px;font-size:10px;font-weight:700">포도 ×</span></div></div><div class="item-desc">여러 개 동시 선택</div></div>
+    <div class="item"><span class="item-name">Chip</span><div class="item-preview"><div style="display:flex;gap:4px"><span style="padding:3px 10px;background:#eff6ff;color:#1e3a8a;border-radius:999px;font-size:11px;font-weight:700">태그</span><span style="padding:3px 10px;background:#dcfce7;color:#14532d;border-radius:999px;font-size:11px;font-weight:700">성공</span></div></div><div class="item-desc">태그 뱃지 (제거 가능)</div></div>
+  </div>
+</section>
+
+<!-- ============ 입력 파생 ============ -->
+<section id="input-variant" class="cat-section">
+  <div class="cat-h"><h2>입력 파생 컴포넌트 (Input Variants)</h2><span class="count">10개</span><span class="ep">Ep17 확장</span></div>
+  <div class="grid">
+    <div class="item"><span class="item-name">Calendar</span><div class="item-preview"><div style="background:#fff;color:#000;padding:8px;border-radius:8px;font-size:9px"><div style="text-align:center;font-weight:900;font-size:11px">2026년 8월</div><div style="display:grid;grid-template-columns:repeat(7,1fr);gap:1px;margin-top:4px;text-align:center"><div style="color:#ef4444">일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div style="color:#3b82f6">토</div><div></div><div></div><div></div><div></div><div></div><div>1</div><div style="color:#3b82f6">2</div><div style="color:#ef4444">3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div style="color:#3b82f6">9</div><div style="color:#ef4444">10</div><div>11</div><div>12</div><div>13</div><div>14</div><div>15</div><div style="color:#3b82f6">16</div><div style="background:#3b82f6;color:#fff;border-radius:50%;font-weight:900">16</div></div></div></div><div class="item-desc">월별 달력</div></div>
+    <div class="item"><span class="item-name">DatePicker</span><div class="item-preview"><div style="width:160px;padding:8px 10px;background:#fff;color:#000;border:2px solid #d4d4d4;border-radius:6px;font-size:12px;display:flex;gap:6px"><span>📅</span><span>2026-08-16</span></div></div><div class="item-desc">캘린더 팝업 + 입력창</div></div>
+    <div class="item"><span class="item-name">TimePicker</span><div class="item-preview"><div style="display:inline-flex;align-items:center;gap:4px;padding:6px 10px;background:#fff;color:#000;border:2px solid #d4d4d4;border-radius:6px;font-size:12px"><span>🕐</span><div style="padding:3px 6px;background:#f4f4f4;border-radius:3px;font-weight:900">09</div><span>:</span><div style="padding:3px 6px;background:#f4f4f4;border-radius:3px;font-weight:900">30</div><div style="padding:3px 6px;background:#f4f4f4;border-radius:3px;font-weight:900">AM</div></div></div><div class="item-desc">시:분 (오전·오후)</div></div>
+    <div class="item"><span class="item-name">DateRangePicker</span><div class="item-preview"><div style="width:180px;padding:8px 10px;background:#fff;color:#000;border:2px solid #d4d4d4;border-radius:6px;font-size:11px;display:flex;gap:5px;align-items:center"><span>📅</span><b>8/16</b><span style="color:#999">→</span><b>8/20</b><span style="margin-left:auto;color:#666;font-size:9px">4박</span></div></div><div class="item-desc">시작~종료 (예약)</div></div>
+    <div class="item"><span class="item-name">NumberInput</span><div class="item-preview"><div style="display:inline-flex;gap:4px;align-items:center"><button style="width:26px;height:26px;background:#f4f4f4;color:#111;border:1px solid #d4d4d4;border-radius:4px;font-weight:900">−</button><div style="padding:5px 12px;background:#fff;color:#000;border:1px solid #d4d4d4;border-radius:4px;font-weight:900;font-size:13px">2 <span style="font-size:9px;color:#666">개</span></div><button style="width:26px;height:26px;background:#f4f4f4;color:#111;border:1px solid #d4d4d4;border-radius:4px;font-weight:900">+</button></div></div><div class="item-desc">숫자 + 스테퍼 (수량)</div></div>
+    <div class="item"><span class="item-name">PasswordInput</span><div class="item-preview"><div style="width:180px"><div style="padding:8px 10px;background:#fff;color:#000;border:2px solid #d4d4d4;border-radius:6px;font-size:12px;display:flex;align-items:center"><span style="flex:1;font-family:monospace">••••••••••</span><span style="color:#666">👁️</span></div><div style="height:3px;background:#333;border-radius:999px;overflow:hidden;margin-top:4px"><div style="width:66%;height:100%;background:#f59e0b"></div></div><div style="font-size:9px;color:#f59e0b;text-align:right;margin-top:2px;font-weight:700">보안 보통</div></div></div><div class="item-desc">마스킹 + 강도 표시</div></div>
+    <div class="item"><span class="item-name">PhoneInput</span><div class="item-preview"><div style="width:200px;display:inline-flex;border:2px solid #d4d4d4;border-radius:6px;background:#fff;color:#000;overflow:hidden"><div style="padding:8px 10px;background:#f4f4f4;font-size:11px;font-weight:700;border-right:1px solid #d4d4d4">🇰🇷 +82 ▾</div><div style="flex:1;padding:8px 10px;font-size:12px">10 1234 5678</div></div></div><div class="item-desc">국가코드 + 전화번호</div></div>
+    <div class="item"><span class="item-name">ColorPicker</span><div class="item-preview"><div style="padding:8px;background:#fff;color:#000;border:1px solid #e5e5e5;border-radius:6px;display:inline-flex;flex-direction:column;gap:6px"><div style="display:flex;gap:6px;align-items:center"><div style="width:24px;height:24px;background:#3b82f6;border-radius:4px;border:2px solid #d4d4d4"></div><div style="font-size:11px;font-weight:700;font-family:monospace">#3b82f6</div></div><div style="display:flex;gap:2px"><div style="width:14px;height:14px;background:#ef4444;border-radius:2px"></div><div style="width:14px;height:14px;background:#f59e0b;border-radius:2px"></div><div style="width:14px;height:14px;background:#facc15;border-radius:2px"></div><div style="width:14px;height:14px;background:#22c55e;border-radius:2px"></div><div style="width:14px;height:14px;background:#3b82f6;border-radius:2px;border:2px solid #111"></div><div style="width:14px;height:14px;background:#8b5cf6;border-radius:2px"></div></div></div></div><div class="item-desc">팔레트 + HEX 코드</div></div>
+    <div class="item"><span class="item-name">TagInput</span><div class="item-preview"><div style="width:200px;padding:5px 8px;background:#fff;color:#000;border:2px solid #d4d4d4;border-radius:5px;display:flex;flex-wrap:wrap;gap:3px"><span style="padding:2px 7px;background:#eff6ff;color:#1e3a8a;border-radius:999px;font-size:10px;font-weight:700">#여행 ×</span><span style="padding:2px 7px;background:#eff6ff;color:#1e3a8a;border-radius:999px;font-size:10px;font-weight:700">#제주도 ×</span><span style="font-size:10px;color:#999">태그 추가</span></div></div><div class="item-desc">엔터로 추가 · X로 삭제</div></div>
+    <div class="item"><span class="item-name">CurrencyInput</span><div class="item-preview"><div style="width:160px;display:inline-flex;border:2px solid #d4d4d4;border-radius:6px;background:#fff;color:#000;overflow:hidden"><div style="padding:8px 10px;background:#f4f4f4;font-size:13px;font-weight:900;border-right:1px solid #d4d4d4">₩</div><div style="flex:1;padding:8px 10px;font-size:13px;font-weight:900;text-align:right;font-family:monospace">12,500</div></div></div><div class="item-desc">통화 심볼 + 콤마 포맷</div></div>
+  </div>
+</section>
+
+<!-- ============ 정보 표시 ============ -->
+<section id="display" class="cat-section">
+  <div class="cat-h"><h2>정보 표시 부품</h2><span class="count">10개</span><span class="ep">Ep18</span></div>
+  <div class="grid">
+    <div class="item"><span class="item-name">Card</span><div class="item-preview"><div style="width:140px;background:#fff;color:#000;border-radius:8px;overflow:hidden"><div style="aspect-ratio:4/3;background:#f4f4f4;display:flex;align-items:center;justify-content:center;font-size:32px">🍎</div><div style="padding:8px"><div style="font-weight:900;font-size:11px">사과 1kg</div><div style="font-size:9px;color:#666">국산 · 상품</div><div style="display:flex;justify-content:space-between;margin-top:4px"><b style="font-size:11px">15,000원</b><span style="color:#ef4444">♥</span></div></div></div></div><div class="item-desc">이미지+제목+설명 세트</div></div>
+    <div class="item"><span class="item-name">ListItem</span><div class="item-preview"><div style="width:200px;background:#fff;color:#000;border-radius:5px;overflow:hidden"><div style="display:flex;align-items:center;padding:8px;gap:8px;border-bottom:1px solid #f0f0f0"><div style="font-size:18px">👤</div><div style="flex:1"><div style="font-weight:700;font-size:11px">홍길동</div><div style="font-size:9px;color:#666">활성 회원</div></div><div style="color:#999;font-size:12px">›</div></div><div style="display:flex;align-items:center;padding:8px;gap:8px"><div style="font-size:18px">👤</div><div style="flex:1"><div style="font-weight:700;font-size:11px">김철수</div><div style="font-size:9px;color:#666">대기</div></div><div style="color:#999;font-size:12px">›</div></div></div></div><div class="item-desc">세로 목록 항목</div></div>
+    <div class="item"><span class="item-name">Table</span><div class="item-preview"><div style="font-size:10px;background:#fff;color:#000;border-radius:5px;overflow:hidden;border:1px solid #e5e5e5"><div style="display:flex;background:#f4f4f4;font-weight:900"><div style="flex:1;padding:5px">이름</div><div style="flex:1;padding:5px">상태</div></div><div style="display:flex;border-top:1px solid #f0f0f0"><div style="flex:1;padding:5px">홍길동</div><div style="flex:1;padding:5px">활성</div></div><div style="display:flex;border-top:1px solid #f0f0f0"><div style="flex:1;padding:5px">김철수</div><div style="flex:1;padding:5px">대기</div></div></div></div><div class="item-desc">표 형태 데이터</div></div>
+    <div class="item"><span class="item-name">Avatar</span><div class="item-preview"><div style="display:flex;gap:10px"><div style="width:40px;height:40px;background:#3b82f6;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900">홍</div><div style="position:relative"><div style="width:40px;height:40px;background:#22c55e;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900">김</div><div style="position:absolute;right:0;bottom:0;width:10px;height:10px;background:#22c55e;border:2px solid #1a1a1a;border-radius:50%"></div></div></div></div><div class="item-desc">프로필 원 (상태 점 옵션)</div></div>
+    <div class="item"><span class="item-name">ChatBubble</span><div class="item-preview"><div style="display:flex;flex-direction:column;gap:5px;width:180px"><div style="align-self:flex-start;padding:6px 10px;background:#fff;color:#000;border-radius:12px;border-bottom-left-radius:4px;font-size:11px;max-width:75%">안녕하세요</div><div style="align-self:flex-end;padding:6px 10px;background:#fde68a;color:#000;border-radius:12px;border-bottom-right-radius:4px;font-size:11px;max-width:75%">네 반갑습니다</div></div></div><div class="item-desc">채팅 말풍선</div></div>
+    <div class="item"><span class="item-name">Accordion</span><div class="item-preview"><div style="width:200px;background:#fff;color:#000;border-radius:6px;overflow:hidden;border:1px solid #e5e5e5"><div style="padding:8px 10px;border-bottom:1px solid #f0f0f0"><div style="display:flex;justify-content:space-between;font-size:11px;font-weight:700"><span>배송은 얼마?</span><span>▾</span></div><div style="font-size:10px;color:#555;margin-top:4px">평균 2~3일 소요</div></div><div style="padding:8px 10px;display:flex;justify-content:space-between;font-size:11px;font-weight:700"><span>환불 가능?</span><span>▸</span></div></div></div><div class="item-desc">눌러서 펼쳐지는 항목 (FAQ)</div></div>
+    <div class="item"><span class="item-name">Timeline</span><div class="item-preview"><div style="font-size:10px"><div style="display:flex;gap:8px;min-height:32px"><div style="width:34px;text-align:right;color:#999;font-size:9px;padding-top:2px">09:12</div><div style="display:flex;flex-direction:column;align-items:center"><div style="width:8px;height:8px;background:#22c55e;border-radius:50%"></div><div style="width:2px;flex:1;background:#22c55e"></div></div><div style="flex:1"><div style="font-weight:700;font-size:10px">접수 완료</div></div></div><div style="display:flex;gap:8px;min-height:32px"><div style="width:34px;text-align:right;color:#999;font-size:9px;padding-top:2px">14:05</div><div style="display:flex;flex-direction:column;align-items:center"><div style="width:8px;height:8px;background:#d4d4d4;border-radius:50%"></div></div><div style="flex:1"><div style="font-weight:700;font-size:10px;color:#999">배송 시작</div></div></div></div></div><div class="item-desc">시간 순 세로 이력</div></div>
+    <div class="item"><span class="item-name">Stat</span><div class="item-preview"><div style="padding:10px 12px;background:#fff;color:#000;border-radius:8px"><div style="font-size:16px">🚶</div><div style="font-size:10px;color:#666;margin-top:2px">오늘 걸음</div><div style="display:flex;align-items:baseline;gap:3px"><div style="font-size:22px;font-weight:900">8,542</div><div style="font-size:10px;color:#666">보</div></div><div style="font-size:9px;color:#22c55e;font-weight:700;margin-top:2px">+1,203 어제比</div></div></div><div class="item-desc">큰 숫자 통계</div></div>
+    <div class="item"><span class="item-name">Carousel</span><div class="item-preview"><div style="width:180px"><div style="width:100%;aspect-ratio:16/10;background:#fef3c7;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#111"><div style="font-size:32px">🎉</div><div style="font-size:11px;font-weight:900;margin-top:3px">이벤트 진행 중</div></div><div style="display:flex;justify-content:center;gap:4px;margin-top:6px"><div style="width:16px;height:4px;background:#111;border-radius:999px"></div><div style="width:4px;height:4px;background:#666;border-radius:999px"></div><div style="width:4px;height:4px;background:#666;border-radius:999px"></div></div></div></div><div class="item-desc">배너 자동 슬라이드 (dots)</div></div>
+    <div class="item"><span class="item-name">Slider</span><div class="item-preview"><div style="width:200px;display:flex;gap:5px;overflow:hidden"><div style="flex-shrink:0;width:60px;height:60px;background:#fef2f2;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#111"><div style="font-size:20px">🍎</div><div style="font-size:9px;font-weight:700">사과</div></div><div style="flex-shrink:0;width:60px;height:60px;background:#fefce8;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#111"><div style="font-size:20px">🍌</div><div style="font-size:9px;font-weight:700">바나나</div></div><div style="flex-shrink:0;width:60px;height:60px;background:#fff7ed;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#111"><div style="font-size:20px">🥕</div><div style="font-size:9px;font-weight:700">당근</div></div></div></div><div class="item-desc">수동 스와이프 (여러 개 노출)</div></div>
+  </div>
+</section>
+
+<!-- ============ 제스처 ============ -->
+<section id="gestures" class="cat-section">
+  <div class="cat-h"><h2>손가락 제스처</h2><span class="count">4개</span><span class="ep">Ep18</span></div>
+  <div class="grid">
+    <div class="item"><span class="item-name">SwipeIndicator</span><div class="item-preview"><div style="display:inline-flex;align-items:center;justify-content:center;padding:8px 16px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:20px;font-weight:900;border-radius:999px">✋ →</div></div><div class="item-desc">좌우로 밀기 (스와이프 삭제)</div></div>
+    <div class="item"><span class="item-name">LongPressIndicator</span><div class="item-preview"><div style="position:relative;width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:28px"><div style="position:absolute;inset:0;border-radius:50%;border:3px solid #f59e0b"></div>👆</div></div><div class="item-desc">꾹 누르기 (컨텍스트 메뉴)</div></div>
+    <div class="item"><span class="item-name">PinchIndicator</span><div class="item-preview"><div style="display:inline-flex;gap:6px;font-size:26px">👆 👆</div></div><div class="item-desc">두 손가락 벌림 (확대·축소)</div></div>
+    <div class="item"><span class="item-name">PullToRefresh</span><div class="item-preview"><div style="width:160px;background:rgba(59,130,246,0.1);border-radius:8px;padding:8px 0;text-align:center;color:#3b82f6"><div style="font-size:20px">↓</div><div style="font-size:9px;color:#666;margin-top:2px;font-weight:700">당겨서 새로고침</div></div></div><div class="item-desc">아래로 당김 (새로고침)</div></div>
+  </div>
+</section>
+
+<!-- ============ 페이지 레이아웃 ============ -->
+<section id="layout" class="cat-section">
+  <div class="cat-h"><h2>페이지 레이아웃</h2><span class="count">4개</span><span class="ep">공통</span></div>
+  <div class="grid">
+    <div class="item"><span class="item-name">Hero</span><div class="item-preview"><div style="width:180px;height:100px;background:linear-gradient(160deg,#1e293b,#0f172a);color:#fff;border-radius:10px;padding:12px;display:flex;flex-direction:column;justify-content:center;gap:4px"><div style="font-size:14px;font-weight:900">AI 필수 어휘</div><div style="font-size:9px;opacity:0.8">챗지피티 정복</div><button style="align-self:flex-start;padding:4px 10px;background:#facc15;color:#111;border:none;border-radius:999px;font-size:9px;font-weight:900">시작하기</button></div></div><div class="item-desc">페이지 최상단 대표 배너</div></div>
+    <div class="item"><span class="item-name">Divider</span><div class="item-preview"><div style="width:180px;display:flex;align-items:center;gap:6px"><div style="flex:1;height:1px;background:#e5e5e5"></div><span style="font-size:10px;color:#999;font-weight:700">또는</span><div style="flex:1;height:1px;background:#e5e5e5"></div></div></div><div class="item-desc">구분선 (라벨 옵션)</div></div>
+    <div class="item"><span class="item-name">Footer</span><div class="item-preview"><div style="width:200px;background:#111;color:#a3a3a3;padding:12px 10px;border-radius:6px"><div style="font-size:11px;font-weight:900;color:#fff;margin-bottom:6px">AI독학꿀벌</div><div style="display:flex;gap:10px;margin-bottom:6px"><div><div style="font-size:9px;color:#fff;font-weight:700">회사</div><div style="font-size:8px;margin-top:2px">소개</div><div style="font-size:8px">채용</div></div><div><div style="font-size:9px;color:#fff;font-weight:700">지원</div><div style="font-size:8px;margin-top:2px">도움말</div></div></div><div style="font-size:8px;color:#666;border-top:1px solid #333;padding-top:4px">© 2026</div></div></div><div class="item-desc">페이지 하단 정보 영역</div></div>
+    <div class="item"><span class="item-name">Scrollbar</span><div class="item-preview"><div style="width:8px;height:120px;background:#333;border-radius:999px;position:relative"><div style="position:absolute;top:30%;width:100%;height:40%;background:#999;border-radius:999px"></div></div></div><div class="item-desc">스크롤 위치·비율 표시</div></div>
+  </div>
+</section>
+
+</main>
+
+<div class="footer">
+  <div><strong>총 71개 부품 · daisyUI 전체 커버 + 입력 파생 컴포넌트</strong></div>
+  <div style="margin-top:8px;">Ep16 알림·창 (14) · Ep17 이동·선택 (28) · Ep18 정보·제스처 (14) + 공통 레이아웃 (4)</div>
+  <div style="margin-top:8px;">실제 영상 렌더 시엔 <code>showLabel=false</code> · 노란 라벨은 이 확인용 페이지에만</div>
+  <div style="margin-top:16px;"><a href="/tv/">← 채널 홈으로</a> · <a href="https://youtube.com/@hon2bee_kr">유튜브</a> · <a href="/tv/ai/">챗봇</a></div>
+</div>
+
+<script>
+  function toggleAll(kind, on) {
+    if (kind === 'label') {
+      document.querySelectorAll('.item-name').forEach(el => el.style.display = on ? 'block' : 'none');
+    } else if (kind === 'highlight') {
+      document.querySelectorAll('.item').forEach(el => {
+        el.style.boxShadow = on ? '0 0 20px rgba(250, 204, 21, 0.4)' : 'none';
+        el.style.border = on ? '2px solid #FACC15' : '1px solid #2a2a2a';
+      });
+    }
+  }
+</script>
+
+</body>
+</html>
